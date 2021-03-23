@@ -22,14 +22,15 @@ KERNEL_OFFSET equ 0x1000
 	; PM
 	mov bx, PROTECTED_MODE_MSG
 	call print
-	call print_nl
-	%include "boot/clear_screen.asm"
-
+	
+	call clear_screen
+	
 	call switch_to_pm
 
 	jmp $  		; lol this is useless but just for safety
 
 %include "boot/print.asm"
+%include "boot/clear_screen.asm"
 %include "boot/load_disk.asm"
 %include "boot/pm/gdt.asm"
 %include "boot/pm/switch_to_pm.asm"
