@@ -23,7 +23,7 @@ KERNEL_OFFSET equ 0x1000
 	mov bx, PROTECTED_MODE_MSG
 	call print
 	call print_nl
-	;%include "boot/clear_screen.asm"
+	%include "boot/clear_screen.asm"
 
 	call switch_to_pm
 
