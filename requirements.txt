@@ -1,0 +1,4 @@
+make
+gcc
+nasm
+qemu
