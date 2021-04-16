@@ -15,7 +15,7 @@ os-image.bin: mk/kernel.bin mk/bootsect.bin
 mk/kernel.bin: mk/kernel.o mk/kernel_entry.o
 	$(LINKER) -o mk/kernel.bin -Ttext 0x1000 mk/kernel_entry.o mk/kernel.o --oformat binary
 
-mk/kernel.o: kernel/
+mk/kernel.o: kernel/ drivers/
 	$(C_COMPILER) -ffreestanding -c kernel/kernel.c -o mk/kernel.o
 
 mk/kernel_entry.o: kernel/kernel_entry.asm
