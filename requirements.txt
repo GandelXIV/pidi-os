@@ -1,1 +1,1 @@
-make gcc nasm ld qemu
+make gcc nasm qemu
