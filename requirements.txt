@@ -1,4 +1,0 @@
-make
-gcc
-nasm
-qemu
