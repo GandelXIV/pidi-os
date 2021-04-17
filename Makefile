@@ -17,7 +17,7 @@ os-image.bin: mk/kernel.bin mk/bootsect.bin
 mk/kernel.bin: mk/kernel.o mk/kernel_entry.o
 	$(LINKER) -no-PIE -o mk/kernel.bin -Ttext 0x1000 mk/kernel_entry.o mk/kernel.o --oformat binary
 
-mk/kernel.o: kernel/kernel.c
+mk/kernel.o: kernel/kernel.c drivers/display.h
 	$(C_COMPILER) $(C_FLAGS) kernel/kernel.c -o mk/kernel.o
 
 mk/kernel_entry.o: kernel/kernel_entry.asm

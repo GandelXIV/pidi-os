@@ -6,9 +6,8 @@
 
 void main()
 {
+	display_clear();
 	char* text;
-	text = "XYZ";
-	display_char(text[0], 0);
-	display_char(text[1], 1);
-	display_char(text[2], 2);
+	text = "Hello";
+	display_simple_print(text, 5);
 }
