@@ -38,7 +38,7 @@ void kprintc(char character)
 	}
 	else
 	{
-		set_cursor_offset(get_offset(0, get_offset_row(cursor) + 1));
+		knewline();
 	}
 }
 
@@ -49,6 +49,11 @@ void kprints(char* text)
 		kprintc(*text);
 		++text;
 	}
+}
+
+void knewline()
+{
+  set_cursor_offset(get_offset(0, get_offset_row(get_cursor_offset()) + 1));
 }
 
 void kclear_display()

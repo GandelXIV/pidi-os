@@ -13,3 +13,4 @@
 void kprints(char* text);
 void kprintc(char character);
 void kclear_display();
+void knewline();

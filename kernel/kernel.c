@@ -3,13 +3,10 @@
 
 #include "../lib/type.h"
 #include "../drivers/display.h"
+#include "messages.h"
 
 void main()
 {
-	kclear_display();
-	char* text = "Hello\n";
-	kprintc('X');
-	kprintc('Y');
-	kprints(text);
-	kprints(text);
+	knewline();
+	kprints(KERNEL_WELCOME);
 }
