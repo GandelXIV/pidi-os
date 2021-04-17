@@ -1,9 +1,7 @@
-#define INIT_VIDEO_MEMORY volatile unsigned char* video_memory = (char*) VIDEO_MEMORY_OFFSET;
+#define INIT_VIDEO volatile char* video_memory = (volatile char*) VIDEO_MEMORY_OFFSET;
 
-
-void display_putc(char character, uint pos)
+void display_char(char character, uint position)
 {
-	INIT_VIDEO_MEMORY
-	video_memory[pos + 1] = character;
+	INIT_VIDEO
+	video_memory[position*2] = character;
 }
-
