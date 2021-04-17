@@ -14,8 +14,8 @@ os-image.bin: mk/kernel.bin mk/bootsect.bin
 	chmod +x os-image.bin
 
 # kernel
-mk/kernel.bin: mk/kernel.o mk/kernel_entry.o mk/display.o
-	$(LINKER) -no-PIE -o mk/kernel.bin -Ttext 0x1000 mk/kernel_entry.o mk/kernel.o mk/display.o --oformat binary
+mk/kernel.bin: mk/kernel.o mk/kernel_entry.o mk/display.o mk/port.o
+	$(LINKER) -no-PIE -o mk/kernel.bin -Ttext 0x1000 mk/kernel_entry.o mk/kernel.o mk/display.o mk/port.o --oformat binary
 
 mk/kernel.o: kernel/kernel.c drivers/display.h
 	$(C_COMPILER) $(C_FLAGS) kernel/kernel.c -o mk/kernel.o
@@ -26,6 +26,9 @@ mk/kernel_entry.o: kernel/kernel_entry.asm
 # drivers
 mk/display.o: drivers/display.c
 	$(C_COMPILER) $(C_FLAGS) drivers/display.c -o mk/display.o
+
+mk/port.o: drivers/port.c
+	$(C_COMPILER) $(C_FLAGS) drivers/port.c -o mk/port.o
 
 # bootsector
 mk/bootsect.bin: boot/

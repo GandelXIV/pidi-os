@@ -6,8 +6,10 @@
 
 void main()
 {
-	display_clear();
-	char* text;
-	text = "Hello";
-	display_simple_print(text, 5);
+	kclear_display();
+	char* text = "Hello\n";
+	kprintc('X');
+	kprintc('Y');
+	kprints(text);
+	kprints(text);
 }
