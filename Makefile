@@ -19,7 +19,7 @@ mk/kernel.bin: mk/kernel.o mk/kernel_entry.o mk/display.o mk/port.o
 	@echo "[!] LINKING KERNEL"
 	$(LINKER) -no-PIE -o mk/kernel.bin -Ttext 0x1000 mk/kernel_entry.o mk/kernel.o mk/display.o mk/port.o --oformat binary
 
-mk/kernel.o: kernel/kernel.c drivers/display.h
+mk/kernel.o: kernel/* drivers/display.h drivers/port.h
 	@echo "[!] COMPILING KERNEL"
 	$(C_COMPILER) $(C_FLAGS) kernel/kernel.c -o mk/kernel.o
 
@@ -37,7 +37,7 @@ mk/port.o: drivers/port.c
 	$(C_COMPILER) $(C_FLAGS) drivers/port.c -o mk/port.o
 
 # bootsector
-mk/bootsect.bin: boot/
+mk/bootsect.bin: boot/*
 	@echo "[!] ASSEMBLING BOOTSECTOR"
 	$(ASSEMBLER) -f bin -o mk/bootsect.bin boot/bootsect.asm
 	chmod +x mk/bootsect.bin
