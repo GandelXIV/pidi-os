@@ -31,15 +31,15 @@ void kprintc(char character)
 {
 	INIT_VIDEO
 	uint cursor = get_cursor_offset();
-	if (character != '\n')
-	{
-		video_memory[cursor] = character;
-		set_cursor_offset(cursor + 2);
-	}
-	else
+	if (character == '\n')
 	{
 		knewline();
 	}
+  else
+  {
+    video_memory[cursor] = character;
+		set_cursor_offset(cursor + 2);
+  }
 }
 
 void kprints(char* text)

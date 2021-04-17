@@ -3,6 +3,9 @@
 #define WHITE_ON_BLACK 0x0f
 #define DISPLAY_WIDTH 80
 #define DISPLAY_HEIGHT 25
+#define TAB_SIZE 8
+
+// code
 #define INIT_VIDEO volatile char* video_memory = (volatile char*) VIDEO_MEMORY_OFFSET;
 
 // PORTs

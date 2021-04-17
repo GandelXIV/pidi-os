@@ -19,4 +19,5 @@ void main()
 	kprints(ENTERED_KERNEL);
 	init();
 	kprints(KERNEL_WELCOME);
+	// do
 }
