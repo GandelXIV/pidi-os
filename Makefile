@@ -10,7 +10,7 @@ LINKER ?= ld -m elf_i386 -s
 EMULATOR ?= qemu-system-x86_64
 
 # os-image
-os-image.bin: mk/ mk/kernel.bin mk/bootsect.bin Makefile
+os-image.bin: mk/ mk/kernel.bin mk/bootsect.bin
 	@echo "[!] BUILDING OS IMAGE"
 	cat mk/bootsect.bin mk/kernel.bin > os-image.bin
 	chmod +x os-image.bin
@@ -29,11 +29,11 @@ mk/kernel_entry.o: kernel/kernel_entry.asm
 	$(ASSEMBLER) -f $(FORMAT) kernel/kernel_entry.asm -o mk/kernel_entry.o
 
 # drivers
-mk/display.o: drivers/display.c
+mk/display.o: drivers/display.c drivers/display.h
 	@echo "[!] COMPILING DISPLAY DRIVER"
 	$(C_COMPILER) $(C_FLAGS) drivers/display.c -o mk/display.o
 
-mk/port.o: drivers/port.c
+mk/port.o: drivers/port.c drivers/port.h
 	@echo "[!] COMPILING PORT DRIVER"
 	$(C_COMPILER) $(C_FLAGS) drivers/port.c -o mk/port.o
 
@@ -44,7 +44,7 @@ mk/bootsect.bin: boot/*
 	chmod +x mk/bootsect.bin
 
 # misc
-mk/:
+mk/: Makefile
 	@echo "[!] CREATING MAKE DIRECTORY"
 	mkdir mk/
 
