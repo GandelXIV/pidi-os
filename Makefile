@@ -2,14 +2,14 @@
 .SILENT:run
 
 C_COMPILER ?= gcc -m32
-C_FLAGS ?= -ffreestanding -fno-PIC -c
+C_FLAGS ?= -ffreestanding -fno-PIC -Os -c
 ASSEMBLER ?= nasm
 FORMAT ?= elf32
 LINKER ?= ld -m elf_i386 -s
 EMULATOR ?= qemu-system-x86_64
 
 # os-image
-os-image.bin: mk/kernel.bin mk/bootsect.bin
+os-image.bin: mk/kernel.bin mk/bootsect.bin Makefile
 	@echo "[!] BUILDING OS IMAGE"
 	cat mk/bootsect.bin mk/kernel.bin > os-image.bin
 	chmod +x os-image.bin
@@ -19,7 +19,7 @@ mk/kernel.bin: mk/kernel.o mk/kernel_entry.o mk/display.o mk/port.o
 	@echo "[!] LINKING KERNEL"
 	$(LINKER) -no-PIE -o mk/kernel.bin -Ttext 0x1000 mk/kernel_entry.o mk/kernel.o mk/display.o mk/port.o --oformat binary
 
-mk/kernel.o: kernel/* drivers/display.h drivers/port.h
+mk/kernel.o: kernel/* drivers/display.h drivers/port.h lib/*
 	@echo "[!] COMPILING KERNEL"
 	$(C_COMPILER) $(C_FLAGS) kernel/kernel.c -o mk/kernel.o
 
