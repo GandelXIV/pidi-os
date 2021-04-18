@@ -1,8 +1,9 @@
 #include "display.h"
 #include "port.h"
 
-uint get_offset(uint col, uint row) { return 2 * (row * DISPLAY_WIDTH + col); }
+uint get_offset(uint column, uint row) { return 2 * (row * DISPLAY_WIDTH + column); }
 uint get_offset_row(uint offset) { return offset / (2 * DISPLAY_WIDTH); }
+uint get_offset_column(uint offset) { return (offset - (get_offset_row(offset)*2*DISPLAY_WIDTH))/2; }
 
 uint get_cursor_offset() {
     port_byte_out(REG_DISPLAY_CTRL, 14);
@@ -19,6 +20,9 @@ void set_cursor_offset(uint offset) {
     port_byte_out(REG_DISPLAY_CTRL, 15);
     port_byte_out(REG_DISPLAY_DATA, (byte) (offset & 0xff));
 }
+
+void set_cursor_position(uint column, uint row) { set_cursor_offset(get_offset(column, row)); }
+
 
 void display_char(char character, uint offset, byte color)
 {
@@ -53,7 +57,7 @@ void kprints(char* text)
 
 void knewline()
 {
-  set_cursor_offset(get_offset(0, get_offset_row(get_cursor_offset()) + 1));
+  set_cursor_position( 0, get_offset_row( get_cursor_offset() ) + 1);
 }
 
 void kclear_display()
