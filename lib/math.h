@@ -1,7 +1,7 @@
 double pow(double base, double exponent)  // only positive numbers
 {
   double result = 1;
-  while (exponent > 0)   // why use <= instead of != ? SAFETY
+  while (exponent > 0)
   {
     result *= base;
     --exponent;
