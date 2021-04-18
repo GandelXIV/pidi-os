@@ -1,1 +1,2 @@
-make gcc nasm qemu
+standart: make gcc nasm qemu
+pip: makefile2dot

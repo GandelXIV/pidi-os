@@ -49,8 +49,7 @@ mk/: Makefile
 	mkdir mk/
 
 tree.png:
-	@echo "[!] WRITING TREE"
-	tools/makefile2dot/build
+	makefile2dot | dot -Tpng > tree.png 
 
 all: clean tree.png run
 
