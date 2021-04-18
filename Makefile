@@ -1,5 +1,6 @@
 .DEFAULT_GOAL=os-image.bin
 .SILENT:run
+.PHONY: clean run
 
 C_COMPILER ?= gcc -m32
 C_FLAGS ?= -ffreestanding -fno-PIC -Os -c
