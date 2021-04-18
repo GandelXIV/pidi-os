@@ -5,7 +5,8 @@ uint get_offset(uint column, uint row) { return 2 * (row * DISPLAY_WIDTH + colum
 uint get_offset_row(uint offset) { return offset / (2 * DISPLAY_WIDTH); }
 uint get_offset_column(uint offset) { return (offset - (get_offset_row(offset)*2*DISPLAY_WIDTH))/2; }
 
-uint get_cursor_offset() {
+uint get_cursor_offset()
+{
     port_byte_out(REG_DISPLAY_CTRL, 14);
     uint offset = port_byte_in(REG_DISPLAY_DATA) << 8;
     port_byte_out(REG_DISPLAY_CTRL, 15);
@@ -13,7 +14,8 @@ uint get_cursor_offset() {
     return offset * 2;
 }
 
-void set_cursor_offset(uint offset) {
+void set_cursor_offset(uint offset)
+{
     offset /= 2;
     port_byte_out(REG_DISPLAY_CTRL, 14);
     port_byte_out(REG_DISPLAY_DATA, (byte) (offset >> 8));
