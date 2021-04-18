@@ -25,7 +25,7 @@ void set_cursor_offset(uint offset)
 
 void set_cursor_position(uint column, uint row) { set_cursor_offset(get_offset(column, row)); }
 
-
+// draws character at specific offset
 void display_char(char character, uint offset, byte color)
 {
 	INIT_VIDEO
@@ -33,6 +33,7 @@ void display_char(char character, uint offset, byte color)
 	video_memory[offset*2 + 1] = color;
 }
 
+// print char to cursor
 void kprintc(char character)
 {
 	INIT_VIDEO
@@ -57,11 +58,13 @@ void kprints(char* text)
 	}
 }
 
+// prints a newline , equivalent to kprintc('\n')
 void knewline()
 {
   set_cursor_position( 0, get_offset_row( get_cursor_offset() ) + 1);
 }
 
+// clears by printing a LOT of spaces!
 void kclear_display()
 {
 	for (uint i = 0; i < DISPLAY_WIDTH * DISPLAY_HEIGHT; ++i)

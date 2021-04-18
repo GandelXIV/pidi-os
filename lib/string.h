@@ -11,6 +11,7 @@ uint strlen(char* string)
   return length;
 }
 
+// NOTE: Does NOT check for string size -> does not prevent string overflow!!!
 void strcpy(char* dest, char* src)
 {
   uint size = strlen(src) + 1;
