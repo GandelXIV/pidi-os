@@ -10,7 +10,7 @@ LINKER ?= ld -m elf_i386 -s
 EMULATOR ?= qemu-system-x86_64
 
 # os-image
-os-image.bin: mk/kernel.bin mk/bootsect.bin Makefile
+os-image.bin: mk/ mk/kernel.bin mk/bootsect.bin Makefile
 	@echo "[!] BUILDING OS IMAGE"
 	cat mk/bootsect.bin mk/kernel.bin > os-image.bin
 	chmod +x os-image.bin
@@ -43,6 +43,17 @@ mk/bootsect.bin: boot/*
 	$(ASSEMBLER) -f bin -o mk/bootsect.bin boot/bootsect.asm
 	chmod +x mk/bootsect.bin
 
+# misc
+mk/:
+	@echo "[!] CREATING MAKE DIRECTORY"
+	mkdir mk/
+
+tree.png:
+	@echo "[!] WRITING TREE"
+	tools/makefile2dot/build
+
+all: clean tree.png run
+
 # control
 run: os-image.bin
 	$(EMULATOR) os-image.bin
@@ -51,3 +62,4 @@ clean:
 	@echo "[!] CLEANING"
 	rm -f mk/*
 	rm -f os-image.bin
+	rm -f tree.png

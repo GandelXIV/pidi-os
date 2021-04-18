@@ -1,0 +1,1 @@
+python3 tools/makefile2dot/makefile2dot.py <Makefile |dot -Tpng > tree.png
