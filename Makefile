@@ -1,6 +1,6 @@
 .DEFAULT_GOAL=os-image.bin
 .SILENT:run
-.PHONY: clean run
+.PHONY: clean run all full
 
 C_COMPILER ?= gcc -m32
 C_FLAGS ?= -ffreestanding -fno-PIC -Os -c
@@ -46,12 +46,14 @@ mk/bootsect.bin: boot/*
 # misc
 mk/: Makefile
 	@echo "[!] CREATING MAKE DIRECTORY"
-	mkdir mk/
+	mkdir -p mk/
 
 tree.png:
-	makefile2dot | dot -Tpng > tree.png 
+	@echo "[!] RENDERING DEPENDENCY TREE"
+	makefile2dot | dot -Tpng > tree.png
 
-all: clean tree.png run
+all: tree.png run
+full: clean tree.png run
 
 # control
 run: os-image.bin
