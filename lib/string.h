@@ -1,5 +1,7 @@
+#include "type.h"
 #define STRCPY_OK 0
 
+// get string length
 uint strlen(char* string)
 {
   uint length;
@@ -11,6 +13,7 @@ uint strlen(char* string)
   return length;
 }
 
+// copy string
 // NOTE: Does NOT check for string size -> does not prevent string overflow!!!
 void strcpy(char* dest, char* src)
 {
@@ -18,5 +21,23 @@ void strcpy(char* dest, char* src)
   for (uint i = 0; i < size; ++i)
   {
     dest[i] = src[i];
+  }
+}
+
+// compares 2 strings (checks if they are equal)
+bool strcmp(char* a, char* b)
+{
+  uint32_t i = 0;
+  while (1)
+  {
+    if (a[i] != b[i])
+    {
+      return false;
+    }
+    else if (a[i] == 0 && b[i] == 0)
+    {
+      return true;
+    }
+    ++i;
   }
 }
