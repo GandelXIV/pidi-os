@@ -27,7 +27,7 @@ load_kernel:
     call print_nl
 
     mov bx, KERNEL_OFFSET ; Read from disk and store in 0x1000
-    mov dh, [KERNEL_SECTORS]
+    mov dh, [KERNEL_SIZE]
     mov dl, [BOOT_DRIVE]
     call disk_load
     ret
@@ -39,12 +39,7 @@ BEGIN_PM:
     call KERNEL_OFFSET ; Call kernel_entry
     jmp $ ; if the kernel crashes
 
-
-BOOT_DRIVE db 0
-KERNEL_SECTORS db 10 ; ammount of sectors for the kernel
-MSG_REAL_MODE db "Started in 16-bit Real Mode", 0
-MSG_PROT_MODE db "Landed in 32-bit Protected Mode", 0
-MSG_LOAD_KERNEL db "Loading kernel into memory", 0
+%include "boot/config.asm"
 
 ; padding
 times 510 - ($-$$) db 0
