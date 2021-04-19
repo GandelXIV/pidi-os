@@ -53,11 +53,12 @@ tree.png: Makefile
 	makefile2dot | dot -Tpng > tree.png
 
 colors:
+	@echo "[!] COMBINING VGA COLORS"
 	tools/gencolors.py drivers/color.h
 
 # control
-all: tree.png run
-full: clean tree.png run
+all: tree.png colors run
+full: clean all
 
 run: os-image.bin
 	$(EMULATOR) os-image.bin
