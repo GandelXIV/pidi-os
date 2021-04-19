@@ -4,11 +4,9 @@
 // config
 #define DISPLAY_WIDTH 80
 #define DISPLAY_HEIGHT 25
-#define DEFAULT_COLOR GREY_ON_BLACK // grey on black (see lower)
+#define DEFAULT_COLOR GRAY_ON_BLACK // grey on black (see in drivers/color.h)
 
-// colors
-#define WHITE_ON_BLACK 0x0f
-#define GREY_ON_BLACK 0x07
+#include "color.h"
 
 // code
 #define INIT_VIDEO char* video_memory = (char*) VIDEO_MEMORY_OFFSET;
