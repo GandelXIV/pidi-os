@@ -49,6 +49,7 @@ void kprintc(char character)
   }
 }
 
+// print string to cursor
 void kprints(char* text)
 {
 	while (*text != 0)
@@ -58,13 +59,22 @@ void kprints(char* text)
 	}
 }
 
-// prints a newline , equivalent to kprintc('\n')
-void knewline()
+// called when display should be cleared
+void do_scroll()
 {
-  set_cursor_position( 0, get_offset_row( get_cursor_offset() ) + 1);
+  kclear_display();
 }
 
-// clears by printing a LOT of spaces!
+// prints a newline, equivalent to kprintc('\n')
+void knewline()
+{
+  uint cursor_offset = get_cursor_offset();
+  uint cursor_offset_row = get_offset_row(cursor_offset);
+  set_cursor_position( 0, cursor_offset_row + 1);
+  if (cursor_offset_row > DISPLAY_HEIGHT) do_scroll();
+}
+
+// clear display by printing a LOT of spaces!
 void kclear_display()
 {
 	for (uint i = 0; i < DISPLAY_WIDTH * DISPLAY_HEIGHT; ++i)
