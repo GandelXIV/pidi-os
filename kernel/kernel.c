@@ -19,6 +19,6 @@ void main()
 	knewline();
 	kprints(KERNEL_INFO_ENTERED);
 	init();
-	kprints(KERNEL_INFO_WELCOME);
+	kcprints(KERNEL_INFO_WELCOME, WHITE_ON_BLACK);
 	// do
 }

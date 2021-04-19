@@ -33,10 +33,10 @@ void display_char(char character, uint offset, byte color)
 	video_memory[offset*2 + 1] = color;
 }
 
-// print char to cursor
-void kprintc(char character)
+// print char to cursor with color
+void kcprintc(char character, char color)
 {
-	INIT_VIDEO
+  INIT_VIDEO
 	uint cursor = get_cursor_offset();
 	if (character == '\n')
 	{
@@ -45,11 +45,28 @@ void kprintc(char character)
   else
   {
     video_memory[cursor] = character;
+    video_memory[cursor + 1] = color;
 		set_cursor_offset(cursor + 2);
   }
 }
 
-// print string to cursor
+// print char to cursor with default color
+void kprintc(char character)
+{
+	kcprintc(character, DEFAULT_COLOR);
+}
+
+// print string to cursor with color
+void kcprints(char* text, char color)
+{
+	while (*text != 0)
+	{
+		kcprintc(*text, color);
+		++text;
+	}
+}
+
+// print string to cursor with default color
 void kprints(char* text)
 {
 	while (*text != 0)
