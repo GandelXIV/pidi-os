@@ -1,2 +1,2 @@
 #!/bin/bash
-time make -j
+time make $1 -j
