@@ -8,17 +8,17 @@
 
 void init()
 {
-	kprints(KERNEL_INIT);
+	kprints(KERNEL_INFO_INIT);
 	kminit();
-	kprints(KERNEL_INIT_DONE);
+	kprints(KERNEL_INFO_INIT_DONE);
 }
 
 void main()
 {
 	// init
 	knewline();
-	kprints(KERNEL_ENTERED);
+	kprints(KERNEL_INFO_ENTERED);
 	init();
-	kprints(KERNEL_WELCOME);
+	kprints(KERNEL_INFO_WELCOME);
 	// do
 }
