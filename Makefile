@@ -29,11 +29,11 @@ mk/kernel_entry.o: kernel/kernel_entry.asm
 	$(ASSEMBLER) -f $(FORMAT) kernel/kernel_entry.asm -o mk/kernel_entry.o
 
 # drivers
-mk/display.o: drivers/display.c drivers/display.h
+mk/display.o: drivers/display.c drivers/display.h lib/type.h
 	@echo "[!] COMPILING DISPLAY DRIVER"
 	$(C_COMPILER) $(C_FLAGS) drivers/display.c -o mk/display.o
 
-mk/port.o: drivers/port.c drivers/port.h
+mk/port.o: drivers/port.c drivers/port.h lib/type.h
 	@echo "[!] COMPILING PORT DRIVER"
 	$(C_COMPILER) $(C_FLAGS) drivers/port.c -o mk/port.o
 
@@ -48,7 +48,7 @@ mk/: Makefile
 	@echo "[!] CREATING MAKE DIRECTORY"
 	mkdir -p mk/
 
-tree.png:
+tree.png: Makefile
 	@echo "[!] RENDERING DEPENDENCY TREE"
 	makefile2dot | dot -Tpng > tree.png
 
