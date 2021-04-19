@@ -8,7 +8,6 @@
 
 void init()
 {
-	kprints(KERNEL_INIT);
 	kminit();
 }
 

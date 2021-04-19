@@ -59,10 +59,38 @@ void kprints(char* text)
 	}
 }
 
-// called when display should be cleared
+// copy a display row over another
+void rowcpy(uint dest, uint src)
+{
+  INIT_VIDEO;
+  // get row offset
+  char* dest_offset = get_offset(0, dest) + video_memory;
+  char* src_offset = get_offset(0, src) + video_memory;
+  // use the offset in memcpy
+  for (uint32_t i = 0; i < DISPLAY_WIDTH; ++i)
+  {
+    dest_offset[i] = src_offset[i];
+    ++i;
+  }
+}
+
+// scrol display by 1 row up
+void kscroll()
+{
+  for (uint row = 1; row < DISPLAY_HEIGHT; ++row)
+  {
+    rowcpy(row - 1, row); // copy the current row to the last (row - 1)
+  }
+  uint cursor_offset = get_cursor_offset();
+  uint cursor_offset_row = get_offset_row(cursor_offset);
+  set_cursor_position( 0, cursor_offset_row - 1);
+}
+
+// called when display should scroll
 void do_scroll()
 {
-  kclear_display();
+  // kclear_display();
+  kscroll();
 }
 
 // prints a newline, equivalent to kprintc('\n')

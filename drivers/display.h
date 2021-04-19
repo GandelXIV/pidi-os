@@ -17,3 +17,4 @@ void kprintc(char character);
 void kclear_display();
 void knewline();
 void copyrow(uint dest, uint src);
+void kscroll();
