@@ -20,7 +20,7 @@ mk/kernel.bin: mk/kernel.o mk/kernel_entry.o mk/display.o mk/port.o
 	@echo "[!] LINKING KERNEL"
 	$(LINKER) -no-PIE -o mk/kernel.bin -Ttext 0x1000 mk/kernel_entry.o mk/kernel.o mk/display.o mk/port.o --oformat binary
 
-mk/kernel.o: kernel/* drivers/display.h drivers/port.h lib/*
+mk/kernel.o: kernel/* drivers/display.h drivers/port.h drivers/color.h lib/*
 	@echo "[!] COMPILING KERNEL"
 	$(C_COMPILER) $(C_FLAGS) kernel/kernel.c -o mk/kernel.o
 
@@ -29,7 +29,7 @@ mk/kernel_entry.o: kernel/kernel_entry.asm
 	$(ASSEMBLER) -f $(FORMAT) kernel/kernel_entry.asm -o mk/kernel_entry.o
 
 # drivers
-mk/display.o: drivers/display.c drivers/display.h lib/type.h
+mk/display.o: drivers/display.c drivers/display.h drivers/color.h lib/type.h
 	@echo "[!] COMPILING DISPLAY DRIVER"
 	$(C_COMPILER) $(C_FLAGS) drivers/display.c -o mk/display.o
 
@@ -52,10 +52,13 @@ tree.png: Makefile
 	@echo "[!] RENDERING DEPENDENCY TREE"
 	makefile2dot | dot -Tpng > tree.png
 
+colors:
+	tools/gencolors.py drivers/color.h
+
+# control
 all: tree.png run
 full: clean tree.png run
 
-# control
 run: os-image.bin
 	$(EMULATOR) os-image.bin
 

@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import sys
 
 DEFINER = "#define "
@@ -33,8 +34,15 @@ def generate():
                 result += DEFINER + text_color + CONNECTOR + background_color + TAIL + background_code + text_code + "\n"
     return result
 
+def wf(filename, data):
+    with open(filename, "w") as f:
+        return f.write(str(data))   # str() to make sure
+
 def main():
-    print(generate())
+    if len(sys.argv) > 1:
+        wf(sys.argv[1], generate())
+    else:
+        print(generate())
 
 if __name__ == "__main__":
     main()
