@@ -5,7 +5,7 @@
 #define DISPLAY_HEIGHT 25
 
 // code
-#define INIT_VIDEO volatile char* video_memory = (volatile char*) VIDEO_MEMORY_OFFSET;
+#define INIT_VIDEO char* video_memory = (char*) VIDEO_MEMORY_OFFSET;
 
 // PORTs
 #define REG_DISPLAY_CTRL 0x3d4
@@ -16,3 +16,4 @@ void kprints(char* text);
 void kprintc(char character);
 void kclear_display();
 void knewline();
+void copyrow(uint dest, uint src);
