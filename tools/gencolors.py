@@ -1,10 +1,6 @@
 #!/usr/bin/python3
 import sys
 
-DEFINER = "#define "
-CONNECTOR = "_ON_"
-TAIL = " 0x"
-
 colors = {
     "BLACK":"0",
     "BLUE":"1",
@@ -31,7 +27,7 @@ def generate():
             if background_color != text_color:
                 background_code = colors[background_color]
                 text_code = colors[text_color]
-                result += DEFINER + text_color + CONNECTOR + background_color + TAIL + background_code + text_code + "\n"
+                result += "#define " + text_color + "_ON_" + background_color + " 0x" + background_code + text_code + "\n"
     return result
 
 def wf(filename, data):

@@ -1,5 +1,4 @@
 .DEFAULT_GOAL=os-image.bin
-.SILENT:run
 .PHONY: clean run all full
 
 C_COMPILER ?= gcc -m32
@@ -61,6 +60,7 @@ all: tree.png colors run
 full: clean all
 
 run: os-image.bin
+	@echo "[!] RUNNING IMAGE"
 	$(EMULATOR) os-image.bin
 
 clean:
