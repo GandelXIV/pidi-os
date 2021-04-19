@@ -16,6 +16,7 @@ void kminit()
   *memory = (uint32_t*) KERNEL_MEMORY_OFFSET + 20;  // to make sure
 }
 
+// copy memory
 void memcpy(bytes dest, bytes src, uint32_t size)
 {
   for (uint32_t i = 0; i < size; ++i)

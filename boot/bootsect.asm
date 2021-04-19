@@ -27,7 +27,7 @@ load_kernel:
     call print_nl
 
     mov bx, KERNEL_OFFSET ; Read from disk and store in 0x1000
-    mov dh, 2
+    mov dh, [KERNEL_SECTORS]
     mov dl, [BOOT_DRIVE]
     call disk_load
     ret
@@ -41,6 +41,7 @@ BEGIN_PM:
 
 
 BOOT_DRIVE db 0
+KERNEL_SECTORS db 10 ; ammount of sectors for the kernel
 MSG_REAL_MODE db "Started in 16-bit Real Mode", 0
 MSG_PROT_MODE db "Landed in 32-bit Protected Mode", 0
 MSG_LOAD_KERNEL db "Loading kernel into memory", 0
