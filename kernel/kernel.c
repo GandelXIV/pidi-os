@@ -8,14 +8,16 @@
 
 void init()
 {
+	kprints(KERNEL_INIT);
 	kminit();
+	kprints(KERNEL_INIT_DONE);
 }
 
 void main()
 {
 	// init
 	knewline();
-	kprints(ENTERED_KERNEL);
+	kprints(KERNEL_ENTERED);
 	init();
 	kprints(KERNEL_WELCOME);
 	// do
