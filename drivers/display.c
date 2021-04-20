@@ -34,7 +34,7 @@ void display_char(char character, uint offset, byte color)
 }
 
 // print char to cursor with color
-void kcprintc(char character, char color)
+void kprintc_color(char character, char color)
 {
   INIT_VIDEO
 	uint cursor = get_cursor_offset();
@@ -45,7 +45,7 @@ void kcprintc(char character, char color)
   else
   {
     video_memory[cursor] = character;
-    video_memory[cursor + 1] = color;
+    if (color != TRANSPARENT) video_memory[cursor + 1] = color;   // if the color is transparent no will be drawn
 		set_cursor_offset(cursor + 2);
   }
 }
@@ -53,15 +53,15 @@ void kcprintc(char character, char color)
 // print char to cursor with default color
 void kprintc(char character)
 {
-	kcprintc(character, DEFAULT_COLOR);
+	kprintc_color(character, TRANSPARENT);
 }
 
 // print string to cursor with color
-void kcprints(char* text, char color)
+void kprints_color(char* text, char color)
 {
 	while (*text != 0)
 	{
-		kcprintc(*text, color);
+		kprintc_color(*text, color);
 		++text;
 	}
 }
@@ -74,6 +74,15 @@ void kprints(char* text)
 		kprintc(*text);
 		++text;
 	}
+}
+
+void ktheme_set(char color)   // draw a specific color on whole display
+{
+  INIT_VIDEO
+  for (uint i = 1; i < DISPLAY_WIDTH * DISPLAY_WIDTH; i += 2)
+  {
+    video_memory[i] = color;
+  }
 }
 
 // copy a display row over another

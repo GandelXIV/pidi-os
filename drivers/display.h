@@ -4,8 +4,9 @@
 // config
 #define DISPLAY_WIDTH 80
 #define DISPLAY_HEIGHT 25
-#define DEFAULT_COLOR GRAY_ON_BLACK // grey on black (see in drivers/color.h)
 
+// color
+#define TRANSPARENT 0x00
 #include "color.h"
 
 // code
@@ -17,10 +18,11 @@
 
 // kernel API
 void kprints(char* text);
-void kcprints(char* text, char color);
+void kprints_color(char* text, char color);
 void kprintc(char character);
-void kcprintc(char character, char color);
+void kprintc_color(char character, char color);
 void kclear_display();
 void knewline();
 void copyrow(uint dest, uint src);
 void kscroll();
+void ktheme_set(char color);

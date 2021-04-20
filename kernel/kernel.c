@@ -18,7 +18,8 @@ void main()
 	// init
 	knewline();
 	kprints(KERNEL_INFO_ENTERED);
+	ktheme_set(BLACK_ON_CYAN);
 	init();
-	kcprints(KERNEL_INFO_WELCOME, WHITE_ON_BLACK);
+	kprints_color(KERNEL_INFO_WELCOME, BLACK_ON_CYAN);
 	// do
 }
