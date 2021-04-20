@@ -40,7 +40,7 @@ void kprintc_color(char character, char color)
 	uint cursor = get_cursor_offset();
 	if (character == '\n')
 	{
-		knewline();
+		kprintnl();
 	}
   else
   {
@@ -76,7 +76,7 @@ void kprints(char* text)
 	}
 }
 
-void ktheme_set(char color)   // draw a specific color on whole display
+void kdisplay_theme(char color)   // draw a specific color on whole display
 {
   INIT_VIDEO
   for (uint i = 1; i < DISPLAY_WIDTH * DISPLAY_WIDTH; i += 2)
@@ -101,7 +101,7 @@ void rowcpy(uint dest, uint src)
 }
 
 // scrol display by 1 row up
-void kscroll()
+void kdisplay_scroll()
 {
   for (uint row = 1; row < DISPLAY_HEIGHT; ++row)
   {
@@ -115,12 +115,11 @@ void kscroll()
 // called when display should scroll
 void do_scroll()
 {
-  // kclear_display();
-  kscroll();
+  kdisplay_scroll();
 }
 
 // prints a newline, equivalent to kprintc('\n')
-void knewline()
+void kprintnl()
 {
   uint cursor_offset = get_cursor_offset();
   uint cursor_offset_row = get_offset_row(cursor_offset);
@@ -129,7 +128,7 @@ void knewline()
 }
 
 // clear display by printing a LOT of spaces!
-void kclear_display()
+void kdisplay_clear()
 {
 	for (uint i = 0; i < DISPLAY_WIDTH * DISPLAY_HEIGHT; ++i)
 	{

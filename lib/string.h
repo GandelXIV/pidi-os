@@ -1,5 +1,4 @@
 #include "type.h"
-#define STRCPY_OK 0
 
 // get string length
 uint strlen(char* string)

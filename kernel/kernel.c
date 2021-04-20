@@ -16,10 +16,10 @@ void init()
 void main()
 {
 	// init
-	knewline();
+	kprintnl();
 	kprints(KERNEL_INFO_ENTERED);
-	ktheme_set(BLACK_ON_CYAN);
+	kdisplay_theme(BLACK_ON_CYAN);
 	init();
-	kprints_color(KERNEL_INFO_WELCOME, BLACK_ON_CYAN);
+	kprints_color(KERNEL_INFO_WELCOME, PURPLE_ON_CYAN);
 	// do
 }
