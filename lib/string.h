@@ -1,9 +1,12 @@
-#include "type.h"
 #define INCLUDED_STRING "cookie"
+#ifndef INCLUDED_TYPE
+#include "type.h"
+#endif
+
 // get string length
 uint strlen(char* string)
 {
-  uint length;
+  uint length = 0;
   while (*string != 0)
   {
     ++length;
@@ -13,7 +16,7 @@ uint strlen(char* string)
 }
 
 // copy string
-// NOTE: Does NOT check for string size -> does not prevent string overflow!!!
+// NOTE: Does NOT check for string size -> string overflow!!!
 void strcpy(char* dest, char* src)
 {
   uint size = strlen(src) + 1;
@@ -39,4 +42,11 @@ bool strcmp(char* a, char* b)
     }
     ++i;
   }
+}
+
+// adds the extenstion to the base string
+// NOTE: Does NOT check for string size! -> string overflow!!!
+void stradd(char* base, char* extension)
+{
+  strcpy(base + strlen(base), extension);
 }
