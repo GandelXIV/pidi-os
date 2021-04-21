@@ -58,6 +58,11 @@ void int_to_str(char* output, int number)
   uint_to_str(output, number);
 }
 
+void short_to_str(char* output, short number)
+{
+  int_to_str(output, (int) number);
+}
+
 char uint32_to_char(uint32_t number)
 {
   // no need for else if statements, because of the returns;
@@ -71,4 +76,9 @@ char uint32_to_char(uint32_t number)
   if (number == 7) return '7';
   if (number == 8) return '8';
   if (number == 9) return '9';
+}
+
+char uint_to_char(uint number)
+{
+  return uint_to_char((uint32_t) number);
 }
