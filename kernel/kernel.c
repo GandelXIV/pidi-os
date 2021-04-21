@@ -19,8 +19,8 @@ void main()
 	// init
 	kprintnl();
 	kprints(KERNEL_INFO_ENTERED);
-	kdisplay_theme(BLACK_ON_CYAN);
+	kdisplay_theme(WHITE_ON_BLUE);
 	init();
-	kprints_color(KERNEL_INFO_WELCOME, PURPLE_ON_CYAN);
+	kprints_color(KERNEL_INFO_WELCOME, GREEN_ON_BLUE);
 	// do
 }
