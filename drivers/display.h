@@ -1,4 +1,7 @@
+#define INCLUDED_DISPLAY "cookie"
+#ifndef INCLUDED_TYPE
 #include "../lib/type.h"
+#endif
 #define VIDEO_MEMORY_OFFSET (uint*) 0xb8000
 
 // config

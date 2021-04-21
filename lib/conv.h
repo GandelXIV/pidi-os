@@ -1,5 +1,10 @@
+#define INCLUDED_CONV "cookie"
+#ifndef INCLUDED_TYPE
 #include "type.h"
+#endif
+#ifndef INCLUDED_MATH
 #include "math.h"
+#endif
 #ifndef INCLUDED_STRING
 #include "string.h"
 #endif
