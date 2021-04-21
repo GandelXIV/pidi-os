@@ -9,7 +9,7 @@
 
 void init()
 {
-	kprints(KERNEL_INFO_INIT);
+	kprints(KERNEL_INFO_INIT_START);
 	kdisplay_theme(WHITE_ON_BLUE);
 	kminit();
 	kprints(KERNEL_INFO_INIT_DONE);
