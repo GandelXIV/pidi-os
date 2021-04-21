@@ -1,5 +1,4 @@
-make
-gcc
-nasm
-qemu
-[-e] pip+makefile2dot
+# necessary
+make gcc nasm qemu
+# optional
+makefile2dot
