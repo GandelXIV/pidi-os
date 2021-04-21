@@ -1,5 +1,5 @@
 #include "type.h"
-
+#define INCLUDED_STRING "cookie"
 // get string length
 uint strlen(char* string)
 {
