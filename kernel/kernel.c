@@ -10,6 +10,7 @@
 void init()
 {
 	kprints(KERNEL_INFO_INIT);
+	kdisplay_theme(WHITE_ON_BLUE);
 	kminit();
 	kprints(KERNEL_INFO_INIT_DONE);
 }
@@ -19,7 +20,6 @@ void main()
 	// init
 	kprintnl();
 	kprints(KERNEL_INFO_ENTERED);
-	kdisplay_theme(WHITE_ON_BLUE);
 	init();
 	kprints_color(KERNEL_INFO_WELCOME, GREEN_ON_BLUE);
 	// do
