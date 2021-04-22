@@ -1,5 +1,7 @@
 #include "../drivers/display.h"
+#ifndef INCLUDED_CONV
 #include "../lib/conv.h"
+#endif
 
 void kprinti(int number)
 {
