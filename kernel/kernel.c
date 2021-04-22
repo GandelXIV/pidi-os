@@ -13,7 +13,6 @@
 #include "messages.h"
 #include "mem.h"
 #include "io.h"
-#include "../drivers/keyboard.h"
 
 
 void init()
@@ -35,5 +34,10 @@ void main()
 	init();
 	kprints_color(KERNEL_INFO_WELCOME, PURPLE_ON_CYAN);
 	// do
-	while (1) { kprintc(kinputc()); }
+	while (true)
+	{
+		char c [10];
+		kinputs(c);
+		kprints(c);
+	}
 }

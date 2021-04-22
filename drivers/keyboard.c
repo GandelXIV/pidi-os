@@ -30,6 +30,7 @@ char scan_code_to_char(byte code, byte scan_code_set)
   if (scan_code_set == 0x1)
   {
     switch (code) {
+      case 0x1C: return '\n';
       case 0x1E: return 'a';
       case 0x02: return '1';
       case 0x03: return '2';
