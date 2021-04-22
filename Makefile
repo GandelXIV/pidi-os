@@ -15,9 +15,9 @@ os-image.bin: mk/ mk/kernel.bin mk/bootsect.bin
 	chmod +x os-image.bin
 
 # kernel
-mk/kernel.bin: mk/kernel.o mk/kernel_entry.o mk/display.o mk/port.o
+mk/kernel.bin: mk/kernel.o mk/kernel_entry.o mk/display.o mk/port.o mk/keyboard.o
 	@echo "[!] LINKING KERNEL"
-	$(LINKER) -no-PIE -o mk/kernel.bin -Ttext 0x1000 mk/kernel_entry.o mk/kernel.o mk/display.o mk/port.o --oformat binary
+	$(LINKER) -no-PIE -o mk/kernel.bin -Ttext 0x1000 mk/kernel_entry.o mk/kernel.o mk/display.o mk/port.o mk/keyboard.o --oformat binary
 
 mk/kernel.o: kernel/* drivers/display.h drivers/port.h drivers/color.h lib/*
 	@echo "[!] COMPILING KERNEL"
@@ -35,6 +35,10 @@ mk/display.o: drivers/display.c drivers/display.h drivers/color.h lib/type.h
 mk/port.o: drivers/port.c drivers/port.h lib/type.h
 	@echo "[!] COMPILING PORT DRIVER"
 	$(C_COMPILER) $(C_FLAGS) drivers/port.c -o mk/port.o
+
+mk/keyboard.o: drivers/keyboard.c drivers/keyboard.h lib/type.h
+	@echo "[!] COMPILING KEYBOARD DRIVER"
+	$(C_COMPILER) $(C_FLAGS) drivers/keyboard.c -o mk/keyboard.o
 
 # bootsector
 mk/bootsect.bin: boot/*
