@@ -27,15 +27,16 @@ void uint32_to_str(char* output, uint32_t number)
   {
     // xyz >= 10^d
     // too lazy to fix this mess
-    if (number >= (uint32_t) pow(10, (double) length - 1) * 9){ output[write_index] = '9'; number -= (uint32_t) pow(10, (double) length - 1) * 9; }
-    else if (number >= (uint32_t) pow(10, (double) length - 1) * 8){ output[write_index] = '8'; number -= (uint32_t) pow(10, (double) length - 1) * 8; }
-    else if (number >= (uint32_t) pow(10, (double) length - 1) * 7) { output[write_index] = '7'; number -= (uint32_t) pow(10, (double) length - 1) * 7; }
-    else if (number >= (uint32_t) pow(10, (double) length - 1) * 6) { output[write_index] = '6'; number -= (uint32_t) pow(10, (double) length - 1) * 6; }
-    else if (number >= (uint32_t) pow(10, (double) length - 1) * 5) { output[write_index] = '5'; number -= (uint32_t) pow(10, (double) length - 1) * 5; }
-    else if (number >= (uint32_t) pow(10, (double) length - 1) * 4) { output[write_index] = '4'; number -= (uint32_t) pow(10, (double) length - 1) * 4; }
-    else if (number >= (uint32_t) pow(10, (double) length - 1) * 3) { output[write_index] = '3'; number -= (uint32_t) pow(10, (double) length - 1) * 3; }
-    else if (number >= (uint32_t) pow(10, (double) length - 1) * 2) { output[write_index] = '2'; number -= (uint32_t) pow(10, (double) length - 1) * 2; }
-    else if (number >= (uint32_t) pow(10, (double) length - 1)) { output[write_index] = '1'; number -= (uint32_t) pow(10, (double) length - 1); }
+    uint32_t exp = (uint32_t) pow(10, (double) length - 1);
+    if (number >= exp * 9){ output[write_index] = '9'; number -= exp * 9; }
+    else if (number >= exp * 8){ output[write_index] = '8'; number -= exp * 8; }
+    else if (number >= exp * 7) { output[write_index] = '7'; number -= exp * 7; }
+    else if (number >= exp * 6) { output[write_index] = '6'; number -= exp * 6; }
+    else if (number >= exp * 5) { output[write_index] = '5'; number -= exp * 5; }
+    else if (number >= exp * 4) { output[write_index] = '4'; number -= exp * 4; }
+    else if (number >= exp * 3) { output[write_index] = '3'; number -= exp * 3; }
+    else if (number >= exp * 2) { output[write_index] = '2'; number -= exp * 2; }
+    else if (number >= exp) { output[write_index] = '1'; number -= exp; }
     else { output[write_index] = '0'; }
     --length;
     ++write_index;
