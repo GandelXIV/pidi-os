@@ -30,7 +30,7 @@ void display_char(char character, uint offset, byte color)
 {
 	INIT_VIDEO
 	video_memory[offset*2] = character;
-	video_memory[offset*2 + 1] = color;
+  if (color != 0x00) { video_memory[offset*2 + 1] = color; }
 }
 
 // print char to cursor with color
@@ -115,7 +115,8 @@ void kdisplay_scroll()
 // called when display should scroll
 void do_scroll()
 {
-  kdisplay_scroll();
+  kdisplay_clear();
+  // kdisplay_scroll();
 }
 
 // prints a newline, equivalent to kprintc('\n')
@@ -132,7 +133,7 @@ void kdisplay_clear()
 {
 	for (uint i = 0; i < DISPLAY_WIDTH * DISPLAY_HEIGHT; ++i)
 	{
-		display_char(' ', i, WHITE_ON_BLACK);
+		display_char(' ', i, 0x00);
 	}
 	set_cursor_offset(0);
 }

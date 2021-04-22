@@ -19,7 +19,7 @@ void init()
 {
 	kprints(KERNEL_INFO_INIT_START);
 	// do
-	kdisplay_theme(BLACK_ON_CYAN);
+	kdisplay_theme(WHITE_ON_CYAN);
 	kminit();
 	kkeyboard_init();
 	// done
@@ -36,7 +36,7 @@ void main()
 	// do
 	while (true)
 	{
-		char c [100];
+		char* c = kmalloc(100);
 		kinputs(c);
 	}
 }
