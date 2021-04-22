@@ -2,15 +2,14 @@
 
 #include "../lib/type.h"
 #include "../lib/string.h"
-#include "../lib/conv.h"
-#include "../drivers/display.h"
 #include "messages.h"
 #include "mem.h"
+#include "io.h"
 
 void init()
 {
 	kprints(KERNEL_INFO_INIT_START);
-	kdisplay_theme(WHITE_ON_BLUE);
+	kdisplay_theme(BLACK_ON_CYAN);
 	kminit();
 	kprints(KERNEL_INFO_INIT_DONE);
 }
@@ -21,6 +20,6 @@ void main()
 	kprintnl();
 	kprints(KERNEL_INFO_ENTERED);
 	init();
-	kprints_color(KERNEL_INFO_WELCOME, GREEN_ON_BLUE);
+	kprints_color(KERNEL_INFO_WELCOME, PURPLE_ON_CYAN);
 	// do
 }
