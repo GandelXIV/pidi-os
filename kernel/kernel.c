@@ -36,8 +36,7 @@ void main()
 	// do
 	while (true)
 	{
-		char c [10];
+		char c [100];
 		kinputs(c);
-		kprints(c);
 	}
 }

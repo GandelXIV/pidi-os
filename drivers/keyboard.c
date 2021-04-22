@@ -7,6 +7,7 @@ NOTE: This driver does not use interrupt!
 #include "port.h"
 
 byte old_scan_code;
+byte scan_code_set;
 
 byte read_keyboard_stream()
 {
@@ -22,10 +23,10 @@ byte get_new_scan_code()
 
 void kkeyboard_init()
 {
-  // nothing here yet
+  scan_code_set = 0x1;
 }
 
-char scan_code_to_char(byte code, byte scan_code_set)
+char scan_code_to_char(byte code)
 {
   if (scan_code_set == 0x1)
   {
@@ -42,6 +43,9 @@ char scan_code_to_char(byte code, byte scan_code_set)
       case 0x09: return '8';
       case 0x0A: return '9';
       case 0x0B: return '0';
+      case 0x0C: return '-';
+      case 0x0D: return '=';
+      case 0x0E: return '\b';
       default: return 0x0;  // no printable character
     }
   }
@@ -52,7 +56,7 @@ char kinputc()
   char output = 0x0;
   while (output == 0x0)
   {
-    output = scan_code_to_char( (char) get_new_scan_code(), 0x1);
+    output = scan_code_to_char( (char) get_new_scan_code());
   }
   return output;
 }

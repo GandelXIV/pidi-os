@@ -28,3 +28,4 @@ void kdisplay_clear();
 void kprintnl();
 void kdisplay_scroll();
 void kdisplay_theme(char color);
+void kdisplay_deletec();

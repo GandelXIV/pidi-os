@@ -28,13 +28,24 @@ void kprintu32(uint32_t number)
 void kinputs(char* output)
 {
   uint32_t i = 0;
-  char input = kinputc();
-  kprintc(input);
+  char input;
   while (input != '\n')
   {
-    output[i] = input;
-    ++i;
     input = kinputc();
-    kprintc(input);
+    if (input == '\b')
+    {
+      --i;
+      kdisplay_deletec();
+    }
+    else if (input == '\n')
+    {
+      kprintnl();
+    }
+    else
+    {
+      kprintc(input);
+      output[i] = input;
+      ++i;
+    }
   }
 }
