@@ -1,8 +1,15 @@
 #define KERNEL_MEMORY_OFFSET 0x10000
 
+#ifndef INCLUDED_TYPE
 #include "../lib/type.h"
+#endif
+#ifndef INCLUDED_STRING
 #include "../lib/string.h"
-//#include "../lib/conv.h"
+#endif
+#ifndef INCLUDED_CONV
+#include "../lib/conv.h"
+#endif
+
 #include "messages.h"
 #include "mem.h"
 #include "io.h"
