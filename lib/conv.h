@@ -66,20 +66,21 @@ void short_to_str(char* output, short number)
 
 char uint32_to_char(uint32_t number)
 {
-  // no need for else if statements, because of the returns;
-  if (number == 0) return '0';
-  if (number == 1) return '1';
-  if (number == 2) return '2';
-  if (number == 3) return '3';
-  if (number == 4) return '4';
-  if (number == 5) return '5';
-  if (number == 6) return '6';
-  if (number == 7) return '7';
-  if (number == 8) return '8';
-  if (number == 9) return '9';
+  switch (number) {
+    case 0: return '0';
+    case 1: return '1';
+    case 2: return '2';
+    case 3: return '3';
+    case 4: return '4';
+    case 5: return '5';
+    case 6: return '6';
+    case 7: return '7';
+    case 8: return '8';
+    case 9: return '9';
+  }
 }
 
 char uint_to_char(uint number)
 {
-  return uint_to_char((uint32_t) number);
+  return uint32_to_char((uint32_t) number);
 }
