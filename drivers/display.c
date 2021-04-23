@@ -93,7 +93,7 @@ void rowcpy(uint dest, uint src)
   char* dest_offset = get_offset(0, dest) + video_memory;
   char* src_offset = get_offset(0, src) + video_memory;
   // use the offset in memcpy
-  for (uint32_t i = 0; i < DISPLAY_WIDTH; ++i)
+  for (uint32_t i = 0; i < DISPLAY_WIDTH + DISPLAY_SCROLL_DEBUG; ++i)
   {
     dest_offset[i] = src_offset[i];
     ++i;
@@ -115,8 +115,8 @@ void kdisplay_scroll()
 // called when display should scroll
 void do_scroll()
 {
-  kdisplay_clear();
-  // kdisplay_scroll();
+  // kdisplay_clear();
+  kdisplay_scroll();
 }
 
 // prints a newline, equivalent to kprintc('\n')
@@ -125,7 +125,7 @@ void kprintnl()
   uint cursor_offset = get_cursor_offset();
   uint cursor_offset_row = get_offset_row(cursor_offset);
   set_cursor_position( 0, cursor_offset_row + 1);
-  if (cursor_offset_row > DISPLAY_HEIGHT + DISPLAY_SCROLL_DEBUG) do_scroll();
+  if (cursor_offset_row > DISPLAY_HEIGHT + DISPLAY_SCROLL_DETECTION_DEBUG) do_scroll();
 }
 
 // clear display by printing a LOT of spaces!
