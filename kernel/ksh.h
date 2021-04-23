@@ -3,11 +3,19 @@ void ksh_interpret(char* command)
   if (command[0] == '\n') {}
   else if (strcmp(command, "echo\n"))
   {
-    kprints("echo\n");
+    #include "kshcmd/echo.h"
   }
   else if (strcmp(command, "blue\n"))
   {
-    kdisplay_theme(WHITE_ON_BLUE);
+    #include "kshcmd/blue.h"
+  }
+  else if (strcmp(command, "help\n"))
+  {
+    #include "kshcmd/help.h"
+  }
+  else if (strcmp(command, "cyan\n"))
+  {
+    #include "kshcmd/cyan.h"
   }
 }
 
