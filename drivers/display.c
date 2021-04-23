@@ -125,7 +125,7 @@ void kprintnl()
   uint cursor_offset = get_cursor_offset();
   uint cursor_offset_row = get_offset_row(cursor_offset);
   set_cursor_position( 0, cursor_offset_row + 1);
-  if (cursor_offset_row > DISPLAY_HEIGHT) do_scroll();
+  if (cursor_offset_row > DISPLAY_HEIGHT + DISPLAY_SCROLL_DEBUG) do_scroll();
 }
 
 // clear display by printing a LOT of spaces!

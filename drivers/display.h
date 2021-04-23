@@ -6,7 +6,8 @@
 
 // config
 #define DISPLAY_WIDTH 80
-#define DISPLAY_HEIGHT 23
+#define DISPLAY_HEIGHT 25
+#define DISPLAY_SCROLL_DEBUG -2
 
 // color
 #define TRANSPARENT 0x00
