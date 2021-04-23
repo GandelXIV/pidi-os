@@ -32,6 +32,10 @@ byte ksh_interpret(char* command)
   {
     #include "kshcmd/gray.h"
   }
+  else
+  {
+    kprints("Unknown command\n");
+  }
   return KSH_OK;
 }
 
