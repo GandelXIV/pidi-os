@@ -37,10 +37,12 @@ void kinputs(char* output)
       --i;
       kdisplay_deletec();
     }
+    /*
     else if (input == '\n')
     {
       kprintnl();
     }
+    */
     else
     {
       kprintc(input);

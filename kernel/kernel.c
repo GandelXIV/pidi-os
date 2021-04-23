@@ -13,6 +13,7 @@
 #include "messages.h"
 #include "mem.h"
 #include "io.h"
+#include "ksh.h"
 
 
 void init()
@@ -32,11 +33,7 @@ void main()
 	kprintnl();
 	kprints(KERNEL_INFO_ENTERED);
 	init();
-	kprints_color(KERNEL_INFO_WELCOME, PURPLE_ON_CYAN);
+	kprints(KERNEL_INFO_WELCOME);
 	// do
-	while (true)
-	{
-		char* c = kmalloc(100);
-		kinputs(c);
-	}
+	ksh_start();
 }
