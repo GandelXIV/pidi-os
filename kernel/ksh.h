@@ -24,6 +24,10 @@ byte ksh_interpret(char* command)
   {
     #include "kshcmd/exit.h"
   }
+  else if (strcmp(command, "wipe\n"))
+  {
+    #include "kshcmd/wipe.h"
+  }
   return KSH_OK;
 }
 

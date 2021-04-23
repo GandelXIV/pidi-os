@@ -1,0 +1,1 @@
+kdisplay_clear();
