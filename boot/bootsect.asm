@@ -37,6 +37,8 @@ BEGIN_PM:
     mov ebx, MSG_PROT_MODE
     call print_string_pm
     call KERNEL_OFFSET ; Call kernel_entry
+    mov ebx, MSG_CRASH_KERNEL
+    call print_string_pm
     jmp $ ; if the kernel crashes
 
 %include "boot/config.asm"
