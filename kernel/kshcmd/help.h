@@ -4,4 +4,5 @@ kprints("echo    prints 'echo' to the display\n");
 kprints("wipe    cleans screen\n");
 kprints("blue    changes the theme to white on blue\n");
 kprints("cyan    changes the theme to white on cyan\n");
+kprints("gray    changes the theme to gray on black\n");
 kprints("exit    exit kernel shell\n");

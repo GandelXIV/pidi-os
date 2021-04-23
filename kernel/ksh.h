@@ -28,6 +28,10 @@ byte ksh_interpret(char* command)
   {
     #include "kshcmd/wipe.h"
   }
+  else if (strcmp(command, "gray\n"))
+  {
+    #include "kshcmd/gray.h"
+  }
   return KSH_OK;
 }
 
