@@ -39,6 +39,7 @@ void ksh_start()
 {
   char c [31];
   byte response;
+  kprints("Type 'help' to ksh open manual\n");
   while (true)
   {
     kprintc('$');
