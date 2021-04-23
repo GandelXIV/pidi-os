@@ -19,7 +19,7 @@ mk/kernel.bin: mk/kernel.o mk/kernel_entry.o mk/display.o mk/port.o mk/keyboard.
 	@echo "[!] LINKING KERNEL"
 	$(LINKER) -no-PIE -o mk/kernel.bin -Ttext 0x1000 mk/kernel_entry.o mk/kernel.o mk/display.o mk/port.o mk/keyboard.o --oformat binary
 
-mk/kernel.o: kernel/* drivers/display.h drivers/port.h drivers/color.h lib/*
+mk/kernel.o: kernel/* kernel/kshcmd drivers/display.h drivers/port.h drivers/color.h lib/*
 	@echo "[!] COMPILING KERNEL"
 	$(C_COMPILER) $(C_FLAGS) kernel/kernel.c -o mk/kernel.o
 
