@@ -103,7 +103,7 @@ void rowcpy(uint dest, uint src)
 // scrol display by 1 row up
 void kdisplay_scroll()
 {
-  for (uint row = 1; row < DISPLAY_HEIGHT; ++row)
+  for (uint row = 1; row < DISPLAY_HEIGHT + 1; ++row) // the +1 overwrites the last row with the next invisble line
   {
     rowcpy(row - 1, row); // copy the current row to the last (row - 1)
   }
