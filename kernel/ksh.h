@@ -49,5 +49,6 @@ void ksh_start()
     {
       break;
     }
+    strcls(c);
   }
 }

@@ -26,7 +26,7 @@ void strcpy(char* dest, char* src)
   }
 }
 
-// compares 2 strings (checks if they are equal)
+// compare 2 strings (checks if they are equal)
 bool strcmp(char* a, char* b)
 {
   uint32_t i = 0;
@@ -44,9 +44,19 @@ bool strcmp(char* a, char* b)
   }
 }
 
-// adds the extenstion to the base string
+// add the extenstion to the base string
 // NOTE: Does NOT check for string size! -> string overflow!!!
 void stradd(char* base, char* extension)
 {
   strcpy(base + strlen(base), extension);
+}
+
+// fill string with zero
+void strcls(char* string)
+{
+  while (*string != 0)
+  {
+    *string = 0;
+    ++string;
+  }
 }
