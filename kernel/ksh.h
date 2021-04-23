@@ -1,4 +1,7 @@
-void ksh_interpret(char* command)
+#define KSH_OK 0x0
+#define KSH_EXIT 0x1
+
+byte ksh_interpret(char* command)
 {
   if (command[0] == '\n') {}
   else if (strcmp(command, "echo\n"))
@@ -17,15 +20,25 @@ void ksh_interpret(char* command)
   {
     #include "kshcmd/cyan.h"
   }
+  else if (strcmp(command, "exit\n"))
+  {
+    #include "kshcmd/exit.h"
+  }
+  return KSH_OK;
 }
 
 void ksh_start()
 {
   char c [31];
+  byte response;
   while (true)
   {
     kprintc('$');
     kinputs(c);
-    ksh_interpret(c);
+    response = ksh_interpret(c);
+    if (response == KSH_EXIT)
+    {
+      break;
+    }
   }
 }
