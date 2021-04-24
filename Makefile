@@ -28,7 +28,7 @@ mk/kernel_entry.o: kernel/kernel_entry.asm
 	$(ASSEMBLER) -f $(FORMAT) kernel/kernel_entry.asm -o mk/kernel_entry.o
 
 # drivers
-mk/display.o: drivers/display.c drivers/display.h drivers/color.h lib/type.h
+mk/display.o: drivers/display.c drivers/display.h drivers/color.h lib/type.h drivers/port.h
 	@echo "[!] COMPILING DISPLAY DRIVER"
 	$(C_COMPILER) $(C_FLAGS) drivers/display.c -o mk/display.o
 
@@ -36,7 +36,7 @@ mk/port.o: drivers/port.c drivers/port.h lib/type.h
 	@echo "[!] COMPILING PORT DRIVER"
 	$(C_COMPILER) $(C_FLAGS) drivers/port.c -o mk/port.o
 
-mk/keyboard.o: drivers/keyboard.c drivers/keyboard.h lib/type.h
+mk/keyboard.o: drivers/keyboard.c drivers/keyboard.h lib/type.h	drivers/port.h
 	@echo "[!] COMPILING KEYBOARD DRIVER"
 	$(C_COMPILER) $(C_FLAGS) drivers/keyboard.c -o mk/keyboard.o
 
