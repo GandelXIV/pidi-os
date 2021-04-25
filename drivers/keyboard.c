@@ -96,15 +96,15 @@ char scan_code_to_char(byte code)
       case 0x51: return '3'; // keypad
       case 0x52: return '0'; // keypad
       case 0x53: return '.';
-      default: return 0x0;  // no printable character
+      default: return KEYBOARD_NO_PRINTABLE_CHARACTER;  // no printable character
     }
   }
 }
 
 char kinputc()
 {
-  char output = 0x0;
-  while (output == 0x0)
+  char output = KEYBOARD_NO_PRINTABLE_CHARACTER;
+  while (output == KEYBOARD_NO_PRINTABLE_CHARACTER)
   {
     output = scan_code_to_char( (char) get_new_scan_code());
   }
