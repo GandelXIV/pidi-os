@@ -1,8 +1,7 @@
 [org 0x7c00]
-KERNEL_OFFSET equ 0x1000
 
     mov [BOOT_DRIVE], dl
-    mov bp, 0x9000
+    mov bp, [STACK_OFFSET]
     mov sp, bp
 
     mov bx, MSG_REAL_MODE
