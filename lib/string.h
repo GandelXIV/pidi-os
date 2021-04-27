@@ -60,3 +60,12 @@ void strcls(char* string)
     ++string;
   }
 }
+
+// converts string to uppercase
+void strupp(char* string)
+{
+  while (*string != 0)
+  {
+    *string = char_to_upper(*string);
+  }
+}
