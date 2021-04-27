@@ -20,7 +20,7 @@ void init()
 {
 	kprints(KERNEL_INFO_INIT_START);
 	// do
-	kdisplay_theme(WHITE_ON_CYAN);
+	kdisplay_theme(GRAY_ON_BLACK);
 	kminit();
 	kkeyboard_init();
 	// done
