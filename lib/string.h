@@ -61,11 +61,22 @@ void strcls(char* string)
   }
 }
 
-// converts string to uppercase
+// convert char to upper case
+char char_to_upper(char character)
+{
+  char offset = 'A' - 'a';
+  if (character >= 'a' && character <= 'z')
+  {
+    return character + offset;
+  }
+  return character;
+}
+
 void strupp(char* string)
 {
   while (*string != 0)
   {
     *string = char_to_upper(*string);
+    ++string;
   }
 }
