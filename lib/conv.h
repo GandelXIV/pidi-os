@@ -113,3 +113,13 @@ byte char_to_hex(char character)
     case 'F': return 0xF;
   }
 }
+
+char char_to_upper(char character)
+{
+  char offset = 'A' - 'a';
+  if (character >= 'a' && character <= 'z')
+  {
+    return character + offset;
+  }
+  return character;
+}
