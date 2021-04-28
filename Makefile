@@ -38,7 +38,7 @@ mk/keyboard.o: drivers/keyboard.c drivers/keyboard.h lib/type.h	firmware/port.h
 
 # firmware
 mk/port.o: firmware/port.c firmware/port.h lib/type.h
-	@echo "[!] COMPILING FIRMWARE: PORT"
+	@echo "[!] COMPILING FIRMWARE PORT"
 	$(C_COMPILER) $(C_FLAGS) firmware/port.c -o mk/port.o
 
 # bootsector
