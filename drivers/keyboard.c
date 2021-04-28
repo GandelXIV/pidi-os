@@ -11,7 +11,7 @@ byte scan_code_set;
 
 byte read_keyboard_stream()
 {
-  return port_byte_in(KEYBOARD_PORT);
+  return port_byte_in(REG_KEYBOARD_DATA);
 }
 
 byte get_new_scan_code()
@@ -24,6 +24,8 @@ byte get_new_scan_code()
 void kkeyboard_init()
 {
   scan_code_set = 0x1;
+  port_byte_out(REG_KEYBOARD_DATA, 0xF0);
+  byte response = port_byte_in(REG_KEYBOARD_CTRL);
 }
 
 char scan_code_to_char(byte code)

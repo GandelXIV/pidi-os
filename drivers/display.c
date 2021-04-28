@@ -133,7 +133,7 @@ void kdisplay_clear()
 {
 	for (uint i = 0; i < DISPLAY_WIDTH * DISPLAY_HEIGHT; ++i)
 	{
-		display_char(' ', i, 0x00);
+		display_char(0, i, 0x00);
 	}
 	set_cursor_offset(0);
 }
