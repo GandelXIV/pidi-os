@@ -1,5 +1,5 @@
 #include "display.h"
-#include "port.h"
+#include "../firmware/port.h"
 
 uint get_offset(uint column, uint row) { return 2 * (row * DISPLAY_WIDTH + column); }
 uint get_offset_row(uint offset) { return offset / (2 * DISPLAY_WIDTH); }

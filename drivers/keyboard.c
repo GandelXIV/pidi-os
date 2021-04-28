@@ -4,7 +4,7 @@ NOTE: This driver does not use interrupt!
 
 #include "../lib/type.h"
 #include "keyboard.h"
-#include "port.h"
+#include "../firmware/port.h"
 
 byte old_scan_code;
 byte scan_code_set;

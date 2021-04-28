@@ -19,7 +19,7 @@ mk/kernel.bin: mk/kernel.o mk/kernel_entry.o mk/display.o mk/port.o mk/keyboard.
 	@echo "[!] LINKING KERNEL"
 	$(LINKER) -no-PIE -o mk/kernel.bin -Ttext 0x1000 mk/kernel_entry.o mk/kernel.o mk/display.o mk/port.o mk/keyboard.o --oformat binary
 
-mk/kernel.o: kernel/* kernel/kshcmd/* drivers/display.h drivers/port.h drivers/color.h lib/*
+mk/kernel.o: kernel/* kernel/* drivers/*.h firmware/*  lib/*
 	@echo "[!] COMPILING KERNEL"
 	$(C_COMPILER) $(C_FLAGS) kernel/kernel.c -o mk/kernel.o
 
@@ -28,17 +28,18 @@ mk/kernel_entry.o: kernel/kernel_entry.asm
 	$(ASSEMBLER) -f $(FORMAT) kernel/kernel_entry.asm -o mk/kernel_entry.o
 
 # drivers
-mk/display.o: drivers/display.c drivers/display.h drivers/color.h lib/type.h drivers/port.h
+mk/display.o: drivers/display.c drivers/display.h drivers/color.h lib/type.h firmware/port.h
 	@echo "[!] COMPILING DISPLAY DRIVER"
 	$(C_COMPILER) $(C_FLAGS) drivers/display.c -o mk/display.o
 
-mk/port.o: drivers/port.c drivers/port.h lib/type.h
-	@echo "[!] COMPILING PORT DRIVER"
-	$(C_COMPILER) $(C_FLAGS) drivers/port.c -o mk/port.o
-
-mk/keyboard.o: drivers/keyboard.c drivers/keyboard.h lib/type.h	drivers/port.h
+mk/keyboard.o: drivers/keyboard.c drivers/keyboard.h lib/type.h	firmware/port.h
 	@echo "[!] COMPILING KEYBOARD DRIVER"
 	$(C_COMPILER) $(C_FLAGS) drivers/keyboard.c -o mk/keyboard.o
+
+# firmware
+mk/port.o: firmware/port.c firmware/port.h lib/type.h
+	@echo "[!] COMPILING FIRMWARE: PORT"
+	$(C_COMPILER) $(C_FLAGS) firmware/port.c -o mk/port.o
 
 # bootsector
 mk/bootsect.bin: boot/*
