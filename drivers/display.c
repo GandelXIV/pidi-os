@@ -141,6 +141,6 @@ void kdisplay_clear()
 void kdisplay_deletec()
 {
   set_cursor_offset(get_cursor_offset()-1);
-  kprintc(' ');
+  kprintc(0);
   set_cursor_offset(get_cursor_offset()-1);
 }
