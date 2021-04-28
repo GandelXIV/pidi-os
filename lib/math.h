@@ -10,3 +10,9 @@ double pow(double base, double exponent)  // only positive numbers
   }
   return result;
 }
+
+double abs(double number)
+{
+  if (number < 0) return -number;
+  return number;
+}
