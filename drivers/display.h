@@ -13,7 +13,7 @@
 
 // color
 #define TRANSPARENT 0x00
-#include "color.h"
+#include "display_color.h"
 
 // code
 #define INIT_VIDEO char* video_memory = (char*) VIDEO_MEMORY_OFFSET;

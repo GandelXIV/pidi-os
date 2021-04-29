@@ -28,7 +28,7 @@ mk/kernel_entry.o: kernel/kernel_entry.asm
 	$(ASSEMBLER) -f $(FORMAT) kernel/kernel_entry.asm -o mk/kernel_entry.o
 
 # drivers
-mk/display.o: drivers/display.c drivers/display.h drivers/color.h lib/type.h firmware/port.h
+mk/display.o: drivers/display.c drivers/display.h drivers/display_color.h lib/type.h firmware/port.h
 	@echo "[!] COMPILING DISPLAY DRIVER"
 	$(C_COMPILER) $(C_FLAGS) drivers/display.c -o mk/display.o
 
