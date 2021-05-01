@@ -17,14 +17,16 @@
 #include "io.h"
 #include "ksh.h"
 
+#define DISPLAY_THEME GRAY_ON_BLACK
+
 void init()
 {
 	kprints(KERNEL_INFO_INIT_START);
 	// do
-	kdisplay_theme(GRAY_ON_BLACK);
-	kminit();
-	isr_install();
-	kkeyboard_init();
+	kdisplay_theme(DISPLAY_THEME);	// set display theme
+	kminit();												// init kernel memory for kmalloc()
+	isr_install();									// set all isr handlers
+	kkeyboard_init();								// nothing yet
 	// done
 	kprints(KERNEL_INFO_INIT_DONE);
 }

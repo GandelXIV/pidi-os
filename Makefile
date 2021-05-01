@@ -20,7 +20,7 @@ mk/kernel.bin: mk/kernel.o mk/kernel_entry.o mk/display.o mk/keyboard.o mk/port.
 	$(LINKER) -no-PIE -o mk/kernel.bin -Ttext 0x1000 mk/kernel_entry.o mk/kernel.o mk/display.o mk/port.o mk/keyboard.o mk/idt.o mk/interrupt.o mk/isr.o --oformat binary
 
 mk/kernel.o: kernel/kernel.c kernel/*.h drivers/*.h firmware/*.h  lib/*
-	@echo "[!] COMPILING KERNEL"
+	@echo "[!] COMPILING KERNEL CORE"
 	$(C_COMPILER) $(C_FLAGS) kernel/kernel.c -o mk/kernel.o
 
 mk/kernel_entry.o: kernel/kernel_entry.asm
