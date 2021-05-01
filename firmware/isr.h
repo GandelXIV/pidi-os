@@ -1,8 +1,5 @@
-#ifndef ISR_H
-#define ISR_H
-
 #include "../lib/type.h"
-/* ISRs reserved for CPU exceptions */
+
 extern void isr0();
 extern void isr1();
 extern void isr2();
@@ -37,7 +34,8 @@ extern void isr30();
 extern void isr31();
 
 // register container
-typedef struct {
+typedef struct
+{
    uint32_t ds;
    uint32_t edi, esi, ebp, esp, ebx, edx, ecx, eax;
    uint32_t int_no, err_code;
@@ -46,5 +44,3 @@ typedef struct {
 
 void isr_install();
 void isr_handler(registers_t r);
-
-#endif

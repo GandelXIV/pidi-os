@@ -2,7 +2,8 @@
 #include "idt.h"
 #include "../drivers/display.h"
 
-void isr_install() {
+void isr_install()
+{
     set_idt_gate(0, (uint32_t)isr0);
     set_idt_gate(1, (uint32_t)isr1);
     set_idt_gate(2, (uint32_t)isr2);
@@ -75,7 +76,8 @@ char *exception_messages[] = {
 };
 
 // temporary
-void isr_handler(registers_t r) {
+void isr_handler(registers_t r)
+{
     kprints("received interrupt: ");
     kprints(exception_messages[r.int_no]);
     kprintnl();
