@@ -10,11 +10,12 @@
 #include "../lib/conv.h"
 #endif
 
+#include "../firmware/isr.h"
+
 #include "messages.h"
 #include "mem.h"
 #include "io.h"
 #include "ksh.h"
-
 
 void init()
 {
@@ -22,6 +23,7 @@ void init()
 	// do
 	kdisplay_theme(GRAY_ON_BLACK);
 	kminit();
+	isr_install();
 	kkeyboard_init();
 	// done
 	kprints(KERNEL_INFO_INIT_DONE);
@@ -35,5 +37,10 @@ void main()
 	init();
 	kprints(KERNEL_INFO_WELCOME);
 	// do
+	/*
+	// test the new interrupts
+	__asm__ __volatile__("int $2");
+	__asm__ __volatile__("int $3");
+	*/
 	ksh_start();
 }

@@ -15,11 +15,11 @@ os-image.bin: mk/ mk/kernel.bin mk/bootsect.bin
 	chmod +x os-image.bin
 
 # kernel
-mk/kernel.bin: mk/kernel.o mk/kernel_entry.o mk/display.o mk/port.o mk/keyboard.o
+mk/kernel.bin: mk/kernel.o mk/kernel_entry.o mk/display.o mk/keyboard.o mk/port.o mk/idt.o mk/isr.o mk/interrupt.o
 	@echo "[!] LINKING KERNEL"
-	$(LINKER) -no-PIE -o mk/kernel.bin -Ttext 0x1000 mk/kernel_entry.o mk/kernel.o mk/display.o mk/port.o mk/keyboard.o --oformat binary
+	$(LINKER) -no-PIE -o mk/kernel.bin -Ttext 0x1000 mk/kernel_entry.o mk/kernel.o mk/display.o mk/port.o mk/keyboard.o mk/idt.o mk/interrupt.o mk/isr.o --oformat binary
 
-mk/kernel.o: kernel/* kernel/* drivers/*.h firmware/*  lib/*
+mk/kernel.o: kernel/kernel.c kernel/*.h drivers/*.h firmware/*.h  lib/*
 	@echo "[!] COMPILING KERNEL"
 	$(C_COMPILER) $(C_FLAGS) kernel/kernel.c -o mk/kernel.o
 
@@ -38,8 +38,20 @@ mk/keyboard.o: drivers/keyboard.c drivers/keyboard.h lib/type.h	firmware/port.h
 
 # firmware
 mk/port.o: firmware/port.c firmware/port.h lib/type.h
-	@echo "[!] COMPILING FIRMWARE PORT"
+	@echo "[!] COMPILING PORT FIRMWARE"
 	$(C_COMPILER) $(C_FLAGS) firmware/port.c -o mk/port.o
+
+mk/idt.o: firmware/idt.c firmware/idt.h lib/type.h
+	@echo "[!] COMPILING IDT FIRMWARE"
+	$(C_COMPILER) $(C_FLAGS) firmware/idt.c -o mk/idt.o
+
+mk/interrupt.o: firmware/interrupt.asm
+	@echo "[!] COMPILING INTERRUPT FIRMWARE"
+	$(ASSEMBLER) -f $(FORMAT) -o mk/interrupt.o firmware/interrupt.asm
+
+mk/isr.o: firmware/isr.c firmware/isr.h lib/type.h drivers/display.h firmware/idt.h
+	@echo "[!] COMPILING ISR FIRMWARE"
+	$(C_COMPILER) $(C_FLAGS) firmware/isr.c -o mk/isr.o
 
 # bootsector
 mk/bootsect.bin: boot/*
@@ -58,7 +70,7 @@ tree.png: Makefile
 
 colors:
 	@echo "[!] COMBINING VGA COLORS"
-	tools/gencolors.py drivers/color.h
+	tools/gencolors.py drivers/display_color.h
 
 # control
 all: tree.png colors run
