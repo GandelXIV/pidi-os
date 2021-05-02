@@ -1,4 +1,4 @@
 # necessary
-make gcc nasm qemu
+make gcc nasm aqemu
 # optional
 makefile2dot
