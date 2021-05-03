@@ -33,6 +33,15 @@ void display_char(char character, uint offset, byte color)
   if (color != 0x00) { video_memory[offset*2 + 1] = color; }
 }
 
+// prints a newline, equivalent to kprintc('\n')
+void printnl()
+{
+  uint cursor_offset = get_cursor_offset();
+  uint cursor_offset_row = get_offset_row(cursor_offset);
+  set_cursor_position( 0, cursor_offset_row + 1);
+  if (cursor_offset_row > DISPLAY_HEIGHT + DISPLAY_SCROLL_DETECTION_DEBUG) do_scroll();
+}
+
 // print char to cursor with color
 void kprintc_color(char character, char color)
 {
@@ -40,7 +49,7 @@ void kprintc_color(char character, char color)
 	uint cursor = get_cursor_offset();
 	if (character == '\n')
 	{
-		kprintnl();
+		printnl();
 	}
   else
   {
@@ -76,7 +85,7 @@ void kprints(char* text)
 	}
 }
 
-void kdisplay_theme(char color)   // draw a specific color on whole display
+void display_theme(char color)   // draw a specific color on whole display
 {
   INIT_VIDEO
   for (uint i = 1; i < DISPLAY_WIDTH * DISPLAY_WIDTH; i += 2)
@@ -101,7 +110,7 @@ void rowcpy(uint dest, uint src)
 }
 
 // scrol display by 1 row up
-void kdisplay_scroll()
+void display_scroll()
 {
   for (uint row = 1; row < DISPLAY_HEIGHT + 1; ++row) // the +1 overwrites the last row with the next invisble line
   {
@@ -116,20 +125,11 @@ void kdisplay_scroll()
 void do_scroll()
 {
   // kdisplay_clear();
-  kdisplay_scroll();
-}
-
-// prints a newline, equivalent to kprintc('\n')
-void kprintnl()
-{
-  uint cursor_offset = get_cursor_offset();
-  uint cursor_offset_row = get_offset_row(cursor_offset);
-  set_cursor_position( 0, cursor_offset_row + 1);
-  if (cursor_offset_row > DISPLAY_HEIGHT + DISPLAY_SCROLL_DETECTION_DEBUG) do_scroll();
+  display_scroll();
 }
 
 // clear display by printing a LOT of spaces!
-void kdisplay_clear()
+void display_clear()
 {
 	for (uint i = 0; i < DISPLAY_WIDTH * DISPLAY_HEIGHT; ++i)
 	{
@@ -138,7 +138,7 @@ void kdisplay_clear()
 	set_cursor_offset(0);
 }
 
-void kdisplay_deletec()
+void display_deletec()
 {
   set_cursor_offset(get_cursor_offset()-1);
   kprintc(0);

@@ -1,1 +1,1 @@
-kdisplay_theme(WHITE_ON_CYAN);
+display_theme(WHITE_ON_CYAN);

@@ -113,7 +113,7 @@ void isr_handler(registers_t r)
 {
     kprints("EXCEPTION INTERRUPT: ");
     kprints(exception_messages[r.int_no]);
-    kprintnl();
+    kprintc('\n');
 }
 
 void register_interrupt_handler(byte n, isr_t handler)

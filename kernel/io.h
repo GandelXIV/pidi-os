@@ -35,7 +35,7 @@ void kinputs(char* output)
     if (input == '\b')
     {
       --i;
-      kdisplay_deletec();
+      display_deletec();
     }
     /*
     else if (input == '\n')

@@ -1,1 +1,1 @@
-kdisplay_clear();
+display_clear();

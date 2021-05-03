@@ -23,7 +23,7 @@ void init()
 {
 	kprints(KERNEL_INFO_INIT_START);
 	// do
-	kdisplay_theme(DISPLAY_THEME);	// set display theme
+	display_theme(DISPLAY_THEME);	// set display theme
 	kminit();												// init kernel memory for kmalloc()
 	isr_install();									// set all isr handlers
 	keyboard_init();								// nothing yet
@@ -34,7 +34,6 @@ void init()
 void main()
 {
 	// init
-	kprintnl();
 	kprints(KERNEL_INFO_ENTERED);
 	init();
 	kprints(KERNEL_INFO_WELCOME);
