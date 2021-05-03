@@ -6,7 +6,7 @@ C_FLAGS ?= -ffreestanding -fno-PIC -Os -c
 ASSEMBLER ?= nasm
 FORMAT ?= elf32
 LINKER ?= ld -m elf_i386 -s
-EMULATOR ?= qemu-system-x86_64
+EMULATOR ?= qemu-system-i386
 
 # os-image
 os-image.bin: mk/ mk/kernel.bin mk/bootsect.bin

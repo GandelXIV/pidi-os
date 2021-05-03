@@ -1,10 +1,7 @@
-/*
-NOTE: This driver does not use interrupt!
-*/
-
 #include "../lib/type.h"
 #include "keyboard.h"
 #include "../firmware/port.h"
+#include "../firmware/isr.h"
 
 byte old_scan_code;
 byte scan_code_set;
@@ -21,11 +18,15 @@ byte get_new_scan_code()
   return old_scan_code;
 }
 
-void kkeyboard_init()
+void on_key_event(registers_t registers)
+{
+  kprints("Registered event!");
+}
+
+void keyboard_init()
 {
   scan_code_set = 0x1;
-  port_byte_out(REG_KEYBOARD_DATA, 0xF0);
-  byte response = port_byte_in(REG_KEYBOARD_CTRL);
+  register_interrupt_handler(IRQ1, on_key_event);
 }
 
 char scan_code_to_char(byte code)

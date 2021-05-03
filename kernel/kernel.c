@@ -26,7 +26,7 @@ void init()
 	kdisplay_theme(DISPLAY_THEME);	// set display theme
 	kminit();												// init kernel memory for kmalloc()
 	isr_install();									// set all isr handlers
-	kkeyboard_init();								// nothing yet
+	keyboard_init();								// nothing yet
 	// done
 	kprints(KERNEL_INFO_INIT_DONE);
 }
