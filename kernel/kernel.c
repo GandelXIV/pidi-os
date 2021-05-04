@@ -19,6 +19,13 @@
 
 #define DISPLAY_THEME GRAY_ON_BLACK
 
+void test_interrupts()
+{
+	// test the new interrupts
+	__asm__ __volatile__("int $2");
+	__asm__ __volatile__("int $3");
+}
+
 void init()
 {
 	kprints(KERNEL_INFO_INIT_START);
@@ -38,10 +45,5 @@ void main()
 	init();
 	kprints(KERNEL_INFO_WELCOME);
 	// do
-	/*
-	// test the new interrupts
-	__asm__ __volatile__("int $2");
-	__asm__ __volatile__("int $3");
-	*/
 	ksh_start();
 }
