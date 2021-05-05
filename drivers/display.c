@@ -1,6 +1,8 @@
 #include "display.h"
 #include "../firmware/port.h"
 
+static byte display_theme_current;
+
 uint get_offset(uint column, uint row) { return 2 * (row * DISPLAY_WIDTH + column); }
 uint get_offset_row(uint offset) { return offset / (2 * DISPLAY_WIDTH); }
 uint get_offset_column(uint offset) { return (offset - (get_offset_row(offset)*2*DISPLAY_WIDTH))/2; }
@@ -88,6 +90,7 @@ void kprints(char* text)
 void display_theme(char color)   // draw a specific color on whole display
 {
   INIT_VIDEO
+  display_theme_current = color;
   for (uint i = 1; i < DISPLAY_WIDTH * DISPLAY_WIDTH; i += 2)
   {
     video_memory[i] = color;
@@ -136,6 +139,7 @@ void display_clear()
 		display_char(0, i, 0x00);
 	}
 	set_cursor_offset(0);
+  display_theme(display_theme_current);
 }
 
 void display_deletec()
