@@ -1,4 +1,7 @@
-#define KERNEL_MEMORY_OFFSET 0x10000
+// config
+#define DISPLAY_THEME GRAY_ON_BLACK
+#define KERNEL_MEMORY_OFFSET_START 0x10000
+#define KERNEL_MEMORY_OFFSET_END	0xffffffff
 
 #ifndef INCLUDED_TYPE
 #include "../lib/type.h"
@@ -17,7 +20,6 @@
 #include "io.h"
 #include "ksh.h"
 
-#define DISPLAY_THEME GRAY_ON_BLACK
 
 void test_interrupts()
 {
@@ -45,5 +47,24 @@ void main()
 	init();
 	kprints(KERNEL_INFO_WELCOME);
 	// do
+	char* s1 = kmalloc(2);
+	char* s2 = kmalloc(4);
+	char* s3 = kmalloc(5);
+	// this file is build on first compilation
+	#include "debug.h"
+	/*
+	kprintu(s1);
+	kprintc('\n');
+	kprintu(s2);
+	kprintc('\n');
+	kprintu(s3);
+	kprintc('\n');
+	strcpy(s1, "foo");
+	strcpy(s2, "\nbar");
+	strcpy(s3, "\ntar\n");
+	kprints(s1);
+	kprints(s2);
+	kprints(s3);
+	*/
 	ksh_start();
 }

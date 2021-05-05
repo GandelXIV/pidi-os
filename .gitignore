@@ -2,3 +2,4 @@
 *.bin
 *.swp
 tree.png
+kernel/debug.h
