@@ -14,6 +14,14 @@ build/os-image.bin: mk/ build/ mk/kernel.bin mk/bootsect.bin
 	cat mk/bootsect.bin mk/kernel.bin > build/os-image.bin
 	chmod +x build/os-image.bin
 
+build/os-image.zip: build/os-image.bin
+	@echo "[!] BUILDING IMAGE ZIP"
+	zip build/kernel.zip build/os-image.bin
+
+build/os-image.tar: build/os-image.bin
+	@echo "[!] BUILDING IMAGE TAR"
+	tar -cf build/os-image.tar build/os-image.bin
+
 # kernel
 mk/kernel.bin: mk/kernel.o mk/kernel_entry.o mk/display.o mk/keyboard.o mk/port.o mk/idt.o mk/isr.o mk/interrupt.o
 	@echo "[!] LINKING KERNEL"
@@ -80,7 +88,7 @@ colors:
 	tools/gencolors.py drivers/display_color.h
 
 # control
-all: tree.png colors run
+all: tree.png colors build/os-image.zip build/os-image.tar
 full: clean all
 
 run: build/os-image.bin

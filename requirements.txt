@@ -1,4 +1,4 @@
 # necessary
-make gcc nasm aqemu
+make gcc nasm aqemu zip tar
 # optional
 makefile2dot
