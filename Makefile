@@ -16,7 +16,7 @@ build/os-image.bin: mk/ build/ mk/kernel.bin mk/bootsect.bin
 
 build/os-image.zip: build/os-image.bin
 	@echo "[!] BUILDING IMAGE ZIP"
-	zip build/kernel.zip build/os-image.bin
+	zip build/os-image.zip build/os-image.bin
 
 build/os-image.tar: build/os-image.bin
 	@echo "[!] BUILDING IMAGE TAR"
