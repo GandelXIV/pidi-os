@@ -9,7 +9,7 @@ LINKER ?= ld -m elf_i386 -s
 EMULATOR ?= qemu-system-i386
 
 # os-image
-build/os-image.bin: mk/ mk/kernel.bin mk/bootsect.bin
+build/os-image.bin: mk/ build/ mk/kernel.bin mk/bootsect.bin
 	@echo "[!] BUILDING OS IMAGE"
 	cat mk/bootsect.bin mk/kernel.bin > build/os-image.bin
 	chmod +x build/os-image.bin
@@ -66,6 +66,10 @@ mk/bootsect.bin: boot/*
 mk/: Makefile
 	@echo "[!] CREATING MAKE DIRECTORY"
 	mkdir -p mk/
+
+build/:
+	@echo "[!] CREATING BUILD DIRECTORY"
+	mkdir -p build
 
 tree.png: Makefile
 	@echo "[!] RENDERING DEPENDENCY TREE"
