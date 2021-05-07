@@ -1,4 +1,4 @@
-.DEFAULT_GOAL=os-image.bin
+.DEFAULT_GOAL=build/os-image.bin
 .PHONY: clean run all full
 
 C_COMPILER ?= gcc -m32
@@ -9,10 +9,10 @@ LINKER ?= ld -m elf_i386 -s
 EMULATOR ?= qemu-system-i386
 
 # os-image
-os-image.bin: mk/ mk/kernel.bin mk/bootsect.bin
+build/os-image.bin: mk/ mk/kernel.bin mk/bootsect.bin
 	@echo "[!] BUILDING OS IMAGE"
-	cat mk/bootsect.bin mk/kernel.bin > os-image.bin
-	chmod +x os-image.bin
+	cat mk/bootsect.bin mk/kernel.bin > build/os-image.bin
+	chmod +x build/os-image.bin
 
 # kernel
 mk/kernel.bin: mk/kernel.o mk/kernel_entry.o mk/display.o mk/keyboard.o mk/port.o mk/idt.o mk/isr.o mk/interrupt.o
@@ -79,12 +79,12 @@ colors:
 all: tree.png colors run
 full: clean all
 
-run: os-image.bin
+run: build/os-image.bin
 	@echo "[!] RUNNING IMAGE"
-	$(EMULATOR) os-image.bin
+	$(EMULATOR) build/os-image.bin
 
 clean:
 	@echo "[!] CLEANING"
 	rm -f mk/*
-	rm -f os-image.bin
+	rm -f build/*
 	rm -f tree.png
