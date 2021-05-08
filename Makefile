@@ -1,4 +1,4 @@
-.DEFAULT_GOAL=build/os-image.bin
+.DEFAULT_GOAL=dist/os-image.bin
 .PHONY: clean run all full
 
 C_COMPILER ?= gcc -m32
@@ -9,18 +9,18 @@ LINKER ?= ld -m elf_i386 -s
 EMULATOR ?= qemu-system-i386
 
 # os-image
-build/os-image.bin: mk/ build/ mk/kernel.bin mk/bootsect.bin
+dist/os-image.bin: mk/ dist/ mk/kernel.bin mk/bootsect.bin
 	@echo "[!] BUILDING OS IMAGE"
-	cat mk/bootsect.bin mk/kernel.bin > build/os-image.bin
-	chmod +x build/os-image.bin
+	cat mk/bootsect.bin mk/kernel.bin > dist/os-image.bin
+	chmod +x dist/os-image.bin
 
-build/os-image.zip: build/os-image.bin
+dist/os-image.zip: dist/os-image.bin
 	@echo "[!] BUILDING IMAGE ZIP"
-	zip build/os-image.zip build/os-image.bin
+	zip dist/os-image.zip dist/os-image.bin
 
-build/os-image.tar: build/os-image.bin
+dist/os-image.tar: dist/os-image.bin
 	@echo "[!] BUILDING IMAGE TAR"
-	tar -cf build/os-image.tar build/os-image.bin
+	tar -cf dist/os-image.tar dist/os-image.bin
 
 # kernel
 mk/kernel.bin: mk/kernel.o mk/kernel_entry.o mk/display.o mk/keyboard.o mk/port.o mk/idt.o mk/isr.o mk/interrupt.o
@@ -75,9 +75,9 @@ mk/: Makefile
 	@echo "[!] CREATING MAKE DIRECTORY"
 	mkdir -p mk/
 
-build/:
+dist/:
 	@echo "[!] CREATING BUILD DIRECTORY"
-	mkdir -p build
+	mkdir -p dist
 
 tree.png: Makefile
 	@echo "[!] RENDERING DEPENDENCY TREE"
@@ -88,15 +88,15 @@ colors:
 	tools/gencolors.py drivers/display_color.h
 
 # control
-all: tree.png colors build/os-image.zip build/os-image.tar
+all: tree.png colors dist/os-image.zip dist/os-image.tar
 full: clean all
 
-run: build/os-image.bin
+run: dist/os-image.bin
 	@echo "[!] RUNNING IMAGE"
-	$(EMULATOR) build/os-image.bin
+	$(EMULATOR) dist/os-image.bin
 
 clean:
 	@echo "[!] CLEANING"
 	rm -f mk/*
-	rm -f build/*
+	rm -f dist/*
 	rm -f tree.png
