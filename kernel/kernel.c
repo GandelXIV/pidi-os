@@ -29,43 +29,21 @@ void test_interrupts()
 	__asm__ __volatile__("int $3");
 }
 
-void init()
-{
-	kprints(KERNEL_INFO_INIT_START);
-	// do
-	display_theme(DISPLAY_THEME);	  // set display theme
-	memory_init();									// init kernel memory for kmalloc()
-	isr_install();									// set all isr handlers
-	keyboard_init();								// nothing yet
-	// done
-	kprints(KERNEL_INFO_INIT_DONE);
-}
-
 void main()
 {
 	// init
 	kprints(KERNEL_INFO_ENTERED);
-	init();
+	kprints(KERNEL_INFO_INIT_START);
+	display_theme(DISPLAY_THEME);	  // set display theme
+	memory_init();									// init kernel memory for kmalloc()
+	isr_install();									// set all isr handlers
+	keyboard_init();								// nothing yet
+	kprints(KERNEL_INFO_INIT_DONE);
 	kprints(KERNEL_INFO_WELCOME);
-	// do
+	// main
 	char* s1 = kmalloc(2);
 	char* s2 = kmalloc(4);
 	char* s3 = kmalloc(5);
-	// this file is build on first compilation
-	#include "debug.h"
-	/*
-	kprintu(s1);
-	kprintc('\n');
-	kprintu(s2);
-	kprintc('\n');
-	kprintu(s3);
-	kprintc('\n');
-	strcpy(s1, "foo");
-	strcpy(s2, "\nbar");
-	strcpy(s3, "\ntar\n");
-	kprints(s1);
-	kprints(s2);
-	kprints(s3);
-	*/
+	#include "debug.h" // this file is build on first compilation
 	ksh_start();
 }
