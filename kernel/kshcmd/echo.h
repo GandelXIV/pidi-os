@@ -1,1 +1,0 @@
-kprints("echo\n");

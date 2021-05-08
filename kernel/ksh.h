@@ -6,31 +6,39 @@ byte ksh_interpret(char* command)
   if (command[0] == '\n') {}
   else if (strcmp(command, "echo\n"))
   {
-    #include "kshcmd/echo.h"
+    kprints("echo\n");
   }
   else if (strcmp(command, "blue\n"))
   {
-    #include "kshcmd/blue.h"
+    display_theme(WHITE_ON_BLUE);
   }
   else if (strcmp(command, "help\n"))
   {
-    #include "kshcmd/help.h"
+    kprints("COMMANDS:\n");
+    kprints("help    prints this message\n");
+    kprints("echo    prints 'echo' to the display\n");
+    kprints("wipe    cleans screen\n");
+    kprints("blue    changes the theme to white on blue\n");
+    kprints("cyan    changes the theme to white on cyan\n");
+    kprints("gray    changes the theme to gray on black\n");
+    kprints("exit    exit kernel shell\n");
   }
   else if (strcmp(command, "cyan\n"))
   {
-    #include "kshcmd/cyan.h"
+    display_theme(WHITE_ON_CYAN);
   }
   else if (strcmp(command, "exit\n"))
   {
-    #include "kshcmd/exit.h"
+    display_clear();
+    return KSH_EXIT;
   }
   else if (strcmp(command, "wipe\n"))
   {
-    #include "kshcmd/wipe.h"
+    display_clear();
   }
   else if (strcmp(command, "gray\n"))
   {
-    #include "kshcmd/gray.h"
+    display_theme(GRAY_ON_BLACK);
   }
   else
   {
