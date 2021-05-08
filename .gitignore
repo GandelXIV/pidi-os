@@ -3,4 +3,4 @@
 *.swp
 tree.png
 kernel/debug.h
-build/
+dist/
