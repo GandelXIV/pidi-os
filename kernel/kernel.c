@@ -1,6 +1,5 @@
 // config
 #define DISPLAY_THEME GRAY_ON_BLACK
-#define KERNEL_MEMORY_OFFSET 0x10000	// temporary
 #define KERNEL_MEMORY_OFFSET_START 0x10000
 #define KERNEL_MEMORY_OFFSET_END	0xffffffff
 
