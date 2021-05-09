@@ -37,10 +37,10 @@ void memory_init()
 {
   memory_index[0] = (byte*) KERNEL_MEMORY_OFFSET_START;
   memory_index[1] = (byte*) KERNEL_MEMORY_OFFSET_START;
-  //for (uint i = 2 /* we dont want to overwrite KERNEL_MEMORY_OFFSET_START*/; i < sizeof(memory_index); ++i)
-  //{
-  //  memory_index[i] = MEMORY_EMPTY;
-  //}
+  for (uint i = 2 /* we dont want to overwrite KERNEL_MEMORY_OFFSET_START*/; i < sizeof(memory_index); ++i)
+  {
+    memory_index[i] = MEMORY_EMPTY;
+  }
 }
 
 // copy memory
