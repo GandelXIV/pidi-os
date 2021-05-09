@@ -30,3 +30,4 @@ void kprintc_color(char character, char color);
 void display_clear();
 void display_scroll();
 void display_theme(char color);
+void display_deletec();

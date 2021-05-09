@@ -3,4 +3,4 @@
 #define KEYBOARD_NO_PRINTABLE_CHARACTER 0x0
 
 char kinputc();
-void kkeyboard_init();
+void keyboard_init();

@@ -5,8 +5,15 @@
 
 static byte* memp;  // pointer to free memory
 
+struct PageStruct
+{
+  char* start;
+  char* end;
+  struct PageStruct* next;
+};
+
 // NOTE: Can NOT be freed, so dont use it in loops
-void* kmalloc(uint size)
+void* kmalloc(uint32_t size)
 {
   *memp += size;
   return *memp - size;
@@ -19,7 +26,7 @@ void memory_init()
 }
 
 // copy memory
-void memcpy(bytes dest, bytes src, uint32_t size)
+void memcpy(byte* dest, byte* src, uint32_t size)
 {
   for (uint32_t i = 0; i < size; ++i)
   {

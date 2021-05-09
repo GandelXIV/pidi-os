@@ -1,5 +1,6 @@
 #include "../lib/type.h"
 #include "keyboard.h"
+#include "display.h"
 #include "../firmware/port.h"
 #include "../firmware/isr.h"
 

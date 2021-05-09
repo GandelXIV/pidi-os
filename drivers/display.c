@@ -35,6 +35,13 @@ void display_char(char character, uint offset, byte color)
   if (color != 0x00) { video_memory[offset*2 + 1] = color; }
 }
 
+// called when display should scroll
+void do_scroll()
+{
+  // kdisplay_clear();
+  display_scroll();
+}
+
 // prints a newline, equivalent to kprintc('\n')
 void printnl()
 {
@@ -124,12 +131,6 @@ void display_scroll()
   set_cursor_position( 0, cursor_offset_row - 1);
 }
 
-// called when display should scroll
-void do_scroll()
-{
-  // kdisplay_clear();
-  display_scroll();
-}
 
 // clear display by printing a LOT of spaces!
 void display_clear()

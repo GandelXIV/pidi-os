@@ -41,9 +41,6 @@ void main()
 	kprints(KERNEL_INFO_INIT_DONE);
 	kprints(KERNEL_INFO_WELCOME);
 	// main
-	char* s1 = kmalloc(2);
-	char* s2 = kmalloc(4);
-	char* s3 = kmalloc(5);
 	#include "debug.h" // this file is build on first compilation
 	ksh_start();
 }
