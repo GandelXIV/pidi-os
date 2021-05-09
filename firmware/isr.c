@@ -1,6 +1,7 @@
 #include "isr.h"
 #include "idt.h"
 #include "../drivers/display.h"
+#include "../kernel/messages.h"
 
 isr_t interrupt_handlers[256];
 
@@ -111,7 +112,7 @@ char *exception_messages[] = {
 // temporary
 void isr_handler(registers_t r)
 {
-    kprints("EXCEPTION INTERRUPT: ");
+    kprints(FIRMWARE_ERROR_ISR_EXCEPTION);
     kprints(exception_messages[r.int_no]);
     kprintc('\n');
 }

@@ -10,3 +10,4 @@
 #define KERNEL_INFO_INIT_START "[KERNEL.INFO] Initialising...\n"                  // start of init()
 #define KERNEL_INFO_INIT_DONE "[KERNEL.INFO] Done!\n"                       // end of init()
 #define KERNEL_INFO_WELCOME "[KERNEL.INFO] Welcome to Pidi-OS!\n"           // end of main() startup
+#define FIRMWARE_ERROR_ISR_EXCEPTION "[FIRMWARE.ERROR] isr expection: "
