@@ -60,7 +60,7 @@ mk/interrupt.o: firmware/interrupt.asm
 	@echo "[!] COMPILING INTERRUPT FIRMWARE"
 	$(ASSEMBLER) -f $(FORMAT) -o mk/interrupt.o firmware/interrupt.asm
 
-mk/isr.o: firmware/isr.c firmware/isr.h lib/type.h drivers/display.h firmware/idt.h
+mk/isr.o: firmware/isr.c firmware/isr.h lib/type.h drivers/display.h firmware/idt.h kernel/messages.h
 	@echo "[!] COMPILING ISR FIRMWARE"
 	$(C_COMPILER) $(C_FLAGS) firmware/isr.c -o mk/isr.o
 
