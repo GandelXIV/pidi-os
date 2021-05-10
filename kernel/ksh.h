@@ -6,7 +6,7 @@ byte ksh_interpret(char* command)
   if (command[0] == '\n') {}
   else if (strcmp(command, "echo\n"))
   {
-    kprints("echo\n");
+    kprints("Hello World!\n");
   }
   else if (strcmp(command, "blue\n"))
   {
@@ -18,6 +18,7 @@ byte ksh_interpret(char* command)
     kprints("help    prints this message\n");
     kprints("echo    prints 'echo' to the display\n");
     kprints("wipe    cleans screen\n");
+    kprints("pidi    get kernel version\n");
     kprints("blue    changes the theme to white on blue\n");
     kprints("cyan    changes the theme to white on cyan\n");
     kprints("gray    changes the theme to gray on black\n");
@@ -39,6 +40,11 @@ byte ksh_interpret(char* command)
   else if (strcmp(command, "gray\n"))
   {
     display_theme(GRAY_ON_BLACK);
+  }
+  else if (strcmp(command, "pidi\n"))
+  {
+    kprints("Pidi OS\n");
+    kprints("Version: 0.1.0\n");
   }
   else
   {
