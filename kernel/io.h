@@ -32,7 +32,7 @@ void kinputs(char* output)
   while (input != '\n')
   {
     input = kinputc();
-    if (input == '\b')
+    if (input == '\b' && i > 0)
     {
       --i;
       display_deletec();
@@ -43,7 +43,7 @@ void kinputs(char* output)
       kprintnl();
     }
     */
-    else
+    else if (input != '\b')
     {
       kprintc(input);
       output[i] = input;

@@ -87,11 +87,7 @@ void kprints_color(char* text, char color)
 // print string to cursor with default color
 void kprints(char* text)
 {
-	while (*text != 0)
-	{
-		kprintc(*text);
-		++text;
-	}
+  kprints_color(text, TRANSPARENT);
 }
 
 void display_theme(char color)   // draw a specific color on whole display
