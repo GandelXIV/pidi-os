@@ -18,19 +18,14 @@
 #include "io.h"
 #include "ksh.h"
 
-
-void test_interrupts()
-{
-	// test the new interrupts
-	__asm__ __volatile__("int $2");
-	__asm__ __volatile__("int $3");
-}
+static bool kernel_running;
 
 void main()
 {
 	// init
 	kprints(KERNEL_INFO_ENTERED);
 	kprints(KERNEL_INFO_INIT_START);
+	kernel_running = true;					// start kernel loop
 	display_theme(DISPLAY_THEME);	  // set display theme
 	memory_init();									// init kernel memory for kmalloc()
 	isr_install();									// set all isr handlers
@@ -40,4 +35,8 @@ void main()
 	// main
 	#include "debug.h" // this file is build on first compilation
 	ksh_start();
+	while (kernel_running)
+	{
+
+	}
 }
