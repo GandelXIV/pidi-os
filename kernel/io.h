@@ -37,12 +37,6 @@ void kinputs(char* output)
       --i;
       display_deletec();
     }
-    /*
-    else if (input == '\n')
-    {
-      kprintnl();
-    }
-    */
     else if (input != '\b')
     {
       kprintc(input);
