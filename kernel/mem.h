@@ -11,6 +11,7 @@
 byte* memory_index [1000];
 
 
+// allocate memory
 void* kmalloc(uint32_t size)
 {
   uint i = 0;
@@ -30,6 +31,15 @@ void* kmalloc(uint32_t size)
       return (void*) memory_index[i];
     }
   }
+}
+
+// free allocated memory
+void kfree(void* memory)
+{
+  uint id = 0;
+  while (memory_index[id] != memory) { id += 2; }
+  memory_index[id] = MEMORY_EMPTY;
+  memory_index[id + 1] = MEMORY_EMPTY;
 }
 
 // initializes kernel memory pointer -> allows for kmalloc() calls
