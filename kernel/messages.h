@@ -7,11 +7,6 @@
 // ERROR    non-fatal problem
 // PANIC    fatal problem
 // just a function
-void panic(char* msg)
-{
-	kprints(msg);
-	while (true) {}		// infinite loop
-}
 
 #define KERNEL_INFO_ENTERED "[KERNEL.INFO] Entered the kernel\n"         // start of main()
 #define KERNEL_INFO_INIT_START "[KERNEL.INFO] Initialising...\n"                  // start of init()
