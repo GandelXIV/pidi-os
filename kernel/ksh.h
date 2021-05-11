@@ -16,15 +16,15 @@ byte ksh_interpret(char* command)
   else if (strcmp(command, "help\n"))
   {
     kprints("COMMANDS:\n");
-    kprints("help    prints this message\n");
-    kprints("echo    prints 'echo' to the display\n");
-    kprints("wipe    cleans screen\n");
-    kprints("pidi    get kernel version\n");
-    kprints("mem     get allocated memory usage\n");
-    kprints("blue    changes the theme to white on blue\n");
-    kprints("cyan    changes the theme to white on cyan\n");
-    kprints("gray    changes the theme to gray on black\n");
-    kprints("exit    exit kernel shell\n");
+    kprints("help     prints this message\n");
+    kprints("echo     prints 'echo' to the display\n");
+    kprints("wipe     cleans screen\n");
+    kprints("pidiver  get kernel version\n");
+    kprints("mem      get allocated memory usage\n");
+    kprints("blue     changes the theme to white on blue\n");
+    kprints("cyan     changes the theme to white on cyan\n");
+    kprints("gray     changes the theme to gray on black\n");
+    kprints("exit     exit kernel shell\n");
   }
   else if (strcmp(command, "cyan\n"))
   {
@@ -43,7 +43,12 @@ byte ksh_interpret(char* command)
   {
     display_theme(GRAY_ON_BLACK);
   }
-  else if (strcmp(command, "pidi\n"))
+  else if (strcmp(command, "hacker\n"))
+  {
+    display_theme(GREEN_ON_BLACK);
+    kprints_color("You are hacker now!\n", RED_ON_WHITE);
+  }
+  else if (strcmp(command, "pidiver\n"))
   {
     kprints("Pidi OS\n");
     kprints("Version: 0.1.1\n");

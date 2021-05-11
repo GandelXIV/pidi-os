@@ -1,5 +1,5 @@
 // config
-#define DISPLAY_THEME GRAY_ON_BLACK
+#define DISPLAY_THEME GREEN_ON_BLACK
 
 #ifndef INCLUDED_TYPE
 #include "../lib/type.h"
