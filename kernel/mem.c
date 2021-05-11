@@ -36,10 +36,10 @@ void kfree(void* memory)
   memory_index[id + 1] = MEMORY_EMPTY;
 }
 
-// get ammount of allocated memory
+// gets size of all used kmalloc pages
 uint32_t memory_usage()
 {
-  uint i = 2;
+  uint i = 2;  // remember, the first two bytes meta-data
   uint32_t usage = 0;
   while (memory_index[i] != (byte*) MEMORY_INDEX_END)
   {
@@ -50,6 +50,22 @@ uint32_t memory_usage()
     i += 2;
   }
   return usage;
+}
+
+// gets the total size of allocated memory, counting freed pages
+uint32_t memory_usage_effective()
+{
+  uint i = 2;  // remember, the first two bytes meta-data
+  uint32_t usage = 0;
+  while (memory_index[i] != MEMORY_INDEX_END)
+  {
+    if (memory_index[i + 1] > usage)
+    {
+      usage = memory_index[i + 1];
+    }
+    i += 2;
+  }
+  return usage - (KERNEL_MEMORY_OFFSET_START + 1);
 }
 
 // initializes kernel memory pointer -> allows for kmalloc() calls

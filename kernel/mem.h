@@ -15,3 +15,4 @@ void kfree(void* memory);
 void memory_init();
 void memcpy(byte* dest, byte* src, uint32_t size);
 uint32_t memory_usage();
+uint32_t memory_usage_effective();
