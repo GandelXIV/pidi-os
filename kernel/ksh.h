@@ -4,67 +4,77 @@
 
 byte ksh_interpret(char* command)
 {
-  if (command[0] == '\n') {}
-  else if (strcmp(command, "echo\n"))
-  {
-    kprints("Hello World!\n");
+  int NoOfOwnCmds = 10, i, switchOwnArg = 0;
+  char* ListOfOwnCmds[NoOfOwnCmds];
+
+  ListOfOwnCmds[0] = "help\n";
+  ListOfOwnCmds[1] = "echo\n";
+  ListOfOwnCmds[2] = "wipe\n";
+  ListOfOwnCmds[3] = "pidiver\n";
+  ListOfOwnCmds[4] = "mem\n";
+  ListOfOwnCmds[5] = "blue\n";
+  ListOfOwnCmds[6] = "cyan\n";
+  ListOfOwnCmds[7] = "gray\n";
+  ListOfOwnCmds[8] = "hacker\n";
+  ListOfOwnCmds[9] = "exit\n";
+
+  for (i = 0; i < NoOfOwnCmds; i++) {
+    if (strcmp(command, ListOfOwnCmds[i]) == true) {
+      switchOwnArg = i + 1;
+      break;
+    }
   }
-  else if (strcmp(command, "blue\n"))
-  {
-    display_theme(WHITE_ON_BLUE);
-  }
-  else if (strcmp(command, "help\n"))
-  {
-    kprints("COMMANDS:\n");
-    kprints("help     prints this message\n");
-    kprints("echo     prints 'echo' to the display\n");
-    kprints("wipe     cleans screen\n");
-    kprints("pidiver  get kernel version\n");
-    kprints("mem      get allocated memory usage\n");
-    kprints("blue     changes the theme to white on blue\n");
-    kprints("cyan     changes the theme to white on cyan\n");
-    kprints("gray     changes the theme to gray on black\n");
-    kprints("exit     exit kernel shell\n");
-  }
-  else if (strcmp(command, "cyan\n"))
-  {
-    display_theme(WHITE_ON_CYAN);
-  }
-  else if (strcmp(command, "exit\n"))
-  {
-    display_clear();
-    return KSH_EXIT;
-  }
-  else if (strcmp(command, "wipe\n"))
-  {
-    display_clear();
-  }
-  else if (strcmp(command, "gray\n"))
-  {
-    display_theme(GRAY_ON_BLACK);
-  }
-  else if (strcmp(command, "hacker\n"))
-  {
-    display_theme(GREEN_ON_BLACK);
-    kprints_color("You are hacker now!\n", RED_ON_WHITE);
-  }
-  else if (strcmp(command, "pidiver\n"))
-  {
-    kprints("Pidi OS\n");
-    kprints("Version: 0.1.1\n");
-  }
-  else if (strcmp(command, "mem\n"))
-  {
-    kprints("Memory usage:");
-    kprints("\ntotal: ");
-    kprintu32(memory_usage());
-    kprints("\neffective: ");
-    kprintu32(memory_usage_effective());
-    kprintc('\n');
-  }
-  else
-  {
-    kprints(KERNEL_INFO_SHELL_UNKNOWN_COMMAND);
+
+  switch (switchOwnArg) {
+    case 1:
+      kprints("COMMANDS:\n");
+      kprints("help     prints this message\n");
+      kprints("echo     prints 'echo' to the display\n");
+      kprints("wipe     cleans screen\n");
+      kprints("pidiver  get kernel version\n");
+      kprints("mem      get allocated memory usage\n");
+      kprints("blue     changes the theme to white on blue\n");
+      kprints("cyan     changes the theme to white on cyan\n");
+      kprints("gray     changes the theme to gray on black\n");
+      kprints("exit     exit kernel shell\n");
+      break;
+    case 2:
+      kprints("Hello World!\n");
+      break;
+    case 3:
+      display_clear();
+      break;
+    case 4:
+      kprints("Pidi OS\n");
+      kprints("Version: 0.1.1\n");
+      break;
+    case 5:
+      kprints("Memory usage:");
+      kprints("\ntotal: ");
+      kprintu32(memory_usage());
+      kprints("\neffective: ");
+      kprintu32(memory_usage_effective());
+      kprintc('\n');
+      break;
+    case 6:
+      display_theme(WHITE_ON_BLUE);
+      break;
+    case 7:
+      display_theme(WHITE_ON_CYAN);
+      break;
+    case 8:
+      display_theme(GRAY_ON_BLACK);
+      break;
+    case 9:
+      display_theme(GREEN_ON_BLACK);
+      kprints_color("You are hacker now!\n", RED_ON_WHITE);
+      break;
+    case 10:
+      display_clear();
+      return KSH_EXIT;
+    default:
+      kprints(KERNEL_INFO_SHELL_UNKNOWN_COMMAND);
+      break;
   }
   return KSH_OK;
 }
