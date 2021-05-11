@@ -19,6 +19,7 @@ byte ksh_interpret(char* command)
     kprints("echo    prints 'echo' to the display\n");
     kprints("wipe    cleans screen\n");
     kprints("pidi    get kernel version\n");
+    kprints("mem     get allocated memory usage\n");
     kprints("blue    changes the theme to white on blue\n");
     kprints("cyan    changes the theme to white on cyan\n");
     kprints("gray    changes the theme to gray on black\n");
@@ -44,7 +45,7 @@ byte ksh_interpret(char* command)
   else if (strcmp(command, "pidi\n"))
   {
     kprints("Pidi OS\n");
-    kprints("Version: 0.1.0\n");
+    kprints("Version: 0.1.1\n");
   }
   else if (strcmp(command, "mem\n"))
   {
