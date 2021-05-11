@@ -43,6 +43,11 @@ byte ksh_interpret(char* command)
   {
     display_theme(GRAY_ON_BLACK);
   }
+  else if (strcmp(command, "hacker\n"))
+  {
+    display_theme(GREEN_ON_BLACK);
+    kprints_color("You are hacker now!\n", RED_ON_WHITE);
+  }
   else if (strcmp(command, "pidiver\n"))
   {
     kprints("Pidi OS\n");
