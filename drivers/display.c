@@ -110,7 +110,9 @@ void rowcpy(uint dest, uint src)
   // use the offset in memcpy
   for (uint32_t i = 0; i < DISPLAY_WIDTH + DISPLAY_SCROLL_DEBUG; ++i)
   {
-    dest_offset[i] = src_offset[i];
+
+    dest_offset[i] = src_offset[i];         // scroll text
+    dest_offset[i + 1] = src_offset[i + 1]; // scroll color
     ++i;
   }
 }
