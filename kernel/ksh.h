@@ -59,7 +59,7 @@ byte ksh_interpret(char* command)
   }
   else
   {
-    kprints("Unknown command\n");
+    kprints(KERNEL_INFO_SHELL_UNKNOWN_COMMAND);
   }
   return KSH_OK;
 }
@@ -72,7 +72,7 @@ void ksh_start()
     c[i] = (char) 0;
   }
   byte response;
-  kprints("Type 'help' to open ksh manual\n");
+  kprints(KERNEL_INFO_SHELL_WELCOME);
   while (true)
   {
     kprintc('$');
