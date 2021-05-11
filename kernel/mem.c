@@ -3,7 +3,7 @@
 // index structure:
 // even index -> page start
 // odd index -> page end
-byte* memory_index [1000];
+byte* memory_index [MEMORY_INDEX_BASE_SIZE];
 
 // allocate memory
 void* kmalloc(uint32_t size)
@@ -36,6 +36,22 @@ void kfree(void* memory)
   memory_index[id + 1] = MEMORY_EMPTY;
 }
 
+// get ammount of allocated memory
+uint32_t memory_usage()
+{
+  uint i = 2;
+  uint32_t usage = 0;
+  while (memory_index[i] != (byte*) MEMORY_INDEX_END)
+  {
+    if (memory_index[i] != MEMORY_EMPTY)
+    {
+      usage += (uint32_t) memory_index[i + 1] - (uint32_t) memory_index[i];
+    }
+    i += 2;
+  }
+  return usage;
+}
+
 // initializes kernel memory pointer -> allows for kmalloc() calls
 void memory_init()
 {
@@ -45,6 +61,7 @@ void memory_init()
   {
     memory_index[i] = MEMORY_EMPTY;
   }
+  memory_index[MEMORY_INDEX_BASE_SIZE] = (byte*) MEMORY_INDEX_END;
 }
 
 // copy memory
