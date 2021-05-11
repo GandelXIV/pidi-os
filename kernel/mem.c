@@ -57,11 +57,11 @@ uint32_t memory_usage_effective()
 {
   uint i = 2;  // remember, the first two bytes meta-data
   uint32_t usage = 0;
-  while (memory_index[i] != MEMORY_INDEX_END)
+  while (memory_index[i] != (byte*) MEMORY_INDEX_END)
   {
-    if (memory_index[i + 1] > usage)
+    if ((uint32_t) memory_index[i + 1] > usage)
     {
-      usage = memory_index[i + 1];
+      usage = (uint32_t) memory_index[i + 1];
     }
     i += 2;
   }

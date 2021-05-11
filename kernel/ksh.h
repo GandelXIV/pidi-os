@@ -46,6 +46,15 @@ byte ksh_interpret(char* command)
     kprints("Pidi OS\n");
     kprints("Version: 0.1.0\n");
   }
+  else if (strcmp(command, "mem\n"))
+  {
+    kprints("Memory usage:");
+    kprints("\ntotal: ");
+    kprintu32(memory_usage());
+    kprints("\neffective: ");
+    kprintu32(memory_usage_effective());
+    kprintc('\n');
+  }
   else
   {
     kprints("Unknown command\n");
