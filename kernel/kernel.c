@@ -36,6 +36,7 @@ void main()
 	memory_init();									// init kernel memory for kmalloc()
 	isr_install();									// set all isr handlers
 	keyboard_init();								// nothing yet
+	kmalloc(2);											// dont touch this...
 	kprints(KERNEL_INFO_INIT_DONE);
 	kprints(KERNEL_INFO_WELCOME);
 	// main
