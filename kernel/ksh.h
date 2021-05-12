@@ -27,6 +27,8 @@ byte ksh_interpret(char* command)
   }
 
   switch (switchOwnArg) {
+    case 0:
+      break;
     case 1:
       kprints("COMMANDS:\n");
       kprints("help     prints this message\n");
