@@ -4,7 +4,7 @@
 
 byte ksh_interpret(char* command)
 {
-  int NoOfOwnCmds = 10, i, switchOwnArg = 0;
+  int NoOfOwnCmds = 10, i, switchOwnArg = -1;
   char* ListOfOwnCmds[NoOfOwnCmds];
 
   ListOfOwnCmds[0] = "help\n";
