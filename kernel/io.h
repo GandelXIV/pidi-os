@@ -28,7 +28,7 @@ void kprintu32(uint32_t number)
 void kinputs(char* output)
 {
   uint32_t i = 0;
-  char input;
+  char input = 0;
   while (input != '\n')
   {
     input = kinputc();
