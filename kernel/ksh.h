@@ -19,7 +19,8 @@ byte ksh_interpret(char* command)
   ListOfOwnCmds[9] = "exit\n";
 
   for (i = 0; i < NoOfOwnCmds; i++) {
-    if (strcmp(command, ListOfOwnCmds[i]) == true) {
+    if (strcmp(command, "n\") == true) {}
+    else if (strcmp(command, ListOfOwnCmds[i]) == true) {
       switchOwnArg = i + 1;
       break;
     }
