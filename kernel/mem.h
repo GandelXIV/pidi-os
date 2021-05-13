@@ -3,7 +3,7 @@
 #include "../lib/type.h"
 #endif
 
-#define KERNEL_MEMORY_OFFSET_START 0x10000
+#define KERNEL_MEMORY_OFFSET_START 0x10000  // +1
 #define KERNEL_MEMORY_OFFSET_END	0xffffffff
 
 #define MEMORY_INDEX_BASE_SIZE 1000
