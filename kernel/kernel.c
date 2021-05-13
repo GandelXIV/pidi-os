@@ -6,6 +6,7 @@
 #endif
 
 #include "../firmware/isr.h"
+#include "../drivers/display_color.h"
 
 #include "messages.h"
 #include "mem.h"
