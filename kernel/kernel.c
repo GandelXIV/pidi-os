@@ -4,12 +4,6 @@
 #ifndef INCLUDED_TYPE
 #include "../lib/type.h"
 #endif
-#ifndef INCLUDED_STRING
-#include "../lib/string.h"
-#endif
-#ifndef INCLUDED_CONV
-#include "../lib/conv.h"
-#endif
 
 #include "../firmware/isr.h"
 

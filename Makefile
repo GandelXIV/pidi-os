@@ -24,9 +24,9 @@ dist/os-image.tar: dist/os-image.bin
 	tar -cf dist/os-image.tar dist/os-image.bin
 
 # kernel
-mk/kernel.bin: mk/kernel.o mk/kernel_entry.o mk/display.o mk/keyboard.o mk/port.o mk/idt.o mk/isr.o mk/interrupt.o mk/mem.o
+mk/kernel.bin: mk/kernel.o mk/kernel_entry.o mk/display.o mk/keyboard.o mk/port.o mk/idt.o mk/isr.o mk/interrupt.o mk/mem.o mk/io.o
 	@echo "[!] LINKING KERNEL"
-	$(LINKER) -no-PIE -o mk/kernel.bin -Ttext 0x1000 mk/kernel_entry.o mk/kernel.o mk/display.o mk/port.o mk/keyboard.o mk/idt.o mk/interrupt.o mk/isr.o mk/mem.o --oformat binary
+	$(LINKER) -no-PIE -o mk/kernel.bin -Ttext 0x1000 mk/kernel_entry.o mk/kernel.o mk/display.o mk/port.o mk/keyboard.o mk/idt.o mk/interrupt.o mk/isr.o mk/mem.o mk/io.o --oformat binary
 
 mk/kernel.o: kernel/kernel.c kernel/*.h kernel/debug.h drivers/*.h firmware/*.h  lib/*
 	@echo "[!] COMPILING KERNEL CORE"
@@ -34,6 +34,9 @@ mk/kernel.o: kernel/kernel.c kernel/*.h kernel/debug.h drivers/*.h firmware/*.h 
 
 mk/mem.o: kernel/mem.c kernel/mem.h lib/type.h
 	$(C_COMPILER) $(C_FLAGS) kernel/mem.c -o mk/mem.o
+
+mk/io.o: kernel/io.c kernel/io.h drivers/*.h lib/type.h lib/conv.h
+	$(C_COMPILER) $(C_FLAGS) kernel/io.c -o mk/io.o
 
 kernel/debug.h:
 	touch kernel/debug.h
