@@ -13,6 +13,7 @@ dist/os-image.bin: mk/ dist/ mk/kernel.bin mk/bootsect.bin
 	@echo "[!] BUILDING OS IMAGE"
 	cat mk/bootsect.bin mk/kernel.bin > dist/os-image.bin
 	chmod +x dist/os-image.bin
+	@echo "[+] SUCCESSFULL BUILD"
 
 dist/os-image.zip: dist/os-image.bin
 	@echo "[!] BUILDING IMAGE ZIP"
