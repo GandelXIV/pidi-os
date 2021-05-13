@@ -26,7 +26,7 @@ dist/os-image.tar: dist/os-image.bin
 # kernel
 mk/kernel.bin: mk/kernel.o mk/kernel_entry.o mk/display.o mk/keyboard.o mk/port.o mk/idt.o mk/isr.o mk/interrupt.o mk/mem.o mk/io.o mk/ksh.o
 	@echo "[!] LINKING KERNEL"
-	$(LINKER) -no-PIE -o mk/kernel.bin -Ttext 0x1000 mk/kernel_entry.o mk/kernel.o mk/display.o mk/port.o mk/keyboard.o mk/idt.o mk/interrupt.o mk/isr.o mk/mem.o mk/io.o mk/ksh.o --oformat binary
+	$(LINKER) -o mk/kernel.bin -Ttext 0x1000 mk/kernel_entry.o mk/kernel.o mk/display.o mk/port.o mk/keyboard.o mk/idt.o mk/interrupt.o mk/isr.o mk/mem.o mk/io.o mk/ksh.o --oformat binary
 
 mk/kernel.o: kernel/kernel.c kernel/*.h kernel/debug.h drivers/*.h firmware/*.h  lib/*
 	@echo "[!] COMPILING KERNEL CORE"
