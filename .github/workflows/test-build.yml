@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: setup
+    - name: install build dependencies
       run: sudo apt install -y nasm  # install dependencies
     - name: make
       run: make
