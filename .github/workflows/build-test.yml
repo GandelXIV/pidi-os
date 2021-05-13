@@ -12,6 +12,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
       - name: make
+      - uses: actions/checkout@v2
       - run: apt install -y make gcc nasm; make
