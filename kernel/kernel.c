@@ -18,7 +18,7 @@
 #include "io.h"
 #include "ksh.h"
 
-static bool kernel_running;
+static bool kernel_running
 
 void kpanic(char* msg)
 {
