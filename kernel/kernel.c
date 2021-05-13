@@ -1,4 +1,3 @@
-// config
 #define DISPLAY_THEME GREEN_ON_BLACK
 
 #ifndef INCLUDED_TYPE
