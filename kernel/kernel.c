@@ -1,4 +1,4 @@
-#define DISPLAY_THEME GREEN_ON_BLACK
+#include "config.h"
 
 #ifndef INCLUDED_TYPE
 #include "../lib/type.h"
@@ -51,7 +51,7 @@ void main()
 	kprints(KERNEL_INFO_WELCOME);
 	// main
 	#include "debug.h" // this file is build on first compilation
-	ksh_start();
+	KERNEL_STARTUP
 	while (kernel_running)
 	{
 
