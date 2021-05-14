@@ -24,6 +24,11 @@ void* kmalloc(uint32_t size)
         kprints(KERNEL_PANIC_MEMORY_INDEX_FULL);
         while (true) {}   // infinite loop
       }
+      if (size + last_page_end + 1 >= KERNEL_MEMORY_OFFSET_END)
+      {
+        kprints(KERNEL_PANIC_MEMORY_FULL);
+        while (true) {}   // infinite loop
+      }
       // allocate
       memory_index[i] = last_page_end + 1;
       memory_index[i + 1] = memory_index[i] + size;
@@ -77,6 +82,10 @@ uint32_t memory_usage_effective()
 void memory_init()
 {
   memory_index[0] = (byte*) KERNEL_MEMORY_OFFSET_START;
+  kprintu32(KERNEL_MEMORY_OFFSET_START);
+  kprintc('\n');
+  kprintu32(KERNEL_MEMORY_OFFSET_END);
+  kprintc('\n');
   memory_index[1] = (byte*) KERNEL_MEMORY_OFFSET_START;
   for (uint i = 2 /* we dont want to overwrite KERNEL_MEMORY_OFFSET_START*/; i < sizeof(memory_index); ++i)
   {
