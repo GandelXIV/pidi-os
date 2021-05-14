@@ -16,8 +16,8 @@
 #include "mem.h"
 #endif
 
-#ifndef INCLUDED_MESSAGES
-#include "messages.h"
+#ifndef INCLUDED_KMSG
+#include "kmsg.h"
 #endif
 
 #ifndef INCLUDED_IO

@@ -3,7 +3,10 @@
 #include "../lib/type.h"
 #endif
 
-#include "messages.h"
+#ifndef INCLUDED_KMSG
+#include "kmsg.h"
+#endif
+
 #include "config.h"
 
 #define MEMORY_INDEX_BASE_SIZE 1000

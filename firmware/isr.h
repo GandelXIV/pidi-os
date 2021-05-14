@@ -8,8 +8,8 @@
 #include "../drivers/display.h"
 #endif
 
-#ifndef INCLUDED_MESSAGES
-#include "../kernel/messages.h"
+#ifndef INCLUDED_KMSG
+#include "../kernel/kmsg.h"
 #endif
 
 #ifndef INCLUDED_TYPE

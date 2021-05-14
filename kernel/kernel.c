@@ -12,8 +12,8 @@
 #include "../firmware/isr.h"
 #endif
 
-#ifndef INCLUDED_MESSAGES
-#include "messages.h"
+#ifndef INCLUDED_KMSG
+#include "kmsg.h"
 #endif
 
 #ifndef INCLUDED_MEM
@@ -30,16 +30,16 @@ static bool kernel_running;
 void main()
 {
 	// init
-	kprints(KERNEL_INFO_ENTERED);
-	kprints(KERNEL_INFO_INIT_START);
+	kinfo(KERNEL_INFO_ENTERED);
+	kinfo(KERNEL_INFO_INIT_START);
 	kernel_running = true;					// start kernel loop
 	display_theme(DISPLAY_THEME);	  // set display theme
 	memory_init();									// init kernel memory for kmalloc()
 	isr_install();									// set all isr handlers
 	keyboard_init();								// nothing yet
 	kmalloc(2);											// dont touch this...
-	kprints(KERNEL_INFO_INIT_DONE);
-	kprints(KERNEL_INFO_WELCOME);
+	kinfo(KERNEL_INFO_INIT_DONE);
+	kinfo(KERNEL_INFO_WELCOME);
 	// main
 	#include "debug.h" // this file is build on first compilation
 	KERNEL_STARTUP
