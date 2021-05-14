@@ -12,10 +12,6 @@
 #include "../firmware/isr.h"
 #endif
 
-#ifndef INCLUDED_COLOR
-#include "../drivers/display_color.h"
-#endif
-
 #ifndef INCLUDED_MESSAGES
 #include "messages.h"
 #endif
@@ -30,11 +26,6 @@
 
 static bool kernel_running;
 
-void kpanic(char* msg)
-{
-	kprints(msg);
-	while (true) {}		// infinite loop
-}
 
 void main()
 {

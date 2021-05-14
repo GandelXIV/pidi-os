@@ -12,6 +12,10 @@
 #include "../lib/conv.h"
 #endif
 
+#ifndef INCLUDED_COLOR
+#include "../drivers/display_color.h"
+#endif
+
 void kprinti(int number)
 {
   char output [12];
