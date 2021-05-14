@@ -11,17 +11,17 @@
 
 void uint32_to_str(char* output, uint32_t number)
 {
-    const char digits[] = "0123456789abcdefghijklmnopqrstuvwxyz";
+    const char digits[] = "0123456789";
     int i = 0;
     int j;
     unsigned remains;
     char c;
-    
+
     do
     {
-      remains = number % 32;
+      remains = number % 10;
       output[i++] = digits[remains];
-      number = number / 32;
+      number = number / 10;
     } while (number != 0);
     output[i] = '\0';
 
