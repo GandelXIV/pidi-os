@@ -30,19 +30,20 @@
 
 byte ksh_interpret(char* command)
 {
-  int NoOfOwnCmds = 10, i, switchOwnArg = -1;
+  int NoOfOwnCmds = 11, i, switchOwnArg = -1;
   char* ListOfOwnCmds[NoOfOwnCmds];
 
   ListOfOwnCmds[0] = "help\n";
   ListOfOwnCmds[1] = "echo\n";
   ListOfOwnCmds[2] = "wipe\n";
   ListOfOwnCmds[3] = "pidiver\n";
-  ListOfOwnCmds[4] = "mem\n";
+  ListOfOwnCmds[4] = "memstat\n";
   ListOfOwnCmds[5] = "blue\n";
   ListOfOwnCmds[6] = "cyan\n";
   ListOfOwnCmds[7] = "gray\n";
   ListOfOwnCmds[8] = "hacker\n";
   ListOfOwnCmds[9] = "exit\n";
+  ListOfOwnCmds[10] = "memtest\n";
 
   for (i = 0; i < NoOfOwnCmds; i++) {
     if (strcmp(command, "\n") == true) {switchOwnArg = 0;}
@@ -61,7 +62,8 @@ byte ksh_interpret(char* command)
       kprints("echo     prints 'echo' to the display\n");
       kprints("wipe     cleans screen\n");
       kprints("pidiver  get kernel version\n");
-      kprints("mem      get allocated memory usage\n");
+      kprints("memstat  get allocated memory usage\n");
+      kprints("memtest  allocate memory for test\n");
       kprints("blue     changes the theme to white on blue\n");
       kprints("cyan     changes the theme to white on cyan\n");
       kprints("gray     changes the theme to gray on black\n");
@@ -101,6 +103,9 @@ byte ksh_interpret(char* command)
     case 10:
       display_clear();
       return KSH_EXIT;
+    case 11:
+      kmalloc(1);
+      break;
     default:
       kprints(KERNEL_INFO_SHELL_UNKNOWN_COMMAND);
       break;
