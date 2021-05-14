@@ -26,11 +26,6 @@
 
 static bool kernel_running;
 
-void kpanic(char* msg)
-{
-	kprints(msg);
-	while (true) {}		// infinite loop
-}
 
 void main()
 {
