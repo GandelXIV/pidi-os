@@ -3,6 +3,7 @@
 #include "../lib/type.h"
 #endif
 
+#include "messages.h"
 #include "config.h"
 
 #define MEMORY_INDEX_BASE_SIZE 1000

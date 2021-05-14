@@ -19,6 +19,11 @@ void* kmalloc(uint32_t size)
     // verify
     if (memory_index[next_page_start_id] - last_page_end > size)
     {
+      if (i >= MEMORY_INDEX_BASE_SIZE)
+      {
+        kprints(KERNEL_PANIC_MEMORY_INDEX_FULL);
+        while (true) {}   // infinite loop
+      }
       // allocate
       memory_index[i] = last_page_end + 1;
       memory_index[i + 1] = memory_index[i] + size;

@@ -14,4 +14,5 @@
 #define KERNEL_INFO_WELCOME "[KERNEL.INFO] Welcome to Pidi-OS!\n"           // end of main() startup
 #define KERNEL_INFO_SHELL_WELCOME "Type 'help' to open ksh manual\n"        // on kshstart()
 #define KERNEL_INFO_SHELL_UNKNOWN_COMMAND "Unknown command\n"               // ksh input unkown
+#define KERNEL_PANIC_MEMORY_INDEX_FULL "[KERNEL.PANIC] Kernel index is full!\nCAUSE: It seems that there have been too many memory pages allocated...\n" // when memory_index is full
 #define FIRMWARE_ERROR_ISR_EXCEPTION "[FIRMWARE.ERROR] isr expection: "

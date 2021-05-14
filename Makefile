@@ -32,7 +32,7 @@ mk/kernel.o: kernel/kernel.c kernel/*.h kernel/debug.h drivers/*.h firmware/*.h 
 	@echo "[!] COMPILING KERNEL CORE"
 	$(C_COMPILER) $(C_FLAGS) kernel/kernel.c -o mk/kernel.o
 
-mk/mem.o: kernel/mem.c kernel/mem.h lib/type.h
+mk/mem.o: kernel/mem.c kernel/mem.h lib/type.h kernel/messages.h
 	@echo "[!] COMPILING MEM"
 	$(C_COMPILER) $(C_FLAGS) kernel/mem.c -o mk/mem.o
 
