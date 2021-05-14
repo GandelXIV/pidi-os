@@ -1,4 +1,4 @@
-#define INCLUDED_TYPE "cookie"
+#define INCLUDED_TYPE
 typedef unsigned long uint32_t;
 typedef unsigned char byte;
 typedef unsigned char* bytes;

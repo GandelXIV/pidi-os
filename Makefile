@@ -24,24 +24,20 @@ dist/os-image.tar: dist/os-image.bin
 	tar -cf dist/os-image.tar dist/os-image.bin
 
 # kernel
-mk/kernel.bin: mk/kernel.o mk/kernel_entry.o mk/display.o mk/keyboard.o mk/port.o mk/idt.o mk/isr.o mk/interrupt.o mk/mem.o mk/io.o mk/ksh.o
+mk/kernel.bin: mk/kernel.o mk/kernel_entry.o mk/display.o mk/keyboard.o mk/port.o mk/idt.o mk/isr.o mk/interrupt.o mk/mem.o
 	@echo "[!] LINKING KERNEL"
-	$(LINKER) -o mk/kernel.bin -Ttext 0x1000 mk/kernel_entry.o mk/kernel.o mk/display.o mk/port.o mk/keyboard.o mk/idt.o mk/interrupt.o mk/isr.o mk/mem.o mk/io.o mk/ksh.o --oformat binary
+	$(LINKER) -o mk/kernel.bin -Ttext 0x1000 mk/kernel_entry.o mk/kernel.o mk/display.o mk/port.o mk/keyboard.o mk/idt.o mk/interrupt.o mk/isr.o mk/mem.o --oformat binary
 
 mk/kernel.o: kernel/kernel.c kernel/*.h kernel/debug.h drivers/*.h firmware/*.h  lib/*
 	@echo "[!] COMPILING KERNEL CORE"
 	$(C_COMPILER) $(C_FLAGS) kernel/kernel.c -o mk/kernel.o
 
 mk/mem.o: kernel/mem.c kernel/mem.h lib/type.h
+	@echo "[!] COMPILING MEM"
 	$(C_COMPILER) $(C_FLAGS) kernel/mem.c -o mk/mem.o
 
-mk/io.o: kernel/io.c kernel/io.h drivers/*.h lib/type.h lib/conv.h
-	$(C_COMPILER) $(C_FLAGS) kernel/io.c -o mk/io.o
-
-mk/ksh.o: kernel/ksh.c kernel/ksh.h
-	$(C_COMPILER) $(C_FLAGS) kernel/ksh.c -o mk/ksh.o
-
 kernel/debug.h:
+	@echo "[!] CREATING DEBUG.H"
 	touch kernel/debug.h
 
 mk/kernel_entry.o: kernel/kernel_entry.asm

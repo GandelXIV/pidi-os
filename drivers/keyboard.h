@@ -1,3 +1,21 @@
+#define INCLUDED_KEYBOARD
+
+#ifndef INCLUDED_DISPLAY
+#include "display.h"
+#endif
+
+#ifndef INCLUDED_PORT
+#include "../firmware/port.h"
+#endif
+
+#ifndef INCLUDED_ISR
+#include "../firmware/isr.h"
+#endif
+
+#ifndef INCLUDED_TYPE
+#include "../lib/type.h"
+#endif
+
 #define REG_KEYBOARD_DATA 0x60
 #define REG_KEYBOARD_CTRL 0x64
 #define UNPRINTALBE_CHAR 0x0

@@ -1,4 +1,4 @@
-#define INCLUDED_MEM "cookie"
+#define INCLUDED_MEM
 #ifndef INCLUDED_TYPE
 #include "../lib/type.h"
 #endif

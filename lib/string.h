@@ -1,4 +1,4 @@
-#define INCLUDED_STRING "cookie"
+#define INCLUDED_STRING
 #ifndef INCLUDED_TYPE
 #include "type.h"
 #endif

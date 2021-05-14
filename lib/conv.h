@@ -1,4 +1,4 @@
-#define INCLUDED_CONV "cookie"
+#define INCLUDED_CONV
 #ifndef INCLUDED_TYPE
 #include "type.h"
 #endif

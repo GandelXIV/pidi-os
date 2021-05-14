@@ -1,7 +1,13 @@
-#define INCLUDED_DISPLAY "cookie"
+#define INCLUDED_DISPLAY
+
+#ifndef INCLUDED_PORT
+#include "../firmware/port.h"
+#endif
+
 #ifndef INCLUDED_TYPE
 #include "../lib/type.h"
 #endif
+
 #define VIDEO_MEMORY_OFFSET (uint*) 0xb8000
 
 // config

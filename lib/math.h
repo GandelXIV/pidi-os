@@ -1,4 +1,4 @@
-#define INCLUDED_MATH "cookie"
+#define INCLUDED_MATH
 
 double pow(double base, double exponent)  // only positive numbers
 {

@@ -21,7 +21,7 @@ colors = {
 }
 
 def generate():
-    result = ""
+    result = "#define INCLUDED_COLOR\n"
     for background_color in colors:
         for text_color in colors:
             if background_color != text_color:

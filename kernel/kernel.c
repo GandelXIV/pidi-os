@@ -1,17 +1,32 @@
-// config
 #define DISPLAY_THEME GREEN_ON_BLACK
 
 #ifndef INCLUDED_TYPE
 #include "../lib/type.h"
 #endif
 
-#include "../firmware/isr.h"
-#include "../drivers/display_color.h"
-
-#include "messages.h"
-#include "mem.h"
+#ifndef INCLUDED_IO
 #include "io.h"
+#endif
+
+#ifndef INCLUDED_ISR
+#include "../firmware/isr.h"
+#endif
+
+#ifndef INCLUDED_COLOR
+#include "../drivers/display_color.h"
+#endif
+
+#ifndef INCLUDED_MESSAGES
+#include "messages.h"
+#endif
+
+#ifndef INCLUDED_MEM
+#include "mem.h"
+#endif
+
+#ifndef INCLUDED_KSH
 #include "ksh.h"
+#endif
 
 static bool kernel_running;
 

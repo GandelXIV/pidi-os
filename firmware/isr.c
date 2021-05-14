@@ -1,7 +1,4 @@
 #include "isr.h"
-#include "idt.h"
-#include "../drivers/display.h"
-#include "../kernel/messages.h"
 
 isr_t interrupt_handlers[256];
 

@@ -1,3 +1,4 @@
+#define INCLUDED_COLOR
 #define BLUE_ON_BLACK 0x01
 #define GREEN_ON_BLACK 0x02
 #define CYAN_ON_BLACK 0x03

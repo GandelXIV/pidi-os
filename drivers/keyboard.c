@@ -1,8 +1,4 @@
-#include "../lib/type.h"
 #include "keyboard.h"
-#include "display.h"
-#include "../firmware/port.h"
-#include "../firmware/isr.h"
 
 KeyEvent keyboard_old_event;
 byte scan_code_set;

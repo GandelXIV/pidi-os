@@ -1,4 +1,8 @@
+#define INCLUDED_IDT
+
+#ifndef INCLUDED_TYPE
 #include "../lib/type.h"
+#endif
 
 // Segment selectors
 #define KERNEL_CS 0x08

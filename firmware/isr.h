@@ -1,5 +1,24 @@
+#define INCLUDED_ISR
+
+#ifndef INCLUDED_IDT
+#include "idt.h"
+#endif
+
+#ifndef INCLUDED_DISPLAY
+#include "../drivers/display.h"
+#endif
+
+#ifndef INCLUDED_MESSAGES
+#include "../kernel/messages.h"
+#endif
+
+#ifndef INCLUDED_TYPE
 #include "../lib/type.h"
+#endif
+
+#ifndef INCLUDED_PORT
 #include "port.h"
+#endif
 
 extern void isr0();
 extern void isr1();
