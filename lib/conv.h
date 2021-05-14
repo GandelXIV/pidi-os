@@ -11,36 +11,26 @@
 
 void uint32_to_str(char* output, uint32_t number)
 {
-  if (number == 0)
-  {
-      strcpy(output, "0"); // lol
-      return;
-  }
-  // get digit count
-  uint32_t length = 0;
-  while ( number > pow(10, (double) length) )
-  {
-    ++length;
-  }
-  uint32_t write_index = 0;
-  while ( length > 0 )
-  {
-    // xyz >= 10^d
-    // too lazy to fix this mess
-    uint32_t exp = (uint32_t) pow(10, (double) length - 1);
-    if (number >= exp * 9){ output[write_index] = '9'; number -= exp * 9; }
-    else if (number >= exp * 8){ output[write_index] = '8'; number -= exp * 8; }
-    else if (number >= exp * 7) { output[write_index] = '7'; number -= exp * 7; }
-    else if (number >= exp * 6) { output[write_index] = '6'; number -= exp * 6; }
-    else if (number >= exp * 5) { output[write_index] = '5'; number -= exp * 5; }
-    else if (number >= exp * 4) { output[write_index] = '4'; number -= exp * 4; }
-    else if (number >= exp * 3) { output[write_index] = '3'; number -= exp * 3; }
-    else if (number >= exp * 2) { output[write_index] = '2'; number -= exp * 2; }
-    else if (number >= exp) { output[write_index] = '1'; number -= exp; }
-    else { output[write_index] = '0'; }
-    --length;
-    ++write_index;
-  }
+    const char digits[] = "0123456789abcdefghijklmnopqrstuvwxyz";
+    int i, j;
+    unsigned remains;
+    char c;
+
+    i = 0;
+    do
+        {
+            remains = number % 32;
+            output[i++] = digits[remains];
+            number = number / 32;
+        } while (number != 0);
+    output[i] = '\0';
+
+    for (j = 0, i--; j < i; j++, i--)
+        {
+            c = output[j];
+            output[j] = output[i];
+            output[i] = c;
+        }
 }
 
 void uint_to_str(char* output, uint number)
