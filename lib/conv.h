@@ -12,25 +12,25 @@
 void uint32_to_str(char* output, uint32_t number)
 {
     const char digits[] = "0123456789abcdefghijklmnopqrstuvwxyz";
-    int i, j;
+    int i = 0;
+    int j;
     unsigned remains;
     char c;
-
-    i = 0;
+    
     do
-        {
-            remains = number % 32;
-            output[i++] = digits[remains];
-            number = number / 32;
-        } while (number != 0);
+    {
+      remains = number % 32;
+      output[i++] = digits[remains];
+      number = number / 32;
+    } while (number != 0);
     output[i] = '\0';
 
     for (j = 0, i--; j < i; j++, i--)
-        {
-            c = output[j];
-            output[j] = output[i];
-            output[i] = c;
-        }
+    {
+      c = output[j];
+      output[j] = output[i];
+      output[i] = c;
+    }
 }
 
 void uint_to_str(char* output, uint number)
