@@ -1,3 +1,4 @@
+#!/bin/sh
 touch kernel/debug.h
 mkdir -p dist/
 mkdir -p mk/
