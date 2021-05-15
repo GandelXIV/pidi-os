@@ -1,3 +1,4 @@
+touch kernel/debug.h
 mkdir dist/
 mkdir mk/
 mkdir mk/bin/
