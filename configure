@@ -1,0 +1,6 @@
+mkdir dist/
+mkdir mk/
+mkdir mk/bin/
+mkdir mk/kernel/
+mkdir mk/drivers/
+mkdir mk/firmware/

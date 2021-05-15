@@ -15,5 +15,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: install build dependencies
       run: sudo apt install -y nasm  # install dependencies
+    - name: configure
+      run: ./configure
     - name: make
       run: make
