@@ -1,7 +1,8 @@
 touch kernel/debug.h
-mkdir dist/
-mkdir mk/
-mkdir mk/bin/
-mkdir mk/kernel/
-mkdir mk/drivers/
-mkdir mk/firmware/
+mkdir -p dist/
+mkdir -p mk/
+mkdir -p mk/bin/
+mkdir -p mk/kernel/
+mkdir -p mk/drivers/
+mkdir -p mk/firmware/
+mkdir -p mk/lib/
