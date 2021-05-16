@@ -27,6 +27,26 @@ void set_cursor_offset(uint offset)
 
 void set_cursor_position(uint column, uint row) { set_cursor_offset(get_offset(column, row)); }
 
+uint32_t get_cursor_position_x(void)
+{
+  uint32_t pos = 0;
+  port_byte_out(0x3D4, 0x0F);
+  pos |= port_byte_in(0x3D5);
+  port_byte_out(0x3D4, 0x0E);
+  pos |= ((uint32_t)port_byte_in(0x3D5)) << 8;
+  return pos % DISPLAY_WIDTH;
+}
+
+uint32_t get_cursor_position_y(void)
+{
+  uint32_t pos = 0;
+  port_byte_out(0x3D4, 0x0F);
+  pos |= port_byte_in(0x3D5);
+  port_byte_out(0x3D4, 0x0E);
+  pos |= ((uint32_t)port_byte_in(0x3D5)) << 8;
+  return pos / DISPLAY_WIDTH;
+}
+
 // draws character at specific offset
 void display_char(char character, uint offset, byte color)
 {
