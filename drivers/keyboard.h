@@ -83,7 +83,7 @@ typedef enum
   KEY_DOWN_SPACE,
   KEY_DOWN_RIGHT_ALT,
   KEY_DOWN_RIGHT_SUPER,
-  KEY_DOWN_FM,
+  KEY_DOWN_FN,
   KEY_DOWN_RIGHT_CTRL,
   // more keys
 } KeyEvent;
