@@ -47,6 +47,7 @@ KeyEvent scan_code_to_key_event(byte code)
       case 0x27: return KEY_DOWN_SEMICOLON;
       case 0x28: return KEY_DOWN_BACKSLASH;
       case 0x29: return KEY_DOWN_BACKTICK;
+      case 0x2A: return KEY_DOWN_LEFT_SHIFT;
       case 0x2B: return KEY_DOWN_BACKSLASH;
       case 0x2C: return KEY_DOWN_Z;
       case 0x2D: return KEY_DOWN_X;
@@ -58,6 +59,7 @@ KeyEvent scan_code_to_key_event(byte code)
       case 0x33: return KEY_DOWN_COMMA;
       case 0x34: return KEY_DOWN_DOT;
       case 0x35: return KEY_DOWN_FRONT_SLASH;
+      case 0x36: return KEY_DOWN_RIGHT_SHIFT;
       case 0x39: return KEY_DOWN_SPACE;
       case 0x53: return KEY_DOWN_DOT;
       /*
