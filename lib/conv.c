@@ -24,6 +24,30 @@ void uint32_to_str(char* output, uint32_t number)
     }
 }
 
+void uint32_to_hex(char* output, uint32_t number)
+{
+    const char digits[] = "0123456789ABCDEF";
+    int i = 0;
+    int j;
+    unsigned remains;
+    char c;
+
+    do
+    {
+      remains = number % 16;
+      output[i++] = digits[remains];
+      number = number / 16;
+    } while (number != 0);
+    output[i] = '\0';
+
+    for (j = 0, i--; j < i; j++, i--)
+    {
+      c = output[j];
+      output[j] = output[i];
+      output[i] = c;
+    }
+}
+
 void uint_to_str(char* output, uint number)
 {
   uint32_to_str(output, (uint32_t) number);
