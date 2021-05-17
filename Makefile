@@ -3,7 +3,7 @@
 
 # config
 C_COMPILER ?= gcc -m32
-C_FLAGS ?= -ffreestanding -fno-PIC -Os -c
+C_FLAGS ?= -ffreestanding -fno-pie -Os -c
 ASM_COMPILER ?= nasm
 ASM_FORMAT ?= elf32
 LINKER ?= ld -m elf_i386 -s
