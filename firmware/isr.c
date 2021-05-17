@@ -109,7 +109,7 @@ char *exception_messages[] = {
 // temporary
 void isr_handler(registers_t r)
 {
-    kprints(FIRMWARE_ERROR_ISR_EXCEPTION);
+    kerror(FIRMWARE_ERROR_ISR_EXCEPTION);
     kprints(exception_messages[r.int_no]);
     kprintc('\n');
 }

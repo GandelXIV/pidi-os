@@ -2,25 +2,25 @@
 
 void kinfo(char* msg)
 {
-  kprints("[KERNEL.INFO] ");
+  kprints("[INFO] ");
   kprints(msg);
 }
 
 void kwarning(char* msg)
 {
-  kprints("[KERNEL.WARNING] ");
+  kprints("[WARNING] ");
   kprints(msg);
 }
 
 void kerror(char* msg)
 {
-  kprints("[KERNEL.ERROR] ");
+  kprints("[ERROR] ");
   kprints(msg);
 }
 
 void kpanic(char* msg)
 {
-  kprints("[KERNEL.PANIC] ");
+  kprints("[PANIC] ");
   kprints(msg);
   while (1) { /* infinite loop */ }
 }
