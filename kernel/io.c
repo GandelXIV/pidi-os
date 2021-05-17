@@ -21,6 +21,13 @@ void kprintu32(uint32_t number)
   kprints(output);
 }
 
+void kprinthex(uint32_t number)
+{
+  char* output;
+  uint32_to_hex(output, number);
+  kprints(output);
+}
+
 void kinputs(char* output)
 {
   uint32_t i = 0;
