@@ -17,7 +17,7 @@
 #endif
 
 #define REG_KEYBOARD_DATA 0x60
-#define REG_KEYBOARD_CTRL 0x64
+#define REG_KEYBOARD_CMD 0x64
 #define UNPRINTALBE_CHAR 0x0
 
 typedef enum
