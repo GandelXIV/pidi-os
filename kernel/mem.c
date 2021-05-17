@@ -60,6 +60,11 @@ uint32_t memory_usage()
   return usage;
 }
 
+uint32_t memory_total()
+{
+  return KERNEL_MEMORY_OFFSET_END - KERNEL_MEMORY_OFFSET_START;
+}
+
 // gets the total size of allocated memory, counting freed pages
 uint32_t memory_usage_effective()
 {
