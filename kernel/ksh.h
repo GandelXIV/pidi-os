@@ -24,6 +24,10 @@
 #include "io.h"
 #endif
 
+#ifndef INCLUDED_NEOFETCH
+#include "ksh_advanced_cmds/neofetch.h"
+#endif
+
 #define KSH_OK 0x0
 #define KSH_EXIT 0x1
 #define KSH_INPUT_BUFFER 31
@@ -43,7 +47,8 @@ byte ksh_interpret(char* command)
     "hacker\n",
     "exit\n",
     "memtest\n",
-    "theme-default\n"
+    "theme-default\n",
+    "neofetch\n"
   };
 
   for (int i = 0; i < sizeof(ListOfOwnCmds) / sizeof(char*); i++) {
@@ -110,6 +115,9 @@ byte ksh_interpret(char* command)
       break;
     case 12:
       display_theme(DISPLAY_THEME);
+      break;
+    case 13:
+      neofetch();
       break;
     default:
       kprints(KERNEL_INFO_SHELL_UNKNOWN_COMMAND);
