@@ -30,22 +30,23 @@
 
 byte ksh_interpret(char* command)
 {
-  int NoOfOwnCmds = 11, i, switchOwnArg = -1;
-  char* ListOfOwnCmds[NoOfOwnCmds];
+  int switchOwnArg = -1;
+  char* ListOfOwnCmds [] = {
+    "help\n",
+    "echo\n",
+    "wipe\n",
+    "pidiver\n",
+    "memstat\n",
+    "theme-blue\n",
+    "theme-cyan\n",
+    "theme-gray\n",
+    "hacker\n",
+    "exit\n",
+    "memtest\n",
+    "theme-default\n"
+  };
 
-  ListOfOwnCmds[0] = "help\n";
-  ListOfOwnCmds[1] = "echo\n";
-  ListOfOwnCmds[2] = "wipe\n";
-  ListOfOwnCmds[3] = "pidiver\n";
-  ListOfOwnCmds[4] = "memstat\n";
-  ListOfOwnCmds[5] = "blue\n";
-  ListOfOwnCmds[6] = "cyan\n";
-  ListOfOwnCmds[7] = "gray\n";
-  ListOfOwnCmds[8] = "hacker\n";
-  ListOfOwnCmds[9] = "exit\n";
-  ListOfOwnCmds[10] = "memtest\n";
-
-  for (i = 0; i < NoOfOwnCmds; i++) {
+  for (int i = 0; i < sizeof(ListOfOwnCmds) / sizeof(char*); i++) {
     if (strcmp(command, "\n") == true) {switchOwnArg = 0;}
     else if (strcmp(command, ListOfOwnCmds[i]) == true) {
       switchOwnArg = i + 1;
@@ -58,16 +59,17 @@ byte ksh_interpret(char* command)
       break;
     case 1:
       kprints("COMMANDS:\n");
-      kprints("help     prints this message\n");
-      kprints("echo     prints 'echo' to the display\n");
-      kprints("wipe     cleans screen\n");
-      kprints("pidiver  get kernel version\n");
-      kprints("memstat  get allocated memory usage\n");
-      kprints("memtest  allocate memory for test\n");
-      kprints("blue     changes the theme to white on blue\n");
-      kprints("cyan     changes the theme to white on cyan\n");
-      kprints("gray     changes the theme to gray on black\n");
-      kprints("exit     exit kernel shell\n");
+      kprints("help           prints this message\n");
+      kprints("echo           prints 'echo' to the display\n");
+      kprints("wipe           cleans screen\n");
+      kprints("pidiver        get kernel version\n");
+      kprints("memstat        get allocated memory usage\n");
+      kprints("memtest        allocate memory for test\n");
+      kprints("theme-blue     changes the theme to white on blue\n");
+      kprints("theme-cyan     changes the theme to white on cyan\n");
+      kprints("theme-gray     changes the theme to gray on black\n");
+      kprints("theme-default  changes the theme back to default\n");
+      kprints("exit            exit kernel shell\n");
       break;
     case 2:
       kprints("Hello World!\n");
@@ -105,6 +107,9 @@ byte ksh_interpret(char* command)
       return KSH_EXIT;
     case 11:
       kmalloc(1);
+      break;
+    case 12:
+      display_theme(DISPLAY_THEME);
       break;
     default:
       kprints(KERNEL_INFO_SHELL_UNKNOWN_COMMAND);
