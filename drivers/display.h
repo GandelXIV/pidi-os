@@ -8,6 +8,7 @@
 #include "../lib/type.h"
 #endif
 
+#include "../kernel/config.h"
 #define VIDEO_MEMORY_OFFSET (uint*) 0xb8000
 
 // config
@@ -37,3 +38,4 @@ void display_clear();
 void display_scroll();
 void display_theme(char color);
 void display_deletec();
+void display_init();

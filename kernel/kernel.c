@@ -42,7 +42,8 @@ void main()
 	isr_install();									// set all isr handlers
 	keyboard_init();								// nothing yet
 	kmalloc(2);											// dont touch this...
-	smbios_init();
+	smbios_init();									// get hardware info
+	display_init();									// init some display vars
 	kinfo(KERNEL_INFO_INIT_DONE);
 	kinfo(KERNEL_INFO_WELCOME);
 	// main

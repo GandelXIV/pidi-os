@@ -167,3 +167,8 @@ void display_deletec()
   kprintc(0);
   set_cursor_offset(get_cursor_offset()-1);
 }
+
+void display_init()
+{
+  display_theme_current = DISPLAY_THEME;
+}
