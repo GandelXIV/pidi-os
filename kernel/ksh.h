@@ -28,6 +28,10 @@
 #include "../firmware/smbios.h"
 #endif
 
+#ifndef INCLUDED_VERSION
+#include "version.h"
+#endif
+
 #define KSH_OK 0x0
 #define KSH_EXIT 0x1
 #define KSH_INPUT_BUFFER 31
@@ -84,7 +88,9 @@ byte ksh_interpret(char* command)
       break;
     case 4:
       kprints("Pidi OS\n");
-      kprints("Version: 0.1.1\n");
+      kprints("Version: ");
+      kprints(OS_VERSION);
+      kprintc('\n');
       break;
     case 5:
       kprints("Memory usage:");
@@ -117,9 +123,14 @@ byte ksh_interpret(char* command)
       display_theme(DISPLAY_THEME);
       break;
     case 13:
-      kprints("OS: Pidi OS\n");
-      kprints("BIOS: ");
+      kprints("OS: Pidi OS ");
+      kprints(OS_VERSION);
+      kprintc('\n');
+      kprints("BIOS name: ");
       kprints(smbios_get_bios_name());
+      kprintc('\n');
+      kprints("BIOS version:");
+      kprints(smbios_get_bios_version());
       kprintc('\n');
       break;
     default:
