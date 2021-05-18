@@ -24,8 +24,8 @@
 #include "io.h"
 #endif
 
-#ifndef INCLUDED_NEOFETCH
-#include "ksh_advanced_cmds/neofetch.h"
+#ifndef INCLUDED_SMBIOS
+#include "../firmware/smbios.h"
 #endif
 
 #define KSH_OK 0x0
@@ -117,7 +117,10 @@ byte ksh_interpret(char* command)
       display_theme(DISPLAY_THEME);
       break;
     case 13:
-      neofetch();
+      kprints("OS: Pidi OS\n");
+      kprints("BIOS: ");
+      kprints(smbios_get_bios_name());
+      kprintc('\n');
       break;
     default:
       kprints(KERNEL_INFO_SHELL_UNKNOWN_COMMAND);

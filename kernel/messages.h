@@ -17,3 +17,4 @@
 #define KERNEL_PANIC_MEMORY_INDEX_FULL "Kernel index is full!\nCAUSE: Too many kmalloc() calls...\n" // when memory_index is full
 #define KERNEL_PANIC_MEMORY_FULL "Kernel memory is full!\nCAUSE: The system ran out of RAM..."
 #define FIRMWARE_ERROR_ISR_EXCEPTION "isr expection: "
+#define FIRMWARE_ERROR_SMBIOS_ENRTY_MISSING "Could not find SMBIOS entry\n"

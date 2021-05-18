@@ -24,6 +24,10 @@
 #include "ksh.h"
 #endif
 
+#ifndef INCLUDED_SMBIOS
+#include "../firmware/smbios.h"
+#endif
+
 static bool kernel_running;
 
 
@@ -38,6 +42,7 @@ void main()
 	isr_install();									// set all isr handlers
 	keyboard_init();								// nothing yet
 	kmalloc(2);											// dont touch this...
+	smbios_init();
 	kinfo(KERNEL_INFO_INIT_DONE);
 	kinfo(KERNEL_INFO_WELCOME);
 	// main
