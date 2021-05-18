@@ -39,3 +39,4 @@ void display_scroll();
 void display_theme(char color);
 void display_deletec();
 void display_init();
+void set_cursor_position(uint column, uint row);
