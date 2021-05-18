@@ -82,7 +82,7 @@ byte ksh_interpret(char* command)
       kprints("theme-cyan     changes the theme to white on cyan\n");
       kprints("theme-gray     changes the theme to gray on black\n");
       kprints("theme-default  changes the theme back to default\n");
-      kprints("neofetch       show info about your system")
+      kprints("neofetch       show info about your system\n");
       kprints("exit           exit kernel shell\n");
       break;
     case 2:
