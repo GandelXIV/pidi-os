@@ -1,3 +1,4 @@
+#pragma once
 #include "../../drivers/display.h"
 
 void neofetch()

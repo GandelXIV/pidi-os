@@ -1,36 +1,12 @@
-#define INCLUDED_KSH
-
-#ifndef INCLUDED_TYPE
+#pragma once
 #include "../lib/type.h"
-#endif
-
-#ifndef INCLUDED_STRING
 #include "../lib/string.h"
-#endif
-
-#ifndef INCLUDED_COLOR
 #include "../drivers/display_color.h"
-#endif
-
-#ifndef INCLUDED_MEM
 #include "mem.h"
-#endif
-
-#ifndef INCLUDED_KMSG
 #include "kmsg.h"
-#endif
-
-#ifndef INCLUDED_IO
 #include "io.h"
-#endif
-
-#ifndef INCLUDED_SMBIOS
 #include "../firmware/smbios.h"
-#endif
-
-#ifndef INCLUDED_VERSION
 #include "version.h"
-#endif
 
 char* theme;
 

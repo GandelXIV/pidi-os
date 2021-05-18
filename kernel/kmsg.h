@@ -1,8 +1,6 @@
-#define INCLUDED_KMSG
+#pragma once
 
-#ifndef INCLUDED_MESSAGES
 #include "messages.h"
-#endif
 
 void kinfo(char* msg);
 void kwarning(char* msg);

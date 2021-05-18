@@ -1,14 +1,9 @@
-#define INCLUDED_DISPLAY
+#pragma once
 
-#ifndef INCLUDED_PORT
 #include "../firmware/port.h"
-#endif
-
-#ifndef INCLUDED_TYPE
 #include "../lib/type.h"
-#endif
-
 #include "../kernel/config.h"
+
 #define VIDEO_MEMORY_OFFSET (uint*) 0xb8000
 
 // config

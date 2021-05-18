@@ -1,7 +1,7 @@
-#define INCLUDED_STRING
-#ifndef INCLUDED_TYPE
+#pragma once
+
 #include "type.h"
-#endif
+
 
 uint strlen(char* string);
 void strcpy(char* dest, char* src);

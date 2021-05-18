@@ -1,13 +1,8 @@
-#define INCLUDED_CONV
-#ifndef INCLUDED_TYPE
+#pragma once
+
 #include "type.h"
-#endif
-#ifndef INCLUDED_MATH
 #include "math.h"
-#endif
-#ifndef INCLUDED_STRING
 #include "string.h"
-#endif
 
 
 void uint32_to_str(char* output, uint32_t number);

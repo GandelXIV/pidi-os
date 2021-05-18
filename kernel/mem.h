@@ -1,12 +1,6 @@
-#define INCLUDED_MEM
-#ifndef INCLUDED_TYPE
+#pragma once
 #include "../lib/type.h"
-#endif
-
-#ifndef INCLUDED_KMSG
 #include "kmsg.h"
-#endif
-
 #include "config.h"
 
 #define MEMORY_EMPTY 0x0

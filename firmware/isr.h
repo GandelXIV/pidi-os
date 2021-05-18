@@ -1,24 +1,10 @@
-#define INCLUDED_ISR
+#pragma once
 
-#ifndef INCLUDED_IDT
 #include "idt.h"
-#endif
-
-#ifndef INCLUDED_DISPLAY
 #include "../drivers/display.h"
-#endif
-
-#ifndef INCLUDED_KMSG
 #include "../kernel/kmsg.h"
-#endif
-
-#ifndef INCLUDED_TYPE
 #include "../lib/type.h"
-#endif
-
-#ifndef INCLUDED_PORT
 #include "port.h"
-#endif
 
 extern void isr0();
 extern void isr1();

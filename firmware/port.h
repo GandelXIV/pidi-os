@@ -1,8 +1,6 @@
-#define INCLUDED_PORT
+#pragma once
 
-#ifndef INCLUDED_TYPE
 #include "../lib/type.h"
-#endif
 
 byte port_byte_in (word port);
 void port_byte_out (word port, byte data);
