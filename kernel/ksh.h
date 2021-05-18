@@ -32,6 +32,10 @@
 #include "version.h"
 #endif
 
+char* theme;
+
+#include "advanced_cmds/neofetch.h"
+
 #define KSH_OK 0x0
 #define KSH_EXIT 0x1
 #define KSH_INPUT_BUFFER 31
@@ -102,15 +106,19 @@ byte ksh_interpret(char* command)
       break;
     case 6:
       display_theme(WHITE_ON_BLUE);
+      theme = "WHITE_ON_BLUE";
       break;
     case 7:
       display_theme(WHITE_ON_CYAN);
+      theme = "WHITE_ON_CYAN";
       break;
     case 8:
       display_theme(GRAY_ON_BLACK);
+      theme = "GRAY_ON_BLACK";
       break;
     case 9:
       display_theme(GREEN_ON_BLACK);
+      theme = "GREEN_ON_BLACK";
       kprints_color("You are hacker now!\n", RED_ON_WHITE);
       break;
     case 10:
@@ -121,17 +129,10 @@ byte ksh_interpret(char* command)
       break;
     case 12:
       display_theme(DISPLAY_THEME);
+      theme = "GREEN_ON_BLACK";
       break;
     case 13:
-      kprints("OS: Pidi OS ");
-      kprints(OS_VERSION);
-      kprintc('\n');
-      kprints("BIOS name: ");
-      kprints(smbios_get_bios_name());
-      kprintc('\n');
-      kprints("BIOS version:");
-      kprints(smbios_get_bios_version());
-      kprintc('\n');
+      neofetch();
       break;
     default:
       kprints(KERNEL_INFO_SHELL_UNKNOWN_COMMAND);
@@ -142,6 +143,7 @@ byte ksh_interpret(char* command)
 
 void ksh_start()
 {
+  theme = "GREEN_ON_BLACK";
   char c [KSH_INPUT_BUFFER];
   for (uint i = 0; i < KSH_INPUT_BUFFER; ++i)
   {
