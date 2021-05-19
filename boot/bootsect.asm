@@ -40,6 +40,7 @@ BEGIN_PM:
     call print_string_pm
     jmp $ ; if the kernel crashes
 
+BOOT_DRIVE db 0
 %include "boot/config.asm"
 
 ; padding

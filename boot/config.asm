@@ -1,4 +1,3 @@
-BOOT_DRIVE db 0
 KERNEL_SIZE db 33 ; ammount of sectors in which the kernel is located
 STACK_OFFSET db 9000
 KERNEL_OFFSET equ 0x1000
