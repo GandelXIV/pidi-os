@@ -49,7 +49,7 @@ uint32_t memory_usage()
 {
   uint i = 2;  // remember, the first two bytes meta-data
   uint32_t usage = 0;
-  while (memory_index[i] != (byte*) MEMORY_INDEX_END)
+  while (i < MEMORY_INDEX_BASE_SIZE)
   {
     if (memory_index[i] != MEMORY_EMPTY)
     {
@@ -70,7 +70,7 @@ uint32_t memory_usage_effective()
 {
   uint i = 2;  // remember, the first two bytes meta-data
   uint32_t usage = 0;
-  while (memory_index[i] != (byte*) MEMORY_INDEX_END)
+  while (i < MEMORY_INDEX_BASE_SIZE)
   {
     if ((uint32_t) memory_index[i + 1] > usage)
     {
@@ -90,7 +90,6 @@ void memory_init()
   {
     memory_index[i] = MEMORY_EMPTY;
   }
-  memory_index[MEMORY_INDEX_BASE_SIZE] = (byte*) MEMORY_INDEX_END;
 }
 
 // copy memory

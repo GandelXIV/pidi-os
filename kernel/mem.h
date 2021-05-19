@@ -4,7 +4,6 @@
 #include "config.h"
 
 #define MEMORY_EMPTY 0x0
-#define MEMORY_INDEX_END 0x1
 
 void* kmalloc(uint32_t size);
 void kfree(void* memory);
