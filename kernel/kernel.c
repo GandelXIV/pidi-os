@@ -7,6 +7,7 @@
 #include "mem.h"
 #include "ksh.h"
 #include "../firmware/smbios.h"
+#include "../fs/fscore.h"
 
 static bool kernel_running;
 
@@ -24,6 +25,7 @@ void main()
 	kmalloc(2);											// dont touch this...
 	smbios_init();									// get hardware info
 	display_init();									// init some display vars
+	fsinit();												// init file system
 	kinfo(KERNEL_INFO_INIT_DONE);
 	kinfo(KERNEL_INFO_WELCOME);
 	// main
