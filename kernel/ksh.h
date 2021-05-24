@@ -11,6 +11,7 @@
 char* theme;
 
 #include "advanced_cmds/neofetch.h"
+#include "advanced_cmds/list_files.h"
 
 #define KSH_OK 0x0
 #define KSH_EXIT 0x1
@@ -32,7 +33,8 @@ byte ksh_interpret(char* command)
     "exit\n",
     "memtest\n",
     "theme-default\n",
-    "neofetch\n"
+    "neofetch\n",
+    "ls\n"
   };
 
   for (int i = 0; i < sizeof(ListOfOwnCmds) / sizeof(char*); i++) {
@@ -60,6 +62,7 @@ byte ksh_interpret(char* command)
       kprints("theme-default  changes the theme back to default\n");
       kprints("neofetch       show info about your system\n");
       kprints("exit           exit kernel shell\n");
+      kprints("ls             list all files\n");
       break;
     case 2:
       kprints("Hello World!\n");
@@ -110,6 +113,9 @@ byte ksh_interpret(char* command)
       break;
     case 13:
       neofetch();
+      break;
+    case 14:
+      list_files();
       break;
     default:
       kprints(KERNEL_INFO_SHELL_UNKNOWN_COMMAND);
