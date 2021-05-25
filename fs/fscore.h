@@ -19,5 +19,6 @@ void fsinit();
 int file_remove(char* name);
 int file_make(char* name);
 char* file_get_name(int id);
+int file_get_id(char* name);
 int file_count();
 bool file_exists(char* name);

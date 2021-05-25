@@ -50,6 +50,17 @@ char* file_get_name(int id)
   return findex[id]->name;
 }
 
+int file_get_id(char* name)
+{
+  for (int i = 0; i < findex_end; ++i)
+  {
+    if (strcmp(findex[i]->name, name))
+    {
+      return i;
+    }
+  }
+}
+
 // create new file
 int file_make(char* name)
 {
@@ -77,6 +88,7 @@ int file_remove(char* name)
     {
       findex[i] = 0;
       findex_end -= 1;
+      return OK;
     }
   }
   return FILE_NOT_FOUND;
