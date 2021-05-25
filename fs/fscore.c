@@ -45,7 +45,7 @@ int file_count()
   return findex_end;
 }
 
-char* file_get(int id)
+char* file_get_name(int id)
 {
   return findex[id]->name;
 }
