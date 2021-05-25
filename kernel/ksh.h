@@ -21,24 +21,26 @@ byte ksh_interpret(char* command)
 {
   int switchOwnArg = -1;
   char* ListOfOwnCmds [] = {
-    "help\n",
-    "echo\n",
-    "wipe\n",
-    "pidiver\n",
-    "memstat\n",
-    "theme-blue\n",
-    "theme-cyan\n",
-    "theme-gray\n",
-    "hacker\n",
-    "exit\n",
-    "memtest\n",
-    "theme-default\n",
-    "neofetch\n",
-    "ls\n"
+    "help",
+    "echo",
+    "wipe",
+    "pidiver",
+    "memstat",
+    "theme-blue",
+    "theme-cyan",
+    "theme-gray",
+    "hacker",
+    "exit",
+    "memtest",
+    "theme-default",
+    "neofetch",
+    "ls",
+    "mk",
+    "rm"
   };
 
   for (int i = 0; i < sizeof(ListOfOwnCmds) / sizeof(char*); i++) {
-    if (strcmp(command, "\n") == true) {switchOwnArg = 0;}
+    if (*command == 0) {switchOwnArg = 0;}
     else if (strcmp(command, ListOfOwnCmds[i]) == true) {
       switchOwnArg = i + 1;
       break;
@@ -63,6 +65,8 @@ byte ksh_interpret(char* command)
       kprints("neofetch       show info about your system\n");
       kprints("exit           exit kernel shell\n");
       kprints("ls             list all files\n");
+      kprints("mk             create new file\n");
+      kprints("rm             delete file\n");
       break;
     case 2:
       kprints("Hello World!\n");
@@ -116,6 +120,24 @@ byte ksh_interpret(char* command)
       break;
     case 14:
       list_files();
+      break;
+    case 15:
+      kprints("Enter file name: ");
+      char file_to_make [255];
+      kinputs(file_to_make);
+      if (file_make(file_to_make) == FILE_ALREADY_EXISTS)
+      {
+        kprints("File already exists!\n");
+      }
+      break;
+    case 16:
+      kprints("Enter file name: ");
+      char file_to_remove [255];
+      kinputs(file_to_remove);
+      if (file_remove(file_to_remove) == FILE_NOT_FOUND)
+      {
+        kprints("File not found!\n");
+      }
       break;
     default:
       kprints(KERNEL_INFO_SHELL_UNKNOWN_COMMAND);
