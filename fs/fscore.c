@@ -1,5 +1,7 @@
 #include "fscore.h"
 
+#define END_SECTOR 0
+
 struct SectorStruct
 {
   struct Sector* next;
@@ -72,8 +74,19 @@ int file_make(char* name)
   {
     return FILE_ALREADY_EXISTS;
   }
+  // allocate the file
   File* fp = kmalloc(sizeof(File));
   strcpy(fp->name, name);
+  // prepare the sector
+  Sector* fs = kmalloc(sizeof(Sector));
+  fp->first_sector = fs;
+  fs->next = END_SECTOR;
+  for (int i = 0; i < sizeof(fs->data); ++i)  // delete potentional data in the sector
+  {
+    fs->data[i] = 0;
+  }
+  fs->data[1] = "h";
+  // asign the file
   findex[findex_end] = fp;
   findex_end += 1;
   return OK;
@@ -94,9 +107,22 @@ int file_remove(char* name)
   return FILE_NOT_FOUND;
 }
 
+int file_size(char* name)
+{
+  File* fp = find_file(name);
+  Sector* fs = fp->first_sector;
+  // find the size
+  int size = sizeof(fs->data);
+  while (fs->next != END_SECTOR)
+  {
+    fs = fs->next;   // jump to next sector
+    size += sizeof(fs->data);
+  }
+  return size;
+}
 
 void fsinit()
 {
-  file_make("this_is_a_test_file.info");
-  file_make("another_test_file.stat");
+  file_make("test-file.info");
+  file_make("another-file.stat");
 }
