@@ -137,13 +137,24 @@ int file_read(char* output, char* filename)
   return OK;
 }
 
+int file_write(char* filename, char* data)
+{
+  if (!file_exists(filename))
+  {
+    return FILE_NOT_FOUND;
+  }
+  File* fp = find_file(filename);
+  Sector* fs = fp->first_sector;
+  strcpy(fs->data, data);
+  return OK;
+}
+
 void fsinit()
 {
   file_make("test-file.info");
   file_make("another-file.stat");
-  /*
+  file_write("test-file.info", "hi");
   char* output = kmalloc(file_size("test-file.info"));
   file_read(output, "test-file.info");
   kprints(output);
-  */
 }
