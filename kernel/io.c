@@ -1,5 +1,22 @@
 #include "io.h"
 
+
+// print string to cursor with color
+void kprints_color(char* text, char color)
+{
+	while (*text != 0)
+	{
+		kprintc_color(*text, color);
+		++text;
+	}
+}
+
+// print string to cursor with default color
+void kprints(char* text)
+{
+  kprints_color(text, TRANSPARENT);
+}
+
 void kprinti(int number)
 {
   char output [12];

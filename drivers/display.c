@@ -94,20 +94,17 @@ void kprintc(char character)
 	kprintc_color(character, TRANSPARENT);
 }
 
-// print string to cursor with color
-void kprints_color(char* text, char color)
+void kprintm_color(char* text, uint32_t depth, byte color)
 {
-	while (*text != 0)
-	{
-		kprintc_color(*text, color);
-		++text;
-	}
+  for (uint32_t i = 0; i < depth; ++i)
+  {
+    kprintc_color(text[i], color);
+  }
 }
 
-// print string to cursor with default color
-void kprints(char* text)
+void kprintm(char* text, uint32_t depth)
 {
-  kprints_color(text, TRANSPARENT);
+  kprintm_color(text, depth, TRANSPARENT);
 }
 
 void display_theme(char color)   // draw a specific color on whole display
