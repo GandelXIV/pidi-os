@@ -121,8 +121,12 @@ int file_size(char* name)
 }
 
 // write content of file to $output
-void file_read(char* output, char* filename)
+int file_read(char* output, char* filename)
 {
+  if (!file_exists(filename))
+  {
+    return FILE_NOT_FOUND;
+  }
   File* fp = find_file(filename);
   Sector* fs = fp->first_sector;
   do {
@@ -130,7 +134,10 @@ void file_read(char* output, char* filename)
     output += sizeof(fs->data);
     fs = fs->next;
   } while(fs->next != 0);
+  return OK;
 }
+
+int file_write()
 
 void fsinit()
 {
