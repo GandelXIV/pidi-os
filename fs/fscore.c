@@ -85,7 +85,6 @@ int file_make(char* name)
   {
     fs->data[i] = 0;
   }
-  fs->data[1] = "h";
   // asign the file
   findex[findex_end] = fp;
   findex_end += 1;
@@ -121,8 +120,25 @@ int file_size(char* name)
   return size;
 }
 
+// write content of file to $output
+void file_read(char* output, char* filename)
+{
+  File* fp = find_file(filename);
+  Sector* fs = fp->first_sector;
+  do {
+    memcpy(output, fs->data, sizeof(fs->data));
+    output += sizeof(fs->data);
+    fs = fs->next;
+  } while(fs->next != 0);
+}
+
 void fsinit()
 {
   file_make("test-file.info");
   file_make("another-file.stat");
+  /*
+  char* output = kmalloc(file_size("test-file.info"));
+  file_read(output, "test-file.info");
+  kprints(output);
+  */
 }

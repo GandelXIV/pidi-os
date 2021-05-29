@@ -23,3 +23,4 @@ int file_get_id(char* name);
 int file_count();
 bool file_exists(char* name);
 int file_size(char* name);
+void file_read(char* output, char* filename);
