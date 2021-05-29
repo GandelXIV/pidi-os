@@ -65,6 +65,17 @@ int file_get_id(char* name)
   }
 }
 
+Sector* init_sector()
+{
+  Sector* fs = kmalloc(sizeof(Sector));
+  fs->next = END_SECTOR;
+  for (int i = 0; i < FS_SECTOR_DATA_SIZE; ++i)  // delete potentional data in the sector
+  {
+    fs->data[i] = 0;
+  }
+  return fs;
+}
+
 // create new file
 int file_make(char* name)
 {
@@ -80,13 +91,7 @@ int file_make(char* name)
   File* fp = kmalloc(sizeof(File));
   strcpy(fp->name, name);
   // prepare the sector
-  Sector* fs = kmalloc(sizeof(Sector));
-  fp->first_sector = fs;
-  fs->next = END_SECTOR;
-  for (int i = 0; i < FS_SECTOR_DATA_SIZE; ++i)  // delete potentional data in the sector
-  {
-    fs->data[i] = 0;
-  }
+  fp->first_sector = init_sector();
   // asign the file
   findex[findex_end] = fp;
   findex_end += 1;
