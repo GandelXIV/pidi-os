@@ -137,8 +137,6 @@ int file_read(char* output, char* filename)
   return OK;
 }
 
-int file_write()
-
 void fsinit()
 {
   file_make("test-file.info");
