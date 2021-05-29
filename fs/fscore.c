@@ -1,11 +1,13 @@
 #include "fscore.h"
 
+#define FS_SECTOR_DATA_SIZE FS_SECTOR_SIZE - sizeof(struct Sector*)
+
 #define END_SECTOR 0
 
 struct SectorStruct
 {
   struct Sector* next;
-  byte data[FS_SECTOR_SIZE - sizeof(struct Sector*)];
+  byte data[FS_SECTOR_DATA_SIZE];
 };
 typedef struct SectorStruct Sector;
 
@@ -81,7 +83,7 @@ int file_make(char* name)
   Sector* fs = kmalloc(sizeof(Sector));
   fp->first_sector = fs;
   fs->next = END_SECTOR;
-  for (int i = 0; i < sizeof(fs->data); ++i)  // delete potentional data in the sector
+  for (int i = 0; i < FS_SECTOR_DATA_SIZE; ++i)  // delete potentional data in the sector
   {
     fs->data[i] = 0;
   }
@@ -130,31 +132,24 @@ int file_read(char* output, char* filename)
   File* fp = find_file(filename);
   Sector* fs = fp->first_sector;
   do {
-    memcpy(output, fs->data, sizeof(fs->data));
-    output += sizeof(fs->data);
+    for (int i = 0; i < FS_SECTOR_DATA_SIZE; ++i)
+    {
+      output[i] = fs->data[i];
+    }
+    output += FS_SECTOR_DATA_SIZE;
     fs = fs->next;
   } while(fs->next != 0);
   return OK;
 }
 
-int file_write(char* filename, char* data)
-{
-  if (!file_exists(filename))
-  {
-    return FILE_NOT_FOUND;
-  }
-  File* fp = find_file(filename);
-  Sector* fs = fp->first_sector;
-  strcpy(fs->data, data);
-  return OK;
-}
 
 void fsinit()
 {
   file_make("test-file.info");
   file_make("another-file.stat");
-  file_write("test-file.info", "hi");
+  /*
   char* output = kmalloc(file_size("test-file.info"));
   file_read(output, "test-file.info");
   kprints(output);
+  */
 }
