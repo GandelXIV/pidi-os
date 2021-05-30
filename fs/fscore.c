@@ -197,5 +197,5 @@ void fsinit()
   file_make("test");
   file_make("test2");
   file_remove("test");
-  file_writes("test2", "Hello World\n");
+  file_writes("test2", "test\n");
 }
