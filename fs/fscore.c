@@ -128,7 +128,7 @@ int file_size(char* name)
 }
 
 // write content of file to $output
-int file_read(char* output, char* filename)
+int file_read(char* filename, char* output)
 {
   if (!file_exists(filename))
   {
@@ -152,9 +152,12 @@ void fsinit()
 {
   file_make("test-file.info");
   file_make("another-file.stat");
-  /*
-  char* output = kmalloc(file_size("test-file.info"));
-  file_read(output, "test-file.info");
-  kprints(output);
-  */
+
+
+
+  #define FILE_NAME "test-file.info"
+  char* text = kmalloc( file_size(FILE_NAME) );
+  file_read(FILE_NAME, text);
+  kprints(text);
+  kfree(text);
 }
