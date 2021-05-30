@@ -8,6 +8,7 @@ void ksh_write_to_file()
   kprints("Enter data: ");
   kinputs(data);
 
+  file_clean(filename);
   file_writes(filename, data);
 
   kfree(filename);

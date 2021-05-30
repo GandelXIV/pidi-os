@@ -187,6 +187,22 @@ int file_write(char* filename, char* data, uint32_t depth)
   return OK;
 }
 
+void file_clean(char* filename)
+{
+  if (!file_exists(filename)) return FILE_NOT_FOUND;
+  File* fp = find_file(filename);
+  Sector* fs = fp->first_sector;
+  do {
+    for (int i = 0; i < FS_SECTOR_DATA_SIZE; ++i)
+    {
+      fs->data[i] = 0;
+    }
+    Sector* next_fs = fs->next;
+    fs = next_fs;
+  } while(fs != 0);
+  return OK;
+}
+
 int file_writes(char* filename, char* text)
 {
   return file_write(filename, text, strlen(text));
