@@ -106,6 +106,16 @@ int file_remove(char* name)
   {
     if (strcmp(findex[i]->name, name))
     {
+      File* fp = findex[i];
+      Sector* fs = fp->first_sector;
+      Sector* last_fs;
+      // free the data sectors
+      do {
+        last_fs = fs;
+        kfree(last_fs);
+        fs = fs->next;
+      } while(fs != END_SECTOR);
+      kfree(fp);
       findex[i] = 0;
       return OK;
     }
@@ -150,9 +160,7 @@ int file_read(char* filename, char* output)
 
 void fsinit()
 {
-  file_make("test-file.info");
-  file_make("g");
-  file_make("another-file.stat");
-  file_remove("test-file.info");
-  file_remove("g");
+  file_make("test");
+  file_make("test2");
+  file_remove("test");
 }
