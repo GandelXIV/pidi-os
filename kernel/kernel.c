@@ -29,7 +29,7 @@ void main()
 	kinfo(KERNEL_INFO_INIT_DONE);
 	kinfo(KERNEL_INFO_WELCOME);
 	// main
-	#include "debug.h" // this file is build on first compilation
+	#include "debug.h" // this file is created in ./configure
 	KERNEL_STARTUP
 	while (kernel_running)
 	{
