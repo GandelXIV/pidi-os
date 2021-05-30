@@ -94,7 +94,7 @@ void kprintc(char character)
 	kprintc_color(character, TRANSPARENT);
 }
 
-void kprintm_color(char* text, uint32_t depth, byte color)
+void kprint_color(char* text, uint32_t depth, byte color)
 {
   for (uint32_t i = 0; i < depth; ++i)
   {
@@ -102,9 +102,9 @@ void kprintm_color(char* text, uint32_t depth, byte color)
   }
 }
 
-void kprintm(char* text, uint32_t depth)
+void kprint(char* text, uint32_t depth)
 {
-  kprintm_color(text, depth, TRANSPARENT);
+  kprint_color(text, depth, TRANSPARENT);
 }
 
 void display_theme(char color)   // draw a specific color on whole display

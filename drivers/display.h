@@ -29,6 +29,8 @@ void kprints(char* text);
 void kprints_color(char* text, char color);
 void kprintc(char character);
 void kprintc_color(char character, char color);
+void kprint(char* text, uint32_t depth);
+void kprint_color(char* text, uint32_t depth, byte color);
 void display_clear();
 void display_scroll();
 void display_theme(char color);
