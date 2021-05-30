@@ -51,7 +51,8 @@ int file_count()
 
 char* file_get_name(int id)
 {
-  return findex[id]->name;
+  if (findex[id] != 0) return findex[id]->name;
+  return FILE_NOT_FOUND;
 }
 
 int file_get_id(char* name)
@@ -106,7 +107,6 @@ int file_remove(char* name)
     if (strcmp(findex[i]->name, name))
     {
       findex[i] = 0;
-      findex_end -= 1;
       return OK;
     }
   }
@@ -151,13 +151,8 @@ int file_read(char* filename, char* output)
 void fsinit()
 {
   file_make("test-file.info");
+  file_make("g");
   file_make("another-file.stat");
-
-
-
-  #define FILE_NAME "test-file.info"
-  char* text = kmalloc( file_size(FILE_NAME) );
-  file_read(FILE_NAME, text);
-  kprints(text);
-  kfree(text);
+  file_remove("test-file.info");
+  file_remove("g");
 }

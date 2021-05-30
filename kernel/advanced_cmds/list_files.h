@@ -4,9 +4,14 @@
 
 void list_files()
 {
+  char* name;
   for (int i = 0; i < file_count(); ++i)
   {
-    kprints(file_get_name(i));
-    kprintc('\n');
+    name = file_get_name(i);
+    if (name != FILE_NOT_FOUND)
+    {
+      kprints(name);
+      kprintc('\n');
+    }
   }
 }
