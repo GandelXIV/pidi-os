@@ -182,10 +182,14 @@ int file_write(char* filename, char* data, uint32_t depth)
       Sector* last_fs = fs;
       last_fs->next = init_sector();
       fs = last_fs->next;
-
     }
   }
   return OK;
+}
+
+int file_writes(char* filename, char* text)
+{
+  return file_write(filename, text, strlen(text));
 }
 
 void fsinit()
@@ -193,5 +197,5 @@ void fsinit()
   file_make("test");
   file_make("test2");
   file_remove("test");
-  file_write("test2", "Hello World\n", 12);
+  file_writes("test2", "Hello World\n");
 }

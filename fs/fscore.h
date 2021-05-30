@@ -25,3 +25,4 @@ bool file_exists(char* name);
 int file_size(char* name);
 int file_read(char* filename, char* output);
 int file_write(char* filename, char* data, uint32_t depth);
+int file_writes(char* filename, char* text);
