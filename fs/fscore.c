@@ -140,10 +140,7 @@ int file_size(char* name)
 // write content of file to $output
 int file_read(char* filename, char* output)
 {
-  if (!file_exists(filename))
-  {
-    return FILE_NOT_FOUND;
-  }
+  if (!file_exists(filename)) return FILE_NOT_FOUND;
   File* fp = find_file(filename);
   Sector* fs = fp->first_sector;
   do {
@@ -152,15 +149,49 @@ int file_read(char* filename, char* output)
       output[i] = fs->data[i];
     }
     output += FS_SECTOR_DATA_SIZE;
-    fs = fs->next;
-  } while(fs->next != 0);
+    Sector* next_fs = fs->next;
+    fs = next_fs;
+  } while(fs != 0);
   return OK;
 }
 
+int file_write(char* filename, char* data, uint32_t depth)
+{
+  if (!file_exists(filename)) return FILE_NOT_FOUND;
+  File* fp = find_file(filename);
+  Sector* fs = fp->first_sector;
+
+  char* end = depth + data;
+  while (data < end)
+  {
+    if (end - data <= FS_SECTOR_DATA_SIZE)
+    {
+      for (int i = 0; i < end - data; ++i)
+      {
+        fs->data[i] = data[i];
+      }
+      data = end;
+    }
+    else
+    {
+      for (int i = 0; i < FS_SECTOR_DATA_SIZE; ++i)
+      {
+        fs->data[i] = data[i];
+      }
+      data += FS_SECTOR_DATA_SIZE;
+      Sector* last_fs = fs;
+      last_fs->next = init_sector();
+      fs = last_fs->next;
+
+    }
+  }
+  return OK;
+}
 
 void fsinit()
 {
   file_make("test");
   file_make("test2");
   file_remove("test");
+  file_write("test2", "Hello World\n", 12);
 }
