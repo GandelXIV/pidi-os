@@ -1,7 +1,7 @@
 #pragma once
 #include "../../drivers/display.h"
 
-void neofetch()
+void ksh_neofetch()
 {
   kprintc('\n');
   kprints("$$$$$$$\\  $$\\\n"

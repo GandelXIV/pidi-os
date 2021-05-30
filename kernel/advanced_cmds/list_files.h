@@ -2,7 +2,7 @@
 
 #include "../../fs/fscore.h"
 
-void list_files()
+void ksh_list_files()
 {
   char* name;
   for (int i = 0; i < file_count(); ++i)

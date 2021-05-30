@@ -12,6 +12,7 @@ char* theme;
 
 #include "advanced_cmds/neofetch.h"
 #include "advanced_cmds/list_files.h"
+#include "advanced_cmds/read_file.h"
 
 #define KSH_OK 0x0
 #define KSH_EXIT 0x1
@@ -36,7 +37,8 @@ byte ksh_interpret(char* command)
     "neofetch",
     "ls",
     "mk",
-    "rm"
+    "rm",
+    "in"
   };
 
   for (int i = 0; i < sizeof(ListOfOwnCmds) / sizeof(char*); i++) {
@@ -67,6 +69,7 @@ byte ksh_interpret(char* command)
       kprints("ls             list all files\n");
       kprints("mk             create new file\n");
       kprints("rm             delete file\n");
+      kprints("in             read file content\n");
       break;
     case 2:
       kprints("Hello World!\n");
@@ -116,10 +119,10 @@ byte ksh_interpret(char* command)
       theme = "GREEN_ON_BLACK";
       break;
     case 13:
-      neofetch();
+      ksh_neofetch();
       break;
     case 14:
-      list_files();
+      ksh_list_files();
       break;
     case 15:
       kprints("Enter file name: ");
@@ -138,6 +141,9 @@ byte ksh_interpret(char* command)
       {
         kprints("File not found!\n");
       }
+      break;
+    case 17:
+      ksh_read_file();
       break;
     default:
       kprints(KERNEL_INFO_SHELL_UNKNOWN_COMMAND);
