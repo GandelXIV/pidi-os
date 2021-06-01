@@ -77,16 +77,35 @@ Sector* init_sector()
   return fs;
 }
 
+bool file_valid(char* filename)
+{
+  char valid [] = FS_FILE_NAME_VALID_CHARS;
+  for (int i = 0; i < strlen(filename); ++i)
+  {
+    bool is_any = false;
+    for (int j = 0; j < strlen(valid); ++j)
+    {
+      if (filename[i] == valid[j]) is_any = true;
+    }
+    if (!is_any) return false;
+  }
+  return true;
+}
+
 // create new file
 int file_make(char* name)
 {
-  if (findex_end >= FS_MAX_FILE_COUNT)
+  if (findex_end > FS_MAX_FILE_COUNT)
   {
     return FILE_COUNT_MAX_EXCEEDED;
   }
   if (file_exists(name))
   {
     return FILE_ALREADY_EXISTS;
+  }
+  if (!file_valid(name))
+  {
+    return FILE_NAME_INVALID;
   }
   // allocate the file
   File* fp = kmalloc(sizeof(File));

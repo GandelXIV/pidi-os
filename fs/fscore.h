@@ -12,6 +12,7 @@
 #define OK 0
 #define FILE_COUNT_MAX_EXCEEDED 1
 #define FILE_ALREADY_EXISTS 2
+#define FILE_NAME_INVALID 3
 #define FILE_NOT_FOUND 1
 
 // declarations
