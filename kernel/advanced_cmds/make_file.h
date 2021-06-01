@@ -1,7 +1,7 @@
 void ksh_make_file()
 {
   kprints("Enter file name: ");
-  char file_to_make [255];
+  char* file_to_make = kmalloc(512);
   kinputs(file_to_make);
   int response = file_make(file_to_make);
   if (response == FILE_ALREADY_EXISTS)
@@ -16,4 +16,5 @@ void ksh_make_file()
   {
     kprints("There are too many files!\n");
   }
+  kfree(file_to_make);
 }
