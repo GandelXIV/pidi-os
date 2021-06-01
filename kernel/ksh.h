@@ -14,6 +14,8 @@ char* theme;
 #include "advanced_cmds/list_files.h"
 #include "advanced_cmds/read_file.h"
 #include "advanced_cmds/write_to_file.h"
+#include "advanced_cmds/make_file.h"
+#include "advanced_cmds/remove_file.h"
 
 #define KSH_OK 0x0
 #define KSH_EXIT 0x1
@@ -127,31 +129,10 @@ byte ksh_interpret(char* command)
       ksh_list_files();
       break;
     case 15:
-      kprints("Enter file name: ");
-      char file_to_make [255];
-      kinputs(file_to_make);
-      int response = file_make(file_to_make);
-      if (response == FILE_ALREADY_EXISTS)
-      {
-        kprints("File already exists!\n");
-      }
-      else if (response == FILE_NAME_INVALID)
-      {
-        kprints("File name can only contain digits and lower/upper case characters!\n");
-      }
-      else if (response == FILE_COUNT_MAX_EXCEEDED)
-      {
-        kprints("There are too many files!\n");
-      }
+      ksh_make_file();
       break;
     case 16:
-      kprints("Enter file name: ");
-      char file_to_remove [255];
-      kinputs(file_to_remove);
-      if (file_remove(file_to_remove) == FILE_NOT_FOUND)
-      {
-        kprints("File not found!\n");
-      }
+      ksh_remove_file();
       break;
     case 17:
       ksh_read_file();
