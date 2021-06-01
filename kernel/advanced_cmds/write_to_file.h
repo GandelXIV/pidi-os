@@ -7,6 +7,7 @@ void ksh_write_to_file()
   char* data = (char*) kmalloc(256);
   kprints("Enter data: ");
   kinputs(data);
+  stradd(data, "\n");
 
   file_clean(filename);
   file_writes(filename, data);
