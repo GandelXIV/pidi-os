@@ -25,8 +25,6 @@
 #define REG_DISPLAY_DATA 0x3d5
 
 // kernel API
-void kprints(char* text);
-void kprints_color(char* text, char color);
 void kprintc(char character);
 void kprintc_color(char character, char color);
 void kprint(char* text, uint32_t depth);
