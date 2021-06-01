@@ -12,3 +12,4 @@ void memcpy(byte* dest, byte* src, uint32_t size);
 uint32_t memory_usage();
 uint32_t memory_usage_effective();
 uint32_t memory_total();
+byte* get_memory_index();

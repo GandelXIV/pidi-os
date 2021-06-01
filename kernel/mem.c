@@ -5,6 +5,11 @@
 // odd index -> page end
 byte* memory_index [MEMORY_INDEX_BASE_SIZE];
 
+byte* get_memory_index()
+{
+  return memory_index;
+}
+
 // allocate memory
 void* kmalloc(uint32_t size)
 {
@@ -98,6 +103,5 @@ void memcpy(byte* dest, byte* src, uint32_t size)
   for (uint32_t i = 0; i < size; ++i)
   {
     dest[i] = src[i];
-    ++i;
   }
 }
