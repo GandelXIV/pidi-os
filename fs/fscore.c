@@ -52,7 +52,7 @@ int file_count()
 char* file_get_name(int id)
 {
   if (findex[id] != 0) return findex[id]->name;
-  return FILE_NOT_FOUND;
+  return (char*) FILE_NOT_FOUND;
 }
 
 int file_get_id(char* name)
@@ -206,7 +206,7 @@ int file_write(char* filename, char* data, uint32_t depth)
   return OK;
 }
 
-void file_clean(char* filename)
+int file_clean(char* filename)
 {
   if (!file_exists(filename)) return FILE_NOT_FOUND;
   File* fp = find_file(filename);
