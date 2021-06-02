@@ -127,17 +127,14 @@ void rowcpy(uint dest, uint src)
   // use the offset in memcpy
   for (uint32_t i = 0; i < DISPLAY_WIDTH + DISPLAY_SCROLL_DEBUG; ++i)
   {
-
     dest_offset[i] = src_offset[i];         // scroll text
-    dest_offset[i + 1] = src_offset[i + 1]; // scroll color
-    ++i;
   }
 }
 
 // scrol display by 1 row up
 void display_scroll()
 {
-  for (uint row = 1; row < DISPLAY_HEIGHT + 1; ++row) // the +1 overwrites the last row with the next invisble line
+  for (uint row = 1; row <= DISPLAY_HEIGHT; ++row) // the +1 overwrites the last row with the next invisble line
   {
     rowcpy(row - 1, row); // copy the current row to the last (row - 1)
   }
