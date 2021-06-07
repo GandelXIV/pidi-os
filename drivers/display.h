@@ -20,10 +20,6 @@
 // code
 #define INIT_VIDEO char* video_memory = (char*) VIDEO_MEMORY_OFFSET;
 
-// PORTs
-#define REG_DISPLAY_CTRL 0x3d4
-#define REG_DISPLAY_DATA 0x3d5
-
 // kernel API
 void kprintc(char character);
 void kprintc_color(char character, char color);
