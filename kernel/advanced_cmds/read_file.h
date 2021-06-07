@@ -6,7 +6,11 @@ void ksh_read_file()
   kinputs(filename);
   // read it
   char* content = (char*) kmalloc(file_size(filename));
-  file_read(filename, content);
+  int response = file_read(filename, content);
+  if (response == FILE_NOT_FOUND)
+  {
+    kprints("File not found\n");
+  }
   kprints(content);
   // cleanup
   kfree(filename);
