@@ -1,4 +1,4 @@
-#include "display-cursor.h"
+#include "display_cursor.h"
 #include "display.h"
 
 uint32_t get_cursor_position_x(void)

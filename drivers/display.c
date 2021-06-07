@@ -1,5 +1,5 @@
 #include "display.h"
-#include "display-cursor.h"
+#include "display_cursor.h"
 
 static byte display_theme_current;
 
