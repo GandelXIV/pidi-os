@@ -28,7 +28,7 @@ byte ksh_interpret(char* command)
     "help",
     "echo",
     "wipe",
-    "pidiver",
+    "version",
     "memstat",
     "theme-blue",
     "theme-cyan",
@@ -61,7 +61,7 @@ byte ksh_interpret(char* command)
       kprints("help           prints this message\n");
       kprints("echo           prints 'echo' to the display\n");
       kprints("wipe           cleans screen\n");
-      kprints("pidiver        get kernel version\n");
+      kprints("version        get kernel version\n");
       kprints("memstat        get allocated memory usage\n");
       kprints("memtest        allocate memory for test\n");
       kprints("theme-blue     changes the theme to white on blue\n");

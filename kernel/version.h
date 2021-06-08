@@ -1,2 +1,2 @@
 #define INCLUDED_VERSION
-#define OS_VERSION "0.2.0"
+#define OS_VERSION "0.2.1"
