@@ -42,26 +42,26 @@ mk/bin/bootsect.bin: boot/*
 	chmod +x $@
 
 # C files
-mk/kernel/%.o: kernel/%.c
+mk/kernel/%.o: kernel/%.c $(C_HEADERS)
 	$(C_COMPILER) $(C_FLAGS) -c $< -o $@
 
-mk/drivers/%.o: drivers/%.c
+mk/drivers/%.o: drivers/%.c $(C_HEADERS)
 	$(C_COMPILER) $(C_FLAGS) -c $< -o $@
 
-mk/firmware/%.o: firmware/%.c
+mk/firmware/%.o: firmware/%.c $(C_HEADERS)
 	$(C_COMPILER) $(C_FLAGS) -c $< -o $@
 
-mk/lib/%.o: lib/%.c
+mk/lib/%.o: lib/%.c $(C_HEADERS)
 	$(C_COMPILER) $(C_FLAGS) -c $< -o $@
 
-mk/fs/%.o: fs/%.c
+mk/fs/%.o: fs/%.c $(C_HEADERS)
 	$(C_COMPILER) $(C_FLAGS) -c $< -o $@
-	
+
 # specific
 mk/kernel/kernel_entry.o: kernel/kernel_entry.asm
 	$(ASM_COMPILER) -f $(ASM_FORMAT) -o $@ $<
 
-mk/firmware/interrupt.o:
+mk/firmware/interrupt.o: $(C_HEADERS)
 	$(ASM_COMPILER) -f $(ASM_FORMAT) -o $@ firmware/interrupt.asm
 
 # phony
