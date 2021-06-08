@@ -65,9 +65,7 @@ mk/firmware/interrupt.o: $(C_HEADERS)
 	$(ASM_COMPILER) -f $(ASM_FORMAT) -o $@ firmware/interrupt.asm
 
 # phony
-run:
-	make clean
-	make
+run: $(.DEFAULT_GOAL)
 	$(EMULATOR) dist/os-image.bin
 
 clean:
