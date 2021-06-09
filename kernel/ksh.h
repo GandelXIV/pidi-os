@@ -43,7 +43,8 @@ byte ksh_interpret(char* command)
     "mk",
     "rm",
     "in",
-    "to"
+    "to",
+    "fortune"
   };
 
   for (int i = 0; i < sizeof(ListOfOwnCmds) / sizeof(char*); i++) {
