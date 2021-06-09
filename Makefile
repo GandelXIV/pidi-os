@@ -61,7 +61,7 @@ mk/fs/%.o: fs/%.c $(C_HEADERS)
 mk/kernel/kernel_entry.o: kernel/kernel_entry.asm
 	$(ASM_COMPILER) -f $(ASM_FORMAT) -o $@ $<
 
-mk/firmware/interrupt.o: $(C_HEADERS)
+mk/firmware/interrupt.o: $(C_HEADERS) firmware/interrupt.asm
 	$(ASM_COMPILER) -f $(ASM_FORMAT) -o $@ firmware/interrupt.asm
 
 # phony
