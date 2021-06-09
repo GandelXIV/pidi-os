@@ -1,5 +1,6 @@
 #pragma once
 #include "../io.h"
+#include "../../lib/rand.h"
 #include "../../drivers/display.h"
 
 void ksh_fortune() {
