@@ -1,13 +1,15 @@
 #pragma once
+
 #include "config.h"
-#include "../lib/type.h"
 #include "io.h"
-#include "../firmware/isr.h"
 #include "kmsg.h"
 #include "mem.h"
 #include "ksh.h"
+#include "../firmware/isr.h"
 #include "../firmware/smbios.h"
 #include "../fs/fscore.h"
+#include "../lib/type.h"
+#include "../lib/rand.h"
 
 static bool kernel_running;
 
@@ -26,6 +28,7 @@ void main()
 	smbios_init();									// get hardware info
 	display_init();									// init some display vars
 	fsinit();												// init file system
+	rand_init();										// set start seed for lib/rand
 	kinfo(KERNEL_INFO_INIT_DONE);
 	kinfo(KERNEL_INFO_WELCOME);
 	// main
