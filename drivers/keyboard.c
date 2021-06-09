@@ -110,62 +110,59 @@ void keyboard_init()
 
 char key_event_to_char(KeyEvent code)
 {
-  if (scan_code_set == 0x1)
-  {
-    switch (code) {
-      case KEY_DOWN_1: return '1';
-      case KEY_DOWN_2: return '2';
-      case KEY_DOWN_3: return '3';
-      case KEY_DOWN_4: return '4';
-      case KEY_DOWN_5: return '5';
-      case KEY_DOWN_6: return '6';
-      case KEY_DOWN_7: return '7';
-      case KEY_DOWN_8: return '8';
-      case KEY_DOWN_9: return '9';
-      case KEY_DOWN_0: return '0';
-      case KEY_DOWN_DASH: return '-';
-      case KEY_DOWN_EQUALS: return '=';
-      case KEY_DOWN_BACKSPACE: return '\b';
-      case KEY_DOWN_TAB: return '\t';
-      case KEY_DOWN_Q: return 'q';
-      case KEY_DOWN_W: return 'w';
-      case KEY_DOWN_E: return 'e';
-      case KEY_DOWN_R: return 'r';
-      case KEY_DOWN_T: return 't';
-      case KEY_DOWN_Y: return 'y';
-      case KEY_DOWN_U: return 'u';
-      case KEY_DOWN_I: return 'i';
-      case KEY_DOWN_O: return 'o';
-      case KEY_DOWN_P: return 'p';
-      case KEY_DOWN_LEFT_SQUARE_BRACKET: return '[';
-      case KEY_DOWN_RIGHT_SQUARE_BRACKET: return ']';
-      case KEY_DOWN_ENTER: return '\n';
-      case KEY_DOWN_A: return 'a';
-      case KEY_DOWN_S: return 's';
-      case KEY_DOWN_D: return 'd';
-      case KEY_DOWN_F: return 'f';
-      case KEY_DOWN_G: return 'g';
-      case KEY_DOWN_H: return 'h';
-      case KEY_DOWN_J: return 'j';
-      case KEY_DOWN_K: return 'k';
-      case KEY_DOWN_L: return 'l';
-      case KEY_DOWN_SEMICOLON: return ';';
-      case KEY_DOWN_APOSTROPHE: return '\'';
-      case KEY_DOWN_BACKTICK: return '`';
-      case KEY_DOWN_BACKSLASH: return '\\';
-      case KEY_DOWN_Z: return 'z';
-      case KEY_DOWN_X: return 'x';
-      case KEY_DOWN_C: return 'c';
-      case KEY_DOWN_V: return 'v';
-      case KEY_DOWN_B: return 'b';
-      case KEY_DOWN_N: return 'n';
-      case KEY_DOWN_M: return 'm';
-      case KEY_DOWN_COMMA: return ',';
-      case KEY_DOWN_DOT: return '.';
-      case KEY_DOWN_FRONT_SLASH: return '/';
-      case KEY_DOWN_SPACE: return ' ';
-      default: return UNPRINTALBE_CHAR;  // no printable character
-    }
+  switch (code) {
+    case KEY_DOWN_1: return '1';
+    case KEY_DOWN_2: return '2';
+    case KEY_DOWN_3: return '3';
+    case KEY_DOWN_4: return '4';
+    case KEY_DOWN_5: return '5';
+    case KEY_DOWN_6: return '6';
+    case KEY_DOWN_7: return '7';
+    case KEY_DOWN_8: return '8';
+    case KEY_DOWN_9: return '9';
+    case KEY_DOWN_0: return '0';
+    case KEY_DOWN_DASH: return '-';
+    case KEY_DOWN_EQUALS: return '=';
+    case KEY_DOWN_BACKSPACE: return '\b';
+    case KEY_DOWN_TAB: return '\t';
+    case KEY_DOWN_Q: return 'q';
+    case KEY_DOWN_W: return 'w';
+    case KEY_DOWN_E: return 'e';
+    case KEY_DOWN_R: return 'r';
+    case KEY_DOWN_T: return 't';
+    case KEY_DOWN_Y: return 'y';
+    case KEY_DOWN_U: return 'u';
+    case KEY_DOWN_I: return 'i';
+    case KEY_DOWN_O: return 'o';
+    case KEY_DOWN_P: return 'p';
+    case KEY_DOWN_LEFT_SQUARE_BRACKET: return '[';
+    case KEY_DOWN_RIGHT_SQUARE_BRACKET: return ']';
+    case KEY_DOWN_ENTER: return '\n';
+    case KEY_DOWN_A: return 'a';
+    case KEY_DOWN_S: return 's';
+    case KEY_DOWN_D: return 'd';
+    case KEY_DOWN_F: return 'f';
+    case KEY_DOWN_G: return 'g';
+    case KEY_DOWN_H: return 'h';
+    case KEY_DOWN_J: return 'j';
+    case KEY_DOWN_K: return 'k';
+    case KEY_DOWN_L: return 'l';
+    case KEY_DOWN_SEMICOLON: return ';';
+    case KEY_DOWN_APOSTROPHE: return '\'';
+    case KEY_DOWN_BACKTICK: return '`';
+    case KEY_DOWN_BACKSLASH: return '\\';
+    case KEY_DOWN_Z: return 'z';
+    case KEY_DOWN_X: return 'x';
+    case KEY_DOWN_C: return 'c';
+    case KEY_DOWN_V: return 'v';
+    case KEY_DOWN_B: return 'b';
+    case KEY_DOWN_N: return 'n';
+    case KEY_DOWN_M: return 'm';
+    case KEY_DOWN_COMMA: return ',';
+    case KEY_DOWN_DOT: return '.';
+    case KEY_DOWN_FRONT_SLASH: return '/';
+    case KEY_DOWN_SPACE: return ' ';
+    default: return UNPRINTALBE_CHAR;  // no printable character
   }
 }
 
