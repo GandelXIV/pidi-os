@@ -91,6 +91,8 @@ KeyEvent keyboard_get()
 {
   KeyEvent event = scan_code_to_key_event(read_keyboard_stream());
   if (event == keyboard_old_event) return KEY_VOID;
+  // temporary fix
+  if (event == KEY_DOWN_LEFT_SHIFT || event == KEY_DOWN_RIGHT_SHIFT) return KEY_VOID;
   keyboard_old_event = event;
   return event;
 }

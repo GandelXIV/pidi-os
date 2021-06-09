@@ -5,7 +5,6 @@ int rand_seed;
 void rand_init()
 {
   rand_seed = 2;
-  rand();
 }
 
 // Linear congruential generator function
