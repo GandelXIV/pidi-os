@@ -16,6 +16,7 @@ char* theme;
 #include "advanced_cmds/write_to_file.h"
 #include "advanced_cmds/make_file.h"
 #include "advanced_cmds/remove_file.h"
+#include "advanced_cmds/fortune.h"
 
 #define KSH_OK 0x0
 #define KSH_EXIT 0x1
@@ -42,7 +43,8 @@ byte ksh_interpret(char* command)
     "mk",
     "rm",
     "in",
-    "to"
+    "to",
+    "fortune"
   };
 
   for (int i = 0; i < sizeof(ListOfOwnCmds) / sizeof(char*); i++) {
@@ -74,6 +76,7 @@ byte ksh_interpret(char* command)
       kprints("mk             create new file\n");
       kprints("rm             delete file\n");
       kprints("in             read file content\n");
+      kprints("fortune        fortune cookie\n");
       break;
     case 2:
       kprints("Hello World!\n");
@@ -139,6 +142,9 @@ byte ksh_interpret(char* command)
       break;
     case 18:
       ksh_write_to_file();
+      break;
+    case 19:
+      ksh_fortune();
       break;
     default:
       kprints(KERNEL_INFO_SHELL_UNKNOWN_COMMAND);
