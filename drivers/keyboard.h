@@ -79,4 +79,4 @@ typedef enum
 
 char kinputc();
 void keyboard_init();
-KeyEvent keyboard_get();
+//KeyEvent keyboard_get();
