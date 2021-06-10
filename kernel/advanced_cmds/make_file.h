@@ -10,7 +10,9 @@ void ksh_make_file()
   }
   else if (response == FILE_NAME_INVALID)
   {
-    kprints("File name can only contain digits and lower/upper case characters!\n");
+    kprints("File name can only contain the following characters:\n");
+    kprints(FS_FILE_NAME_VALID_CHARS);
+    kprintc('\n');
   }
   else if (response == FILE_COUNT_MAX_EXCEEDED)
   {
