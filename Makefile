@@ -1,5 +1,5 @@
 .DEFAULT_GOAL=dist/os-image.bin
-.PHONY: clean run all full
+.PHONY: clean run iso all full
 
 # config
 C_COMPILER ?= gcc -m32
@@ -34,9 +34,9 @@ dist/os-image.bin: mk/bin/kernel.bin mk/bin/bootsect.bin
 	cat mk/bin/* > $@
 	chmod +x dist/os-image.bin
 
-os-image.iso:
+iso: $(.DEFAULT_GOAL)
 	truncate $(.DEFAULT_GOAL) -s 1200k
-	mkisofs -b $(.DEFAULT_GOAL) -o os-image.iso .
+	mkisofs -b $(.DEFAULT_GOAL) -o dist/os-image.iso .
 
 # bin
 mk/bin/kernel.bin: $(KERNEL_OBJECTS) $(DRIVER_OBJECT) $(FIRMWARE_OBJECTS) $(LIB_OBJECTS) $(FILESYSTEM_OBJECTS)
@@ -71,7 +71,7 @@ mk/firmware/interrupt.o: $(C_HEADERS) firmware/interrupt.asm
 
 # phony
 run: $(.DEFAULT_GOAL)
-	$(EMULATOR) $(EMULATOR_FLAGS) dist/os-image.iso
+	$(EMULATOR) dist/os-image.bin
 
 clean:
 	rm -f dist/*
