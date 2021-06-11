@@ -23,110 +23,100 @@ char* theme;
 
 byte ksh_interpret(char* command)
 {
-  int switchOwnArg = -1;
-  char* ListOfOwnCmds [] = {
-    "help",
-    "echo",
-    "wipe",
-    "version",
-    "memstat",
-    "theme-blue",
-    "theme-cyan",
-    "theme-gray",
-    "hacker",
-    "exit",
-    "memtest",
-    "theme-default",
-    "neofetch",
-    "ls",
-    "mk",
-    "rm",
-    "in",
-    "to"
-  };
-
-  for (int i = 0; i < sizeof(ListOfOwnCmds) / sizeof(char*); i++) {
-    if (*command == 0) {switchOwnArg = 0;}
-    else if (strcmp(command, ListOfOwnCmds[i]) == true) {
-      switchOwnArg = i + 1;
-      break;
-    }
+  if (!*command)
+  {
+    return KSH_OK;
   }
-
-  switch (switchOwnArg) {
-    case 0:
-      break;
-    case 1:
-      #include "advanced_cmds/help.h"
-      break;
-    case 2:
-      kprints("Hello World!\n");
-      break;
-    case 3:
-      display_clear();
-      break;
-    case 4:
-      kprints("Pidi OS\n");
-      kprints("Version: ");
-      kprints(OS_VERSION);
-      kprintc('\n');
-      break;
-    case 5:
-      kprints("Memory usage:");
-      kprints("\ntotal: ");
-      kprintu32(memory_usage());
-      kprints("\neffective: ");
-      kprintu32(memory_usage_effective());
-      kprintc('\n');
-      break;
-    case 6:
-      display_theme(WHITE_ON_BLUE);
-      theme = "WHITE_ON_BLUE";
-      break;
-    case 7:
-      display_theme(WHITE_ON_CYAN);
-      theme = "WHITE_ON_CYAN";
-      break;
-    case 8:
-      display_theme(GRAY_ON_BLACK);
-      theme = "GRAY_ON_BLACK";
-      break;
-    case 9:
-      display_theme(GREEN_ON_BLACK);
-      theme = "GREEN_ON_BLACK";
-      kprints_color("You are hacker now!\n", RED_ON_WHITE);
-      break;
-    case 10:
-      display_clear();
-      return KSH_EXIT;
-    case 11:
+  else if (strcmp(command, "help"))
+  {
+    #include "advanced_cmds/help.h"
+  }
+  else if (strcmp(command, "echo"))
+  {
+    kprints("Hello World!\n");
+  }
+  else if (strcmp(command, "wipe"))
+  {
+    display_clear();
+  }
+  else if (strcmp(command, "version"))
+  {
+    kprints("Pidi OS\n");
+    kprints("Version: ");
+    kprints(OS_VERSION);
+    kprintc('\n');
+  }
+  else if (strcmp(command, "memstat"))
+  {
+    kprints("Memory usage:");
+    kprints("\ntotal: ");
+    kprintu32(memory_usage());
+    kprints("\neffective: ");
+    kprintu32(memory_usage_effective());
+    kprintc('\n');
+  }
+  else if (strcmp(command, "theme-blue"))
+  {
+    display_theme(WHITE_ON_BLUE);
+    theme = "WHITE_ON_BLUE";
+  }
+  else if (strcmp(command, "theme-cyan"))
+  {
+    display_theme(WHITE_ON_CYAN);
+    theme = "WHITE_ON_CYAN";
+  }
+  else if (strcmp(command, "theme-gray"))
+  {
+    display_theme(GRAY_ON_BLACK);
+    theme = "GRAY_ON_BLACK";
+  }
+  else if (strcmp(command, "hacker"))
+  {
+    display_theme(GREEN_ON_BLACK);
+    theme = "GREEN_ON_BLACK";
+    kprints_color("You are hacker now!\n", RED_ON_WHITE);
+  }
+  else if (strcmp(command, "exit"))
+  {
+    display_clear();
+    return KSH_EXIT;
+  }
+  else if (strcmp(command, "memtest"))
+  {
       kmalloc(1);
-      break;
-    case 12:
-      display_theme(DISPLAY_THEME);
-      theme = "GREEN_ON_BLACK";
-      break;
-    case 13:
-      ksh_neofetch();
-      break;
-    case 14:
-      ksh_list_files();
-      break;
-    case 15:
-      ksh_make_file();
-      break;
-    case 16:
-      ksh_remove_file();
-      break;
-    case 17:
-      ksh_read_file();
-      break;
-    case 18:
-      ksh_write_to_file();
-      break;
-    default:
-      kprints(KERNEL_INFO_SHELL_UNKNOWN_COMMAND);
-      break;
+  }
+  else if (strcmp(command, "theme-default"))
+  {
+    display_theme(DISPLAY_THEME);
+    theme = "DEFAULT_THEME";
+  }
+  else if (strcmp(command, "neofetch"))
+  {
+    ksh_neofetch();
+  }
+  else if (strcmp(command, "ls"))
+  {
+    ksh_list_files();
+  }
+  else if (strcmp(command, "mk"))
+  {
+    ksh_make_file();
+  }
+  else if (strcmp(command, "rm"))
+  {
+    ksh_remove_file();
+  }
+  else if (strcmp(command, "in"))
+  {
+    ksh_read_file();
+  }
+  else if (strcmp(command, "to"))
+  {
+    ksh_write_to_file();
+  }
+  else
+  {
+    kprints(KERNEL_INFO_SHELL_UNKNOWN_COMMAND);
   }
   return KSH_OK;
 }
