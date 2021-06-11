@@ -57,23 +57,7 @@ byte ksh_interpret(char* command)
     case 0:
       break;
     case 1:
-      kprints("COMMANDS:\n");
-      kprints("help           prints this message\n");
-      kprints("echo           prints 'echo' to the display\n");
-      kprints("wipe           cleans screen\n");
-      kprints("version        get kernel version\n");
-      kprints("memstat        get allocated memory usage\n");
-      kprints("memtest        allocate memory for test\n");
-      kprints("theme-blue     changes the theme to white on blue\n");
-      kprints("theme-cyan     changes the theme to white on cyan\n");
-      kprints("theme-gray     changes the theme to gray on black\n");
-      kprints("theme-default  changes the theme back to default\n");
-      kprints("neofetch       show info about your system\n");
-      kprints("exit           exit kernel shell\n");
-      kprints("ls             list all files\n");
-      kprints("mk             create new file\n");
-      kprints("rm             delete file\n");
-      kprints("in             read file content\n");
+      #include "advanced_cmds/help.h"
       break;
     case 2:
       kprints("Hello World!\n");
