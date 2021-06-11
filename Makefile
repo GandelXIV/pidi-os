@@ -35,9 +35,11 @@ dist/os-image.bin: mk/bin/kernel.bin mk/bin/bootsect.bin
 	chmod +x dist/os-image.bin
 
 iso: $(.DEFAULT_GOAL)
+	mkdir -p mk/iso/
 	rm -f dist/os-image.iso
 	truncate $(.DEFAULT_GOAL) -s 1200k
-	mkisofs -b $(.DEFAULT_GOAL) -o dist/os-image.iso .
+	cp $(.DEFAULT_GOAL) mk/iso/kernel.bin
+	mkisofs -b kernel.bin -o dist/os-image.iso mk/iso/
 
 # bin
 mk/bin/kernel.bin: $(KERNEL_OBJECTS) $(DRIVER_OBJECT) $(FIRMWARE_OBJECTS) $(LIB_OBJECTS) $(FILESYSTEM_OBJECTS)
@@ -82,3 +84,4 @@ clean:
 	rm -f mk/firmware/*
 	rm -f mk/lib/*
 	rm -f mk/fs/*
+	rm -f mk/iso/*
