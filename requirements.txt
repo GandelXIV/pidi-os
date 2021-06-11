@@ -1,1 +1,4 @@
-make gcc nasm aqemu
+# compiling
+make gcc nasm
+# running
+aqemu
