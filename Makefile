@@ -8,6 +8,7 @@ ASM_COMPILER ?= nasm
 ASM_FORMAT ?= elf32
 LINKER ?= ld -m elf_i386 -s
 EMULATOR ?= qemu-system-i386
+EMULATOR_FLAGS ?= -cdrom
 
 KERNEL_C_SOURCES := $(wildcard kernel/*.c)
 KERNEL_C_OBJECTS := $(patsubst kernel/%.c, mk/kernel/%.o, $(KERNEL_C_SOURCES))
@@ -32,6 +33,10 @@ dist/os-image.bin: mk/bin/kernel.bin mk/bin/bootsect.bin
 	rm -f dist/os-image.bin
 	cat mk/bin/* > $@
 	chmod +x dist/os-image.bin
+
+os-image.iso:
+	truncate $(.DEFAULT_GOAL) -s 1200k
+	mkisofs -b $(.DEFAULT_GOAL) -o os-image.iso .
 
 # bin
 mk/bin/kernel.bin: $(KERNEL_OBJECTS) $(DRIVER_OBJECT) $(FIRMWARE_OBJECTS) $(LIB_OBJECTS) $(FILESYSTEM_OBJECTS)
@@ -66,7 +71,7 @@ mk/firmware/interrupt.o: $(C_HEADERS) firmware/interrupt.asm
 
 # phony
 run: $(.DEFAULT_GOAL)
-	$(EMULATOR) dist/os-image.bin
+	$(EMULATOR) $(EMULATOR_FLAGS) dist/os-image.iso
 
 clean:
 	rm -f dist/*
