@@ -1,4 +1,4 @@
 # compiling
 make gcc nasm
 # running
-aqemu
+qemu
