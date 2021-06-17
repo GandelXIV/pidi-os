@@ -7,7 +7,7 @@ byte* memory_index [MEMORY_INDEX_BASE_SIZE];
 
 byte* get_memory_index()
 {
-  return memory_index;
+  return (byte*) memory_index;
 }
 
 // allocate memory

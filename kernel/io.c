@@ -1,5 +1,6 @@
 #include "io.h"
 
+#include "../lib/conv.h"
 
 // print string to cursor with color
 void kprints_color(char* text, char color)
@@ -34,7 +35,7 @@ void kprintu(uint number)
 void kprintu32(uint32_t number)
 {
   char output [12];
-  uint32_to_str(output, number);
+  uint32_to_hex(output, number);
   kprints(output);
 }
 

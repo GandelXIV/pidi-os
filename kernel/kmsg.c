@@ -1,4 +1,5 @@
 #include "kmsg.h"
+#include "io.h"
 
 void kinfo(char* msg)
 {

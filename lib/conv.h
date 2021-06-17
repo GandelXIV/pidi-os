@@ -4,8 +4,8 @@
 #include "math.h"
 #include "string.h"
 
-
 void uint32_to_str(char* output, uint32_t number);
+void uint32_to_hex(char* output, uint32_t number);
 void uint_to_str(char* output, uint number);
 void int_to_str(char* output, int number);
 void short_to_str(char* output, short number);

@@ -79,5 +79,5 @@ void smbios_init ()
     kerror(FIRMWARE_ERROR_SMBIOS_ENRTY_MISSING);
   }
   SMBIOSEntryPoint* smbios_entry_p = mem;
-  SMBIOS_HEADER_BIOS = smbios_entry_p->TableAddress;
+  SMBIOS_HEADER_BIOS = (SMBIOSHeader*) smbios_entry_p->TableAddress;
 }
