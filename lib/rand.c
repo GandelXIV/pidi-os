@@ -4,7 +4,8 @@ int rand_seed;
 
 void rand_init()
 {
-  rand_seed = 2;
+  int random_data;  // we allocate data and dont initalize it
+  rand_seed = random_data + 2;  // +1 to make sure there is not a zero
 }
 
 // Linear congruential generator function

@@ -114,6 +114,11 @@ byte ksh_interpret(char* command)
   {
     ksh_write_to_file();
   }
+  else if (strcmp(command, "random"))
+  {
+    kprintu(rand() % 100);  // random number between 0-100
+    kprintc('\n');
+  }
   else
   {
     kprints(KERNEL_INFO_SHELL_UNKNOWN_COMMAND);

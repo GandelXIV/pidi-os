@@ -15,6 +15,7 @@ kprints("theme-default  changes the theme back to default\n");
 kprints("[RESOURCES]\n");
 kprints("memstat        get allocated memory usage\n");
 kprints("memtest        allocate memory for test\n");
+kprints("random         get random number between 0-100\n");
 kprints("[FILE_SYSTEM]\n");
 kprints("ls             list all files\n");
 kprints("mk             create new file\n");
