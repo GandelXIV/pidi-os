@@ -5,7 +5,6 @@
 ![Files](https://img.shields.io/github/directory-file-count/GandelXIV/pidi-os?style=for-the-badge) 
 ![Size](https://img.shields.io/github/languages/code-size/GandelXIV/pidi-os?style=for-the-badge)
 ![Version](https://img.shields.io/github/v/tag/GandelXIV/pidi-os?style=for-the-badge)
-![Activity](https://img.shields.io/github/commit-activity/m/GandelXIV/pidi-os?style=for-the-badge)
 <br />A minimalistic i386 operating system. <br />
 More info: https://github.com/GandelXIV/pidi-os/wiki/ <br />
 ![](https://github.com/GandelXIV/pidi-os/blob/main/production/start-screenshot.png)
