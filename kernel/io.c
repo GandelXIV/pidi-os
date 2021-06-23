@@ -35,7 +35,7 @@ void kprintu(uint number)
 void kprintu32(uint32_t number)
 {
   char output [12];
-  uint32_to_hex(output, number);
+  uint32_to_str(output, number);
   kprints(output);
 }
 
