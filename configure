@@ -7,7 +7,7 @@ mkdir -p mk/
 mkdir -p mk/bin/
 mkdir -p mk/kernel/
 mkdir -p mk/drivers/
-mkdir -p mk/firmware/
+mkdir -p mk/cpu/
 mkdir -p mk/lib/
 mkdir -p mk/fs/
 mkdir -p mk/iso/

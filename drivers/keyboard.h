@@ -1,8 +1,7 @@
 #pragma once
 
 #include "display.h"
-#include "../firmware/port.h"
-#include "../firmware/isr.h"
+#include "../cpu/port.h"
 #include "../lib/type.h"
 
 #define REG_KEYBOARD_DATA 0x60

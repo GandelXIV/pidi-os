@@ -1,15 +1,23 @@
 [org 0x7c00]
 
+boot_start:
+    ; prepare stack and boot drive
     mov [BOOT_DRIVE], dl
     mov bp, [STACK_OFFSET]
     mov sp, bp
 
+    ; real mode msg
     mov bx, MSG_REAL_MODE
     call print
     call print_nl
 
     call load_kernel
+
     call switch_to_pm
+    mov ebx, MSG_PROT_MODE
+    call print_string_pm
+    
+    call enter_kernel
     jmp $ ; Just for safety lol
 
 %include "boot/print/boot_sect_print.asm"
@@ -32,9 +40,7 @@ load_kernel:
     ret
 
 [bits 32]
-BEGIN_PM:
-    mov ebx, MSG_PROT_MODE
-    call print_string_pm
+enter_kernel:
     call KERNEL_OFFSET ; Call kernel_entry
     mov ebx, MSG_CRASH_KERNEL
     call print_string_pm

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../firmware/port.h"
+#include "../cpu/port.h"
 #include "../lib/type.h"
 #include "../kernel/config.h"
 

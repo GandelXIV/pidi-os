@@ -14,8 +14,8 @@ KERNEL_C_SOURCES := $(wildcard kernel/*.c)
 KERNEL_C_OBJECTS := $(patsubst kernel/%.c, mk/kernel/%.o, $(KERNEL_C_SOURCES))
 DRIVER_C_SOURCES := $(wildcard drivers/*.c)
 DRIVER_C_OBJECTS := $(patsubst drivers/%.c, mk/drivers/%.o, $(DRIVER_C_SOURCES))
-FIRMWARE_C_SOURCES := $(wildcard firmware/*.c)
-FIRMWARE_C_OBJECTS := $(patsubst firmware/%.c, mk/firmware/%.o, $(FIRMWARE_C_SOURCES))
+CPU_C_SOURCES := $(wildcard CPU/*.c)
+CPU_C_OBJECTS := $(patsubst CPU/%.c, mk/CPU/%.o, $(CPU_C_SOURCES))
 LIB_C_SOURCES := $(wildcard lib/*.c)
 LIB_C_OBJECTS := $(patsubst lib/%.c, mk/lib/%.o, $(LIB_C_SOURCES))
 FILESYSTEM_C_SOURCES := $(wildcard fs/*.c)
@@ -25,7 +25,7 @@ C_HEADERS = $(wildcard */*.h) $(wildcard kernel/advanced_cmds/*.h)
 
 KERNEL_OBJECTS = $(KERNEL_C_OBJECTS) mk/kernel/kernel_entry.o
 DRIVER_OBJECT = $(DRIVER_C_OBJECTS)
-FIRMWARE_OBJECTS = $(FIRMWARE_C_OBJECTS) mk/firmware/interrupt.o
+CPU_OBJECTS = $(CPU_C_OBJECTS)
 LIB_OBJECTS = $(LIB_C_OBJECTS)
 FILESYSTEM_OBJECTS = $(FILESYSTEM_C_OBJECTS)
 
@@ -42,7 +42,7 @@ iso: $(.DEFAULT_GOAL)
 	mkisofs -b kernel.bin -o dist/os-image.iso mk/iso/
 
 # bin
-mk/bin/kernel.bin: $(KERNEL_OBJECTS) $(DRIVER_OBJECT) $(FIRMWARE_OBJECTS) $(LIB_OBJECTS) $(FILESYSTEM_OBJECTS)
+mk/bin/kernel.bin: $(KERNEL_OBJECTS) $(DRIVER_OBJECT) $(CPU_OBJECTS) $(LIB_OBJECTS) $(FILESYSTEM_OBJECTS)
 	$(LINKER) -o $@ -Ttext 0x1000 $^ --oformat binary
 
 mk/bin/bootsect.bin: boot/*
@@ -56,7 +56,7 @@ mk/kernel/%.o: kernel/%.c $(C_HEADERS)
 mk/drivers/%.o: drivers/%.c $(C_HEADERS)
 	$(C_COMPILER) $(C_FLAGS) -c $< -o $@
 
-mk/firmware/%.o: firmware/%.c $(C_HEADERS)
+mk/CPU/%.o: CPU/%.c $(C_HEADERS)
 	$(C_COMPILER) $(C_FLAGS) -c $< -o $@
 
 mk/lib/%.o: lib/%.c $(C_HEADERS)
@@ -69,9 +69,6 @@ mk/fs/%.o: fs/%.c $(C_HEADERS)
 mk/kernel/kernel_entry.o: kernel/kernel_entry.asm
 	$(ASM_COMPILER) -f $(ASM_FORMAT) -o $@ $<
 
-mk/firmware/interrupt.o: $(C_HEADERS) firmware/interrupt.asm
-	$(ASM_COMPILER) -f $(ASM_FORMAT) -o $@ firmware/interrupt.asm
-
 # phony
 run: $(.DEFAULT_GOAL)
 	$(EMULATOR) dist/os-image.bin
@@ -81,7 +78,7 @@ clean:
 	rm -f mk/bin/*
 	rm -f mk/kernel/*
 	rm -f mk/drivers/*
-	rm -f mk/firmware/*
+	rm -f mk/CPU/*
 	rm -f mk/lib/*
 	rm -f mk/fs/*
 	rm -f mk/iso/*

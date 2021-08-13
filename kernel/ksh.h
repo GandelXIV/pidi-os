@@ -5,7 +5,7 @@
 #include "mem.h"
 #include "kmsg.h"
 #include "io.h"
-#include "../firmware/smbios.h"
+#include "../cpu/smbios.h"
 #include "version.h"
 
 char* theme;
@@ -33,7 +33,7 @@ byte ksh_interpret(char* command)
   }
   else if (strcmp(command, "echo"))
   {
-    kprints("Hello World!\n");
+    kprints("echo\n");
   }
   else if (strcmp(command, "wipe"))
   {

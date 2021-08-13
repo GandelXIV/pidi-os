@@ -67,7 +67,7 @@ void kbport_byte_out(unsigned char byte) {
         } while (tmp == 0);
         tries++;
     } while (tmp == 0xFE && tries < 3);
-}    
+}
 
 void kbupdateleds() {
     kbport_byte_out(0xED);
@@ -215,15 +215,10 @@ void kbh() {
     key = true;
 }
 
-void on_key_event(registers_t registers)
-{
-    //kprints("Registered event!");
-}
 
 void keyboard_init() {
     key = false;
     for (int i = 0; i < 384; i++) {keydown[i] = false;}
     n_lock = true;
     kbupdateleds();
-    register_interrupt_handler(IRQ1, kbh);
 }
