@@ -78,7 +78,7 @@ clean:
 	rm -f mk/bin/*
 	rm -f mk/kernel/*
 	rm -f mk/drivers/*
-	rm -f mk/CPU/*
+	rm -f mk/cpu/*
 	rm -f mk/lib/*
 	rm -f mk/fs/*
 	rm -f mk/iso/*
