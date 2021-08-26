@@ -5,7 +5,7 @@
 // print string to cursor with color
 void kprints_color(char* text, char color)
 {
-	while (*text != 0)
+	while (*text)
 	{
 		kprintc_color(*text, color);
 		++text;
@@ -68,3 +68,5 @@ void kinputs(char* output)
   }
   kprintc('\n');
 }
+
+void __stack_chk_fail(){}

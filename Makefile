@@ -2,12 +2,12 @@
 .PHONY: clean run iso all full
 
 # config
-C_COMPILER ?= gcc -m32
-C_FLAGS ?= -ffreestanding -fno-pie -Os -c
-ASM_COMPILER ?= nasm
+C_COMPILER ?= gcc
+C_FLAGS ?= -m32 -ffreestanding -fno-pie -Os -c
+ASM_COMPILER ?= nasm 
 ASM_FORMAT ?= elf32
 LINKER ?= ld -m elf_i386 -s
-EMULATOR ?= qemu-system-i386
+EMULATOR ?= qemu-system-x86_64
 EMULATOR_FLAGS ?= -cdrom
 
 KERNEL_C_SOURCES := $(wildcard kernel/*.c)
@@ -56,7 +56,7 @@ mk/kernel/%.o: kernel/%.c $(C_HEADERS)
 mk/drivers/%.o: drivers/%.c $(C_HEADERS)
 	$(C_COMPILER) $(C_FLAGS) -c $< -o $@
 
-mk/CPU/%.o: CPU/%.c $(C_HEADERS)
+mk/cpu/%.o: cpu/%.c $(C_HEADERS)
 	$(C_COMPILER) $(C_FLAGS) -c $< -o $@
 
 mk/lib/%.o: lib/%.c $(C_HEADERS)
