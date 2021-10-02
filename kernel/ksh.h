@@ -16,6 +16,7 @@ char* theme;
 #include "advanced_cmds/write_to_file.h"
 #include "advanced_cmds/make_file.h"
 #include "advanced_cmds/remove_file.h"
+#include "advanced_cmds/echo.h"
 
 #define KSH_OK 0x0
 #define KSH_EXIT 0x1
@@ -33,7 +34,7 @@ byte ksh_interpret(char* command)
   }
   else if (strcmp(command, "echo"))
   {
-    kprints("echo\n");
+    ksh_echo();
   }
   else if (strcmp(command, "wipe"))
   {

@@ -18,19 +18,18 @@ void main()
 	// init
 	kinfo(KERNEL_INFO_ENTERED);
 	kinfo(KERNEL_INFO_INIT_START);
-	kernel_running = true;			// start kernel loop
-	display_theme(DISPLAY_THEME);		// set display theme
-	memory_init();				// init kernel memory for kmalloc()
-	keyboard_init();			// nothing yet
-	kmalloc(2);				// dont touch this
-	smbios_init();				// get hardware info
-	display_init();				// init some display vars
-	fsinit();				// init file system
-	rand_init();				// set start seed for lib/rand
+	kernel_running = true;
+	display_theme(DISPLAY_THEME);
+	memory_init();
+	keyboard_init();
+	smbios_init();
+	display_init();
+	fsinit();
+	rand_init();
 	kinfo(KERNEL_INFO_INIT_DONE);
 	kinfo(KERNEL_INFO_WELCOME);
 	// main
-	#include "debug.h" // this file is created in ./configure
+	#include "debug.h" // this file is created by ./configure
 	KERNEL_STARTUP
 	while (kernel_running)
 	{

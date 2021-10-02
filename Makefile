@@ -1,9 +1,9 @@
 .DEFAULT_GOAL=dist/os-image.bin
-.PHONY: clean run iso all full
+.PHONY: clean run run-iso all full
 
 # config
 C_COMPILER ?= gcc
-C_FLAGS ?= -m32 -ffreestanding -fno-pie -Os -c
+C_FLAGS ?= -m32 -ffreestanding -fno-pie -Os -c -ggdb
 ASM_COMPILER ?= nasm 
 ASM_FORMAT ?= elf32
 LINKER ?= ld -m elf_i386 -s
@@ -34,7 +34,7 @@ dist/os-image.bin: mk/bin/kernel.bin mk/bin/bootsect.bin
 	cat mk/bin/* > $@
 	chmod +x dist/os-image.bin
 
-iso: $(.DEFAULT_GOAL)
+dist/os-image.iso: $(.DEFAULT_GOAL)
 	mkdir -p mk/iso/
 	rm -f dist/os-image.iso
 	truncate $(.DEFAULT_GOAL) -s 1200k
@@ -71,7 +71,10 @@ mk/kernel/kernel_entry.o: kernel/kernel_entry.asm
 
 # phony
 run: $(.DEFAULT_GOAL)
-	$(EMULATOR) dist/os-image.bin
+	$(EMULATOR) $^
+
+run-iso: dist/os-image.iso
+	$(EMULATOR) $(EMULATOR_FLAGS) $^
 
 clean:
 	rm -f dist/*

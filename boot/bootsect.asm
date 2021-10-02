@@ -16,7 +16,7 @@ boot_start:
     call switch_to_pm
     mov ebx, MSG_PROT_MODE
     call print_string_pm
-    
+
     call enter_kernel
     jmp $ ; Just for safety lol
 
