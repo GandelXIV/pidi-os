@@ -120,6 +120,10 @@ byte ksh_interpret(char* command)
     kprintu(rand() % 100);  // random number between 0-100
     kprintc('\n');
   }
+  else if (strcmp(command, "panic"))
+  {
+    kpanic("Debug panic");
+  }
   else
   {
     kprints(KERNEL_INFO_SHELL_UNKNOWN_COMMAND);
