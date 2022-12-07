@@ -1,4 +1,6 @@
 # pidi-os
+This project has been abandoned in favor of [Rez OS](https://github.com/GandelXIV/RezOS) <br>
+<br>
 ![GitHub issues](https://img.shields.io/github/issues-raw/GandelXIV/pidi-os?style=for-the-badge) 
 ![Help wanted](https://img.shields.io/badge/-HELP%20WANTED-red?style=for-the-badge) 
 ![Languages](https://img.shields.io/github/languages/count/GandelXIV/pidi-os?style=for-the-badge) 
